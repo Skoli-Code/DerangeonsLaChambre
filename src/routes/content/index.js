@@ -31,7 +31,7 @@ export default {
     const { data } = await resp.json();
     if (!data || !data.content) return undefined;
     return {
-      title: data.content.title,
+      title: data.title,
       component: <Content {...data.content} />,
     };
   },

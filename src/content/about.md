@@ -1,5 +1,6 @@
 ---
-title: About Us
+title: À propos
+description: À propos de dérangeons la chambre
 component: ContentPage
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consequat

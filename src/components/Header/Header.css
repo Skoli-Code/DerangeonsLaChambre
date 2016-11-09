@@ -32,6 +32,7 @@
 
 .brandTxt {
   margin-left: 10px;
+  font-family: var(--font-family-brand);
 }
 
 .nav {

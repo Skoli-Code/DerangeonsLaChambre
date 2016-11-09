@@ -8,6 +8,7 @@
  */
 
 import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Layout from '../../components/Layout';
 import s from './Content.css';
@@ -15,6 +16,7 @@ import s from './Content.css';
 function Content({ path, title, content }) {
   return (
     <Layout>
+      <Helmet title={title} />
       <div className={s.root}>
         <div className={s.container}>
           {title && path !== '/' && <h1>{title}</h1>}

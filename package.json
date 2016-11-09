@@ -32,6 +32,7 @@
     "query-string": "4.2.3",
     "react": "15.3.2",
     "react-dom": "15.3.2",
+    "react-helmet": "^3.2.2",
     "sequelize": "3.24.8",
     "source-map-support": "0.4.6",
     "sqlite3": "3.1.8",
