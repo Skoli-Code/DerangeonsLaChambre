@@ -17,7 +17,7 @@ export default {
   // Keep in mind, routes are evaluated in order
   children: [
     require('./home').default,
-    // place new routes before...
+    require('./study').default,
     require('./content').default,
     require('./notFound').default,
   ],

@@ -52,7 +52,7 @@ const config = {
             'latest',
             // Experimental ECMAScript proposals
             // https://github.com/babel/babel/tree/master/packages/babel-preset-stage-0
-            'stage-0',
+            'stage-2',
           ],
           plugins: [
             // Externalise references to helpers and builtins,
