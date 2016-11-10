@@ -8,22 +8,21 @@
  */
 import React from 'react';
 
-import Introduction from './Introduction';
+import Conclusion from './Conclusion';
 
 export default {
 
-  path: '/introduction',
+  path: '/conclusion',
 
   async action(activeKey) {
     const params = {
-      title: 'Introduction',
-      key: 0
+      title: 'Conclusion',
+      key: 2
     };
-
     const isActive = activeKey == params.key;
-
     return Object.assign({}, {
-      component: <Introduction includeHelmet={ isActive }/>
+      component: <Conclusion includeHelmet={ isActive }/>
     }, params);
   }
+
 };

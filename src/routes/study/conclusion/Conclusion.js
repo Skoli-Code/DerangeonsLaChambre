@@ -9,28 +9,27 @@
 
 import React, {PropTypes} from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import { View, ViewPropTypes } from '../View';
+import s from './Conclusion.css';
+import { ViewPropTypes, View } from '../View';
 
-import s from './Introduction.css';
-
-class Introduction extends React.Component {
+class Conclusion extends React.Component {
   static propTypes = ViewPropTypes;
+
   render(){
+    const props = { title: 'Conclusion' };
+
     return (
       // we need to pass to holding View component includeHelmet property
       // took from ViewPropTypes
-      <View includeHelmet={ this.props.includeHelmet } helmetProps={{
-        title: 'Introduction'
-      }}>
+      <View includeHelmet={this.props.includeHelmet} helmetProps={ props }>
         <div className={s.root}>
           <div className={s.container}>
-            <h1 className={s.title}>Introduction</h1>
-            <p>Introduction</p>
+            <h1 className={s.title}>Conclusion</h1>
+            <p>Conclusion</p>
           </div>
         </div>
       </View>
     );
   }
 }
-
-export default withStyles(s)(Introduction);
+export default withStyles(s)(Conclusion);

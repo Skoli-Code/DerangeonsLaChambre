@@ -21,7 +21,6 @@ function Layout({ children }) {
         title="Acceuil"
         titleTemplate="%s | Dérangeons la Chambre"
       />
-      <Header/>
       {children}
     </div>
   );

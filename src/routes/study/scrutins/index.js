@@ -8,22 +8,22 @@
  */
 import React from 'react';
 
-import Introduction from './Introduction';
+import Scrutins from './Scrutins';
 
 export default {
 
-  path: '/introduction',
+  path: '/scrutins',
 
   async action(activeKey) {
     const params = {
-      title: 'Introduction',
-      key: 0
+      title: 'Scrutins',
+      key: 1
     };
-
     const isActive = activeKey == params.key;
 
     return Object.assign({}, {
-      component: <Introduction includeHelmet={ isActive }/>
+      component: <Scrutins includeHelmet={ isActive }/>
     }, params);
-  }
+  },
+
 };
