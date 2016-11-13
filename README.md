@@ -1,4 +1,4 @@
-## React Starter Kit — "[isomorphic](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/)" web app boilerplate
+## Dérangeons la Chambre (forked from https://github.com/erikras/react-redux-universal-hot-example)
 
 > [React Starter Kit](https://www.reactstarterkit.com) is an opinionated
 > boilerplate for web development built on top of [Node.js](https://nodejs.org/),
