@@ -14,7 +14,7 @@ export default {
 
   path: '/introduction',
 
-  async action(activeKey) {
+  async render(activeKey){
     const params = {
       title: 'Introduction',
       key: 0
@@ -25,5 +25,9 @@ export default {
     return Object.assign({}, {
       component: <Introduction includeHelmet={ isActive }/>
     }, params);
+  }
+
+  async action() {
+    return this.render();
   }
 };

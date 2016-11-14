@@ -1,0 +1,12 @@
+[
+  {
+    "id": "SOC",
+    "name":"Parti Socialiste",
+    "order": 0
+  },
+  {
+    "id": "FN",
+    "name":"Front National",
+    "order": 1
+  }
+]
