@@ -7,7 +7,7 @@ export default {
   children : [
     require('./introduction').default,
     require('./ballots').default,
-    // require('./conclusion').default
+    require('./conclusion').default
   ],
   onChangeIndex(index){
     let route = this.children[index];

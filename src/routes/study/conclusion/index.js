@@ -11,10 +11,8 @@ import React from 'react';
 import Conclusion from './Conclusion';
 
 export default {
-
   path: '/conclusion',
-
-  async action(activeKey) {
+  async render(activeKey) {
     const params = {
       title: 'Conclusion',
       key: 2
@@ -23,6 +21,9 @@ export default {
     return Object.assign({}, {
       component: <Conclusion includeHelmet={ isActive }/>
     }, params);
+  },
+  async action() {
+    return this.render();
   }
 
 };

@@ -19,14 +19,11 @@ export default {
       title: 'Introduction',
       key: 0
     };
-
     const isActive = activeKey == params.key;
-
     return Object.assign({}, {
       component: <Introduction includeHelmet={ isActive }/>
     }, params);
-  }
-
+  },
   async action() {
     return this.render();
   }

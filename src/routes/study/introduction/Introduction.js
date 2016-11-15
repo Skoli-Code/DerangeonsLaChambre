@@ -9,7 +9,7 @@
 
 import React, {PropTypes} from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import { View, ViewPropTypes } from '../View';
+import { View, ViewPropTypes } from '../../../components/View';
 
 import s from './Introduction.css';
 

@@ -10,7 +10,7 @@
 import React, {PropTypes} from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Conclusion.css';
-import { ViewPropTypes, View } from '../View';
+import { ViewPropTypes, View } from '../../../components/View';
 
 class Conclusion extends React.Component {
   static propTypes = ViewPropTypes;
