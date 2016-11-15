@@ -1,0 +1,16 @@
+{
+  "comma-dangle": ["error", "never"],
+  "plugins": ["react"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+    }
+  },
+  "rules": {
+    "no-console": 0,
+    "global-require": 0
+  }
+}
