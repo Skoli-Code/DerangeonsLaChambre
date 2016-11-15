@@ -70,13 +70,13 @@ class Study extends React.Component {
               iconElementRight={
                 <Tabs contentContainerStyle={{ marginTop:0 } }value={ index }>{ tabs }</Tabs>
               }></AppBar>
-          <BindKeyboardSwipeableViews
+          <SwipeableViews
             onChangeIndex={ this.onChangeIndex.bind(this) }
             index={ index }>
           { this.props.tabs.map((tab)=>{
             return tab.component;
           })}
-          </BindKeyboardSwipeableViews>
+          </SwipeableViews>
         </div>
       </MuiThemeProvider>
     );

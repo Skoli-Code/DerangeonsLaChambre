@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Ballot.css';
+import Layout from '../Layout';
 
 export const PartyPropTypes = {
   name: PropTypes.string.isRequired,
@@ -13,6 +14,7 @@ export const BallotPropTypes = {
   parties: PartiesPropTypes,
   id: PropTypes.string.isRequired,
   order: PropTypes.number.isRequired,
+  content: PropTypes.string.isRequired,
   results: PropTypes.arrayOf(PropTypes.shape({
     party: PropTypes.string.isRequired,
     result: PropTypes.number.isRequired
@@ -22,7 +24,12 @@ export const BallotPropTypes = {
 class Ballot extends React.Component {
   static propTypes = BallotPropTypes;
   render(){
-    return (<div>{this.props.id}</div>);
+    return (<Layout>
+      <div className={s.ballot}>
+        {this.props.id}
+        <div dangerouslySetInnerHTML={{__html: this.props.content}}></div>
+      </div>
+    </Layout>);
   }
 }
 

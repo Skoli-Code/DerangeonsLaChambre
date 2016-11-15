@@ -18,15 +18,14 @@ import {
   GraphQLNonNull as NonNull,
 } from 'graphql';
 
-async function readFile(fn){
-  const path = join(BALLOTS_DIR, fn);
-  return new Promise(resolve => {
-    fs.readFile(path, resolve);
-  });
-}
 
-const parseContent = (fileContent)=>{
-  const fmContent = fm(fileContent);
+const readFile = Promise.promisify(fs.readFile);
+
+const parseContent = async (fn)=>{
+  const path = join(BALLOTS_DIR, fn);
+  const source = await readFile(path, { encoding: 'utf8' });
+  const fmContent = fm(source);
+  console.log('fmContent: ', fmContent);
   return md.render(fmContent.body);
 };
 
@@ -34,11 +33,11 @@ export default {
   type: BallotsType,
   async resolve() {
     const parsedBallots = ballots.map(async (ballot)=>{
-      const fn = ballot.id + '.md';
-      const content = await readFile(fn);
+      const content = parseContent(ballot.id + '.md');
+      console.log('filePath - content', content);
       return Object.assign({}, ballot, {
         results: results.find((res)=>res.id == ballot.id).results,
-        content: parseContent(content)
+        content: content
       });
     });
     return {

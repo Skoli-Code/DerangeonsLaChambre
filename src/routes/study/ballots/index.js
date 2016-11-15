@@ -11,6 +11,8 @@ import React from 'react';
 import Ballots from './Ballots';
 import fetch from '../../../core/fetch';
 
+let globBallots;
+
 const resolveBallots = async() => {
   try {
     const resp = await fetch('/graphql', {
@@ -20,45 +22,42 @@ const resolveBallots = async() => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        query: `{
-          ballots
-          {
-            list{
-              id,order,content,results{
-                party,result
-              }
-            },
-            parties{
-              id,order,name
-            }
-          }
-        }`
+        query: `{ballots{
+          list{id,order,content,results{party,result}},
+          parties{id,order,name}
+        }}`
       })
     });
     if (resp.status !== 200) {
       throw new Error(resp.statusText);
     }
-    const {data} = resp.json();
+    const {data} = await resp.json();
     if (!data){
       return undefined;
     }
-    return data;
+    return data.ballots;
   } catch(e){
     console.error(e)
     return null;
   }
 };
 
-const render = async(id = null) => {
-  let ballots = await resolveBallots();
-  if(ballots){
-    ballots = ballots.sort((b1,b2)=>b1.order - b2.order);
+const render = async(id) => {
+  globBallots = globBallots || await resolveBallots();
+  if(!id){
+    id = globBallots.list[0].id;
   }
-  return {key: 1, title: 'Scrutins', component: <Ballots ballots={ballots} activeBallot={id}/>};
+  return {
+    key: 1,
+    title: 'Scrutins',
+    component: <Ballots
+      ballots={globBallots.list}
+      parties={globBallots.parties}
+      activeBallot={id}/>
+    };
 };
 
 export default {
-
   path : '/scrutins',
   render : render,
   async action({next}) {

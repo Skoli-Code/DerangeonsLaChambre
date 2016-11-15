@@ -30,19 +30,18 @@ class Ballots extends React.Component {
 
   constructor(props, context, updater) {
     super(props, context, updater);
-    let activeIndex = 0;
+
+    let activeId  = this.props.activeBallot;
     const ballots = this.props.ballots;
-    const activeId = this.props.activeBallot;
-
-    if (activeId) {
-      activeIndex = ballots.indexOf(ballots.find((b) => {
-        b.id == activeId
-      }))
-    }
-
+    const activeBallot = ballots.find((b)=>b.id == activeId);
+    const activeIndex  = ballots.indexOf(activeBallot);
     this.state = {
       index: activeIndex
     };
+  }
+
+  setIndex(index){
+    this.setState({index:index});
   }
 
   onNextClicked() {
@@ -60,21 +59,21 @@ class Ballots extends React.Component {
   }
 
   render() {
-    const {index} = this.state;
+    const {index,} = this.state;
     const ballots = this.props.ballots || [];
     const parties = this.props.parties;
     return (
       <div>
         <div className={s.pagination}>
           {ballots.map((ballot, key) => {
-            return <div className={s.paginationItem}>{key}</div>;
+            return <div className={s.paginationItem} onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;
           })}
         </div>
-        <BindKeyboardSwipeableViews>
+        <SwipeableViews index={ index } resistance>
           {ballots.map((ballot, key) => {
             return <Ballot {...ballot} includeHelmet={key == index} parties={parties}/>;
           })}
-        </BindKeyboardSwipeableViews>
+        </SwipeableViews>
       </div>
     );
   }
