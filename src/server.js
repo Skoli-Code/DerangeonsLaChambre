@@ -20,11 +20,11 @@ import UniversalRouter from 'universal-router';
 import PrettyError from 'pretty-error';
 import App from './components/App';
 import Html from './components/Html';
-import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
+import {ErrorPageWithoutStyle} from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import routes from './routes';
 import assets from './assets'; // eslint-disable-line import/no-unresolved
-import { port, auth } from './config';
+import {port, auth} from './config';
 import schema from './data/schema';
 
 const app = express();
@@ -41,21 +41,23 @@ global.navigator.userAgent = global.navigator.userAgent || 'all';
 // -----------------------------------------------------------------------------
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/graphql', expressGraphQL(req => ({
   schema,
   graphiql: true,
-  rootValue: { request: req },
+  rootValue: {
+    request: req
+  },
   pretty: process.env.NODE_ENV !== 'production',
+  formatError: error => ({message: error.message, locations: error.locations, stack: error.stack})
 })));
-
 
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
-app.get('*', async (req, res, next) => {
+app.get('*', async(req, res, next) => {
   try {
     const css = new Set();
 
@@ -67,26 +69,30 @@ app.get('*', async (req, res, next) => {
       insertCss: (...styles) => {
         // eslint-disable-next-line no-underscore-dangle
         styles.forEach(style => css.add(style._getCss()));
-      },
+      }
     };
 
     const route = await UniversalRouter.resolve(routes, {
       path: req.path,
-      query: req.query,
+      query: req.query
     });
 
     if (route.redirect) {
       res.redirect(route.status || 302, route.redirect);
       return;
     }
-    const data = { ...route };
-    data.children = ReactDOM.renderToString(<App context={context}>{route.component}</App>);
+    const data = {
+      ...route
+    };
+    data.children = ReactDOM.renderToString(
+      <App context={context}>{route.component}</App>
+    );
     const head = Helmet.rewind();
     data.head = head;
     data.style = [...css].join('');
     data.script = assets.main.js;
     data.chunk = assets[route.chunk] && assets[route.chunk].js;
-    const html = ReactDOM.renderToStaticMarkup(<Html {...data} />);
+    const html = ReactDOM.renderToStaticMarkup(<Html {...data}/>);
     res.status(route.status || 200);
     res.send(`<!doctype html>${html}`);
   } catch (err) {
@@ -106,11 +112,15 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const data = {};
   data.children = ReactDOM.renderToStaticMarkup(
     <div>
-      <Helmet
-        title="Internal Server Error"
-        meta={[ {'name': 'description', 'content': err.message } ]}
-        style={[ { "cssText": errorPageStyle._getCss()} ]}/>
-      <ErrorPageWithoutStyle error={err} />);
+      <Helmet title="Internal Server Error" meta={[{
+          'name': 'description',
+          'content': err.message
+        }
+      ]} style={[{
+          "cssText": errorPageStyle._getCss()
+        }
+      ]}/>
+      <ErrorPageWithoutStyle error={err}/>);
     </div>
   );
 
