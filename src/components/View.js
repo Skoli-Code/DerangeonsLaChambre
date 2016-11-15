@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import Layout from '../../components/Layout';
+import Layout from './Layout';
 
 export const ViewPropTypes = {
   includeHelmet: PropTypes.bool.isRequired

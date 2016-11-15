@@ -1,5 +1,6 @@
 import {
   GraphQLObjectType as ObjectType,
+  GraphQLList as List,
   GraphQLString as StringType,
   GraphQLID as ID,
   GraphQLNonNull as NonNull,
@@ -7,7 +8,7 @@ import {
 } from 'graphql';
 
 const ResultType = new ObjectType({
-  name: 'Result'
+  name: 'Result',
   fields: {
     party: { type: new NonNull(ID) },
     result: { type: new NonNull(Int) }
@@ -15,12 +16,13 @@ const ResultType = new ObjectType({
 });
 
 const BallotType = new ObjectType({
-  name:'Ballot',
+  name: 'Ballot',
   fields: {
     id: { type: new NonNull(ID) },
     order: { type: new NonNull(Int) },
     content: { type: new NonNull(StringType) },
-    results: { type: new NonNull(Array<ResultType>) }
+    results: { type: new List(ResultType) }
+  }
 });
 
 const PartyType = new ObjectType({
@@ -28,15 +30,15 @@ const PartyType = new ObjectType({
   fields: {
     id: { type: new NonNull(ID) },
     name: { type: new NonNull(StringType) },
-    order: { type: new NonNull(Int) }
-  }
+    order: { type: new NonNull(Int) },
+  },
 });
 
-const BallotsType = new ObjectType({
-  name:'Ballots',
+export const BallotsType = new ObjectType({
+  name: 'Ballots',
   fields: {
-    ballots: { type: Array<BallotType> },
-    parties: { type: Array<PartyType> }
+    list:    { type: new List(BallotType) },
+    parties: { type: new List(PartyType) }
   }
 });
 

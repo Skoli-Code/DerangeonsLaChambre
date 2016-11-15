@@ -9,60 +9,68 @@
 import React from 'react';
 
 import Ballots from './Ballots';
+import fetch from '../../../core/fetch';
 
-const resolveBallots = async ()=>{
-  const resp = await fetch('/graphql', {
-    method: 'post',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `{ballots(){id,content,results,order}}`,
-    }),
-    // credentials: 'include',
-  });
-  if (resp.status !== 200) throw new Error(resp.statusText);
-  const { data } = await resp.json();
-  if (!data ) return undefined;
-  return data;
+const resolveBallots = async() => {
+  try {
+    const resp = await fetch('/graphql', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        query: `{
+          ballots
+          {
+            list{
+              id,order,content,results{
+                party,result
+              }
+            },
+            parties{
+              id,order,name
+            }
+          }
+        }`
+      })
+    });
+    if (resp.status !== 200) {
+      throw new Error(resp.statusText);
+    }
+    const {data} = resp.json();
+    if (!data){
+      return undefined;
+    }
+    return data;
+  } catch(e){
+    console.error(e)
+    return null;
+  }
 };
 
-const render = async (id=null)=>{
-  console.log('render !');
-  const ballots = (await resolveBallots()).sort((a,b)=>a.order - b.order);
-
-  return {
-    key: 2,
-    title: 'Ballots',
-    component: <Ballots ballots={ ballots } activeBallot={ id }/>
+const render = async(id = null) => {
+  let ballots = await resolveBallots();
+  if(ballots){
+    ballots = ballots.sort((b1,b2)=>b1.order - b2.order);
   }
+  return {key: 1, title: 'Scrutins', component: <Ballots ballots={ballots} activeBallot={id}/>};
 };
 
 export default {
 
-  path: '/scrutins',
-  async action(activeKey){
-    console.log(activeKey);
-    debugger;
-    console.log('resolving ballots children');
-    const params = {
-      title: 'Scrutins',
-      key: 1
-    };
-    const isActive = activeKey == params.key;
-    return Object.assign({}, {
-      component: <div></div>
-    }, params);
+  path : '/scrutins',
+  render : render,
+  async action({next}) {
+    return next();
   },
-  children: [
+  children : [
     {
       path: '/',
       action: render
-    },
-    {
+    }, {
       path: '/:id',
-      action: async (context)=>{
+      async action(context) {
         return render(context.params.id);
       }
     }

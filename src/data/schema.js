@@ -13,14 +13,15 @@ import {
 } from 'graphql';
 
 import content from './queries/content';
+import ballots from './queries/ballots';
 
 const schema = new Schema({
   query: new ObjectType({
     name: 'Query',
     fields: {
       content,
-    },
+      ballots
+    }
   }),
 });
-
 export default schema;
