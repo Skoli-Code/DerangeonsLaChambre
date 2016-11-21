@@ -3,6 +3,8 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Ballot.css';
 import Layout from '../Layout';
 
+import Markdown from '../Markdown';
+
 export const PartyPropTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired
@@ -26,8 +28,7 @@ class Ballot extends React.Component {
   render(){
     return (<Layout>
       <div className={s.ballot}>
-        {this.props.id}
-        <div dangerouslySetInnerHTML={{__html: this.props.content}}></div>
+        <Markdown content={ this.props.content }/>
       </div>
     </Layout>);
   }

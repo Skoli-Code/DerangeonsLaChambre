@@ -14,21 +14,20 @@ export default {
     let path = this.path + route.path;
     history.push(path);
   },
-  async action(context) {
-    let route = await context.next();
+  async action({next}) {
+    let route = await next();
     let routeIndex = route.key;
     if(!route){
       routeIndex = 0;
     }
-
-    this.onChangeIndex = this.onChangeIndex.bind(this);
-
-    const routes = await Promise.all(this.children.map((r) => r.render(routeIndex)));
+    const routes = await Promise.all(this.children.map((r) => r.action()));
     if (!route) {
       route = routes[0];
     }
     return {
       title: route.title,
-      component: <Study onChangeIndex={this.onChangeIndex} tabs={routes} activeIndex={routeIndex}/>}
+      component: <Study onChangeIndex={this.onChangeIndex.bind(this)}
+        tabs={routes}
+        activeIndex={routeIndex}/>}
   }
 };

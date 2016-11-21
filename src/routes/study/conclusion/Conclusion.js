@@ -10,18 +10,27 @@
 import React, {PropTypes} from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Conclusion.css';
-import { ViewPropTypes, View } from '../../../components/View';
+import { View, ViewPropTypes } from '../../../components/View';
 
 class Conclusion extends React.Component {
   static propTypes = ViewPropTypes;
+
+  componentDidMount() {
+    this.props.onRef(this)
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
+
+  hasSwipeableViews(){ return false; }
 
   render(){
     const props = { title: 'Conclusion' };
 
     return (
-      // we need to pass to holding View component includeHelmet property
+      // we need to pass to holding View component isActive property
       // took from ViewPropTypes
-      <View includeHelmet={this.props.includeHelmet} helmetProps={ props }>
+      <View isActive={this.props.isActive} helmetProps={ props }>
         <div className={s.root}>
           <div className={s.container}>
             <h1 className={s.title}>Conclusion</h1>

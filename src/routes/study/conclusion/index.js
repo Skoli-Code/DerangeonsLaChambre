@@ -12,18 +12,12 @@ import Conclusion from './Conclusion';
 
 export default {
   path: '/conclusion',
-  async render(activeKey) {
-    const params = {
+  async action() {
+    return {
+      component: Conclusion,
       title: 'Conclusion',
       key: 2
     };
-    const isActive = activeKey == params.key;
-    return Object.assign({}, {
-      component: <Conclusion includeHelmet={ isActive }/>
-    }, params);
-  },
-  async action() {
-    return this.render();
   }
 
 };

@@ -42,35 +42,45 @@ const resolveBallots = async() => {
   }
 };
 
+const routeParams = {
+  key: 1,
+  title: 'Scrutins'
+};
+
 const render = async(id) => {
   globBallots = globBallots || await resolveBallots();
-  if(!id){
+  if(globBallots && (!id || typeof id != typeof '')){
     id = globBallots.list[0].id;
   }
-  return {
-    key: 1,
-    title: 'Scrutins',
-    component: <Ballots
-      ballots={globBallots.list}
-      parties={globBallots.parties}
-      activeBallot={id}/>
-    };
+  return Object.assign({}, routeParams, {
+    componentProps: {
+      ballots: globBallots.list,
+      parties: globBallots.parties,
+      activeBallot: id
+    },
+    component: Ballots
+  });
 };
 
 export default {
   path : '/scrutins',
-  render : render,
-  async action({next}) {
-    return next();
+  async action(context) {
+    if(context){
+      return await context.next();
+    } else {
+      return render();
+    }
   },
   children : [
     {
       path: '/',
-      action: render
+      async action(){
+        return render(true);
+      }
     }, {
       path: '/:id',
       async action(context) {
-        return render(context.params.id);
+        return render(true, context.params.id);
       }
     }
   ]

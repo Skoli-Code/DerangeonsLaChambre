@@ -7,9 +7,7 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 import SwipeableViews from 'react-swipeable-views';
-import bindKeyboard from 'react-swipeable-views/lib/bindKeyboard';
-const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
-
+import Markdown from 'react-remarkable';
 import React, {PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
@@ -17,16 +15,25 @@ import Ballot, {BallotPropType, PartiesPropTypes} from '../../../components/Ball
 import Layout from '../../../components/Layout';
 import s from './Ballots.css';
 
-import {View } from '../../../components/View';
+import { ViewPropTypes } from '../../../components/View';
 
 const BallotsPropTypes = Object.assign({}, {
   activeBallot: PropTypes.string,
   ballots: PropTypes.arrayOf(PropTypes.shape(BallotPropType)),
   parties: PartiesPropTypes
-});
+}, ViewPropTypes);
 
 class Ballots extends React.Component {
   static propTypes = BallotsPropTypes;
+
+  componentDidMount() {
+    this.props.onRef(this)
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
+
+  hasSwipeableViews(){ return true; }
 
   constructor(props, context, updater) {
     super(props, context, updater);
@@ -44,34 +51,64 @@ class Ballots extends React.Component {
     this.setState({index:index});
   }
 
-  onNextClicked() {
-    const {index} = this.state;
+  atLastTab(){
+    return this.state.index == this.props.ballots.length - 1;
+  }
+
+  atFirstTab(){
+    return this.state.index == 0;
+  }
+
+  goNext(){
+    const { index } = this.state;
     this.setState({
       index: index + 1
     });
   }
 
-  onPreviousClicked() {
-    const {index} = this.state;
+  goPrevious(){
+    const { index } = this.state;
     this.setState({
       index: index - 1
     });
   }
 
+  onNextClicked() {
+    this.goNext();
+  }
+
+  onPreviousClicked() {
+    this.goPrevious();
+  }
+
+  isActive(index){
+    return this.state.index == index;
+  }
+
+  paginationItemClass(index){
+    let classes = [ s.paginationItem ];
+    if(this.isActive(index)){
+      classes.push(s['paginationItem--active']);
+    }
+    return classes.join(' ');
+  }
+
   render() {
     const {index,} = this.state;
-    const ballots = this.props.ballots || [];
-    const parties = this.props.parties;
+    const {
+      ballots, parties, isActive
+    } = this.props;
     return (
       <div>
         <div className={s.pagination}>
           {ballots.map((ballot, key) => {
-            return <div className={s.paginationItem} onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;
+            return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;
           })}
         </div>
-        <SwipeableViews index={ index } resistance>
+        <SwipeableViews index={ index }
+          onChangeIndex={ this.onChangeIndex }>
           {ballots.map((ballot, key) => {
-            return <Ballot {...ballot} includeHelmet={key == index} parties={parties}/>;
+            return <Ballot {...ballot} key={key} isActive={this.isActive(key)} parties={parties}/>;
           })}
         </SwipeableViews>
       </div>

@@ -13,18 +13,11 @@ import Introduction from './Introduction';
 export default {
 
   path: '/introduction',
-
-  async render(activeKey){
-    const params = {
-      title: 'Introduction',
-      key: 0
-    };
-    const isActive = activeKey == params.key;
-    return Object.assign({}, {
-      component: <Introduction includeHelmet={ isActive }/>
-    }, params);
-  },
   async action() {
-    return this.render();
+    return {
+        component: Introduction,
+        title: 'Introduction',
+        key: 0
+    };
   }
 };

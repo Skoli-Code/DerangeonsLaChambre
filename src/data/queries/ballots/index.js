@@ -18,23 +18,14 @@ import {
   GraphQLNonNull as NonNull,
 } from 'graphql';
 
-
 const readFile = Promise.promisify(fs.readFile);
-
-const parseContent = async (fn)=>{
-  const path = join(BALLOTS_DIR, fn);
-  const source = await readFile(path, { encoding: 'utf8' });
-  const fmContent = fm(source);
-  console.log('fmContent: ', fmContent);
-  return md.render(fmContent.body);
-};
 
 export default {
   type: BallotsType,
   async resolve() {
     const parsedBallots = ballots.map(async (ballot)=>{
-      const content = parseContent(ballot.id + '.md');
-      console.log('filePath - content', content);
+      const path    = join(BALLOTS_DIR, ballot.id + '.md');
+      const content = await readFile(path, { encoding: 'utf8' });
       return Object.assign({}, ballot, {
         results: results.find((res)=>res.id == ballot.id).results,
         content: content

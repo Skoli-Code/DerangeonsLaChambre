@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import Layout from './Layout';
 
 export const ViewPropTypes = {
-  includeHelmet: PropTypes.bool.isRequired
+  isActive: PropTypes.bool.isRequired
 };
 
 export class View extends React.Component {
@@ -15,7 +15,7 @@ export class View extends React.Component {
   render(){
     return (
       <Layout>
-        { this.props.includeHelmet &&
+        { this.props.isActive &&
           <Helmet {...this.props.helmetProps}/>
         }
         { this.props.children }
