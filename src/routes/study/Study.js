@@ -21,8 +21,6 @@ import s from './Study.css';
 const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 
 class Study extends React.Component {
-  // setState(state){ this.state = state; }
-
   constructor(props,context,updater){
     super(props, context, updater);
     this.state = {index:props.activeIndex };
