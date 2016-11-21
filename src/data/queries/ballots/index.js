@@ -23,7 +23,8 @@ const readFile = Promise.promisify(fs.readFile);
 export default {
   type: BallotsType,
   async resolve() {
-    const parsedBallots = ballots.map(async (ballot)=>{
+    const orderedBallots = ballots.sort((a,b)=>a.order - b.order);
+    const parsedBallots = orderedBallots.map(async (ballot)=>{
       const path    = join(BALLOTS_DIR, ballot.id + '.md');
       const content = await readFile(path, { encoding: 'utf8' });
       return Object.assign({}, ballot, {

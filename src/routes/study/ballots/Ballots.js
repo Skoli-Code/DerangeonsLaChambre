@@ -11,11 +11,14 @@ import Markdown from 'react-remarkable';
 import React, {PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+
+// internal
 import Ballot, {BallotPropType, PartiesPropTypes} from '../../../components/Ballot';
 import Layout from '../../../components/Layout';
+import BallotChart from '../../../components/BallotChart';
 import s from './Ballots.css';
-
 import { ViewPropTypes } from '../../../components/View';
+
 
 const BallotsPropTypes = Object.assign({}, {
   activeBallot: PropTypes.string,
@@ -81,6 +84,10 @@ class Ballots extends React.Component {
     this.goPrevious();
   }
 
+  onChangeIndex(i){
+    this.setState({index:i});
+  }
+
   isActive(index){
     return this.state.index == index;
   }
@@ -91,6 +98,12 @@ class Ballots extends React.Component {
       classes.push(s['paginationItem--active']);
     }
     return classes.join(' ');
+  }
+
+  currentBallotData(){
+    const {index,} = this.state;
+    const { ballots, parties } = this.props;
+    return { ballot: ballots[index], parties };
   }
 
   render() {
@@ -105,8 +118,9 @@ class Ballots extends React.Component {
             return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;
           })}
         </div>
+        <BallotChart data={ this.currentBallotData() }/>
         <SwipeableViews index={ index }
-          onChangeIndex={ this.onChangeIndex }>
+          onChangeIndex={ this.onChangeIndex.bind(this) }>
           {ballots.map((ballot, key) => {
             return <Ballot {...ballot} key={key} isActive={this.isActive(key)} parties={parties}/>;
           })}
