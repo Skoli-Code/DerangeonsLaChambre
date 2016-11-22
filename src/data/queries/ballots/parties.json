@@ -2,11 +2,13 @@
   {
     "id": "SOC",
     "name":"Parti Socialiste",
+    "color": "#FF0000",
     "order": 0
   },
   {
     "id": "FN",
     "name":"Front National",
+    "color": "#0000FF",
     "order": 1
   }
 ]

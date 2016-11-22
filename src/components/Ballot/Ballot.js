@@ -7,13 +7,13 @@ import Markdown from '../Markdown';
 
 export const PartyPropTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  order: PropTypes
 }
 
 export const PartiesPropTypes = PropTypes.arrayOf(PropTypes.shape(PartyPropTypes))
 
 export const BallotPropTypes = {
-  parties: PartiesPropTypes,
   id: PropTypes.string.isRequired,
   order: PropTypes.number.isRequired,
   content: PropTypes.string.isRequired,
@@ -24,7 +24,7 @@ export const BallotPropTypes = {
 }
 
 class Ballot extends React.Component {
-  static propTypes = BallotPropTypes;
+  static propTypes = Object.assign({}, {parties: PartiesPropTypes}, BallotPropTypes);
   render(){
     return (<Layout>
       <div className={s.ballot}>
