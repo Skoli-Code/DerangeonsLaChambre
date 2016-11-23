@@ -5,7 +5,6 @@ import { join } from 'path';
 import Promise from 'bluebird';
 
 import ballots from './ballots.json';
-import results from './results.json';
 import parties from './parties.json';
 
 import {BallotsType} from '../../types/BallotsType';
@@ -27,10 +26,7 @@ export default {
     const parsedBallots = orderedBallots.map(async (ballot)=>{
       const path    = join(BALLOTS_DIR, ballot.id + '.md');
       const content = await readFile(path, { encoding: 'utf8' });
-      return Object.assign({}, ballot, {
-        results: results.find((res)=>res.id == ballot.id).results,
-        content: content
-      });
+      return Object.assign({content: content}, ballot);
     });
     return {
       parties: parties,

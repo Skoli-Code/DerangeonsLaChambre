@@ -11,7 +11,7 @@ const ResultType = new ObjectType({
   name: 'Result',
   fields: {
     party: { type: new NonNull(ID) },
-    result: { type: new NonNull(Int) }
+    seats: { type: new NonNull(Int) }
   }
 });
 
