@@ -11,11 +11,20 @@ class D3AssemblyChart {
     this.$chart = d3.select(el);
     this.initChart();
     this.updateData(props.data);
+    this.updateSize();
+    this.draw();
   }
 
   initChart(){
+    this.$svg = this.$chart.append('svg');
+    this.layout = d3.pie(this.results).endAngle(Math.PI);
   }
+  updateSize(){
+    const width = this.$chart.node().parentNode.getBoundingClientRect().width;
+    const height = width * 0.66;
+    this.$svg.attr('width', width).attr('height', height);
 
+  }
   updateData(data){
     this.parties = data.parties;
     this.results = data.results.map((r)=>{
@@ -27,6 +36,11 @@ class D3AssemblyChart {
   update(el, props){
     this.$chart = d3.select(el);
     this.updateData(props.data);
+    this.updateSize();
+  }
+
+  draw(){
+
   }
 }
 

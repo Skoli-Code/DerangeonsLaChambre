@@ -23,6 +23,9 @@
 
   --max-content-width: 1000px;
 
+  --left-content-width: 80%;
+  --right-content-width: 20%;
+
   /*
    * Media queries breakpoints
    * ======================================================================== */

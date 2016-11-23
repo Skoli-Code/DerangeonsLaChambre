@@ -9,6 +9,7 @@ import s from './BallotChart.css';
 
 import {ResultsPropTypes, PartiesPropTypes} from '../Ballot';
 export const BallotChartPropTypes = {
+  className: PropTypes.string,
   data: PropTypes.shape({parties: PartiesPropTypes, results: ResultsPropTypes})
 }
 let identity = (i) => i;
@@ -26,8 +27,8 @@ class D3BallotChart {
     squareOpacity: 0.33,
     rows: 20,
     tooltip:{
-      width: 120,
-      height: 50
+      width: 200,
+      height: 75
     }
   };
   constructor(el, props) {
@@ -48,17 +49,27 @@ class D3BallotChart {
     objectStyle(this.$chart, chartStyle);
   }
   initTooltip() {
+    const size = this.config.tooltip;
     const tooltipStyle = {
       'z-index': 100,
       'pointer-events': 'none',
       position: 'absolute',
       'text-align': 'center',
-      width:  px(this.config.tooltip.width),
-      height: px(this.config.tooltip.height),
+      'vertical-align': 'center',
+      opacity: 0,
+      width:  px(size.width),
+      height: px(size.height),
       background: 'rgba(255,255,255,0.6)'
     }
     this.$tooltip = this.$chart.append('div').attr('class', 'tooltip');
     objectStyle(this.$tooltip, tooltipStyle);
+    this.$tooltipContent = this.$tooltip.append('div').attr('class', 'tooltip__content');
+    objectStyle(this.$tooltipContent, {
+      position: 'absolute',
+      top: '50%',
+      transform: 'translate(0, -50%)',
+      width: px(size.width),
+    });
   }
 
   updateData(data) {
@@ -74,7 +85,7 @@ class D3BallotChart {
   }
 
   updateSize() {
-    const w = Math.floor(this.$chart.node().parentNode.getBoundingClientRect().width);
+    const w = Math.floor(this.$holder.node().parentNode.getBoundingClientRect().width);
     const nbRows = this.config.rows;
     const nbColumns = Math.round(577 / nbRows);
     const squareMargin = 2;
@@ -109,15 +120,17 @@ class D3BallotChart {
 
   bindEvents() {
     const $tooltip = this.$tooltip;
+    const $tooltipContent = this.$tooltipContent;
     const results = this.results;
     const parties = this.parties;
+    const chartSize = this.size;
     const config = this.config.tooltip;
     this.$chart.selectAll('.square')
       .on('mouseover', (party) => {
         const partyName = parties.find((p)=>p.id == party).name;
         const seats     = results.find((r)=>r.party == party).seats;
         const text      = `${partyName}<br/><b>${seats}`;
-        $tooltip.html(text);
+        $tooltipContent.html(text);
         $tooltip.style('opacity', 1);
         this.$chart.selectAll('.square.' + party).style('opacity', 0.8);
       }).on('mouseleave', () => {
@@ -125,9 +138,11 @@ class D3BallotChart {
       });
 
     this.$chart.on('mousemove', function(d){
-      const xPosition = d3.mouse(this)[0] - config.width;
-      const yPosition = d3.mouse(this)[1] - config.height;
-      $tooltip.style("left", px(xPosition)).style('top', px(yPosition));
+      let x = d3.mouse(this)[0] - config.width;
+      let y = d3.mouse(this)[1] - config.height;
+      x = x < 0 ? 0 : x;
+      y = y < 0 ? 0 : y;
+      $tooltip.style("left", px(x)).style('top', px(y));
     }).on('mouseleave', () => {
       $tooltip.style('opacity', 0);
     });

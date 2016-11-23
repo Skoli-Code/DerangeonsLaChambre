@@ -16,6 +16,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Ballot, {BallotPropType, PartiesPropTypes} from '../../../components/Ballot';
 import Layout from '../../../components/Layout';
 import BallotChart from '../../../components/BallotChart';
+import AssemblyChart from '../../../components/AssemblyChart';
 import s from './Ballots.css';
 import { ViewPropTypes } from '../../../components/View';
 
@@ -112,6 +113,7 @@ class Ballots extends React.Component {
       ballots, parties, isActive
     } = this.props;
     const ballot = this.currentBallotData();
+    console.log('style', s);
     return (
       <div>
         <div className={s.pagination}>
@@ -121,8 +123,13 @@ class Ballots extends React.Component {
             })}
           </div>
         </div>
-        <div className={s.container}>
-          <BallotChart data={ ballot }/>
+        <div className={s.container + ' ' + s.content}>
+          <div className={s['content--left']}>
+            <BallotChart data={ ballot }/>
+          </div>
+          <div className={s['content--right']}>
+            <AssemblyChart data={ ballot }/>
+          </div>
         </div>
         <SwipeableViews index={ index }
           onChangeIndex={ this.onChangeIndex.bind(this) }>
