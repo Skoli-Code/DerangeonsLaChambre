@@ -12,15 +12,16 @@ export const PartyPropTypes = {
 }
 
 export const PartiesPropTypes = PropTypes.arrayOf(PropTypes.shape(PartyPropTypes))
+export const ResultsPropTypes = PropTypes.arrayOf(PropTypes.shape({
+  party: PropTypes.string.isRequired,
+  seats: PropTypes.number.isRequired
+}));
 
 export const BallotPropTypes = {
   id: PropTypes.string.isRequired,
   order: PropTypes.number.isRequired,
   content: PropTypes.string.isRequired,
-  results: PropTypes.arrayOf(PropTypes.shape({
-    party: PropTypes.string.isRequired,
-    result: PropTypes.number.isRequired
-  }))
+  results: ResultsPropTypes
 }
 
 class Ballot extends React.Component {

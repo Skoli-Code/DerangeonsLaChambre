@@ -12,6 +12,7 @@ export default class Markdown extends React.Component {
   static propTypes = {
     content: PropTypes.string.isRequired
   };
+
   render(){
     const parsedContent = converter.convert(this.props.content);
     return (

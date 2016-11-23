@@ -103,7 +103,7 @@ class Ballots extends React.Component {
   currentBallotData(){
     const {index,} = this.state;
     const { ballots, parties } = this.props;
-    return { ballot: ballots[index], parties };
+    return { results: ballots[index].results, parties };
   }
 
   render() {
@@ -111,18 +111,25 @@ class Ballots extends React.Component {
     const {
       ballots, parties, isActive
     } = this.props;
+    const ballot = this.currentBallotData();
     return (
       <div>
         <div className={s.pagination}>
-          {ballots.map((ballot, key) => {
-            return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;
-          })}
+          <div className={s.container}>
+            {ballots.map((ballot, key) => {
+              return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;
+            })}
+          </div>
         </div>
-        <BallotChart data={ this.currentBallotData() }/>
+        <div className={s.container}>
+          <BallotChart data={ ballot }/>
+        </div>
         <SwipeableViews index={ index }
           onChangeIndex={ this.onChangeIndex.bind(this) }>
           {ballots.map((ballot, key) => {
-            return <Ballot {...ballot} key={key} isActive={this.isActive(key)} parties={parties}/>;
+            return (
+              <Ballot {...ballot} key={key} isActive={this.isActive(key)} parties={parties}/>
+            );
           })}
         </SwipeableViews>
       </div>
