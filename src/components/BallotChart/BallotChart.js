@@ -25,7 +25,8 @@ let px = (n) => n + 'px';
 
 class D3BallotChart {
   config = {
-    squareOpacity: 0.33,
+    squareOpacity: 0.5,
+    squareOpacityMax:1,
     rows: 15,
     tooltip:{
       width: 200,
@@ -74,9 +75,8 @@ class D3BallotChart {
   }
 
   updateData(data) {
-    // slice(0) allows us to create a copy of the given array
-    this.results = data.results.slice(0).sort((a, b) => b.seats - a.seats);
-    this.parties = data.parties.slice(0);
+    this.results = data.results.sort((a, b) => b.seats - a.seats);
+    this.parties = data.parties;
     this.squares = [];
 
     for (const i in this.results) {
@@ -90,6 +90,10 @@ class D3BallotChart {
   updateSize() {
     const elStyle = window.getComputedStyle(this.$holder.node());
     const innerWidth = +elStyle.width.slice(0, -2);
+    if(isNaN(innerWidth)){
+      debugger;
+    }
+    console.log('innerWidth', innerWidth);
     const w = Math.floor(innerWidth);
     const nbRows = this.config.rows;
     const nbColumns = Math.ceil(577 / nbRows);
@@ -138,7 +142,7 @@ class D3BallotChart {
         const text      = `${partyName}<br/><b>${seats}`;
         $tooltipContent.html(text);
         $tooltip.style('opacity', 1);
-        this.$chart.selectAll('.square.' + party.id).style('opacity', 0.8);
+        this.$chart.selectAll('.square.' + party.id).style('opacity', this.config.squareOpacityMax);
       }).on('mouseleave', () => {
         this.$chart.selectAll('.square').style('opacity', this.config.squareOpacity);
       });
