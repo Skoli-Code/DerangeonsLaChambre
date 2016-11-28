@@ -71,7 +71,7 @@ class Study extends React.Component {
       this.setState({index:i});
     }
     if(this.props.onChangeIndex){
-      this.props.onChangeIndex(i);
+      this.props.onChangeIndex(this.state.index);
     }
   }
 
