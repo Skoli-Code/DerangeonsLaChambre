@@ -19,7 +19,8 @@ import BallotChart from '../../../components/BallotChart';
 import AssemblyChart from '../../../components/AssemblyChart';
 import s from './Ballots.css';
 import { ViewPropTypes } from '../../../components/View';
-
+import * as _ from 'lodash';
+import * as d3 from 'd3';
 
 const BallotsPropTypes = Object.assign({}, {
   activeBallot: PropTypes.string,
@@ -64,6 +65,7 @@ class Ballots extends React.Component {
   }
 
   goNext(){
+    // console.log('goNext');
     const { index } = this.state;
     this.setState({
       index: index + 1
@@ -71,6 +73,7 @@ class Ballots extends React.Component {
   }
 
   goPrevious(){
+    // console.log('goPrevious');
     const { index } = this.state;
     this.setState({
       index: index - 1
@@ -86,7 +89,10 @@ class Ballots extends React.Component {
   }
 
   onChangeIndex(i){
-    this.setState({index:i});
+    // console.log('onChangeIndex !');
+    if(i != this.state.index){
+      this.setState({index:i});
+    }
   }
 
   isActive(index){
@@ -103,8 +109,9 @@ class Ballots extends React.Component {
 
   currentBallotData(){
     const {index,} = this.state;
-    const { ballots, parties } = this.props;
-    return { results: ballots[index].results, parties };
+    const results  = this.props.ballots[index].results.slice(0);
+    const parties  = this.props.parties.slice(0);
+    return { results, parties };
   }
 
   render() {
@@ -112,8 +119,14 @@ class Ballots extends React.Component {
     const {
       ballots, parties, isActive
     } = this.props;
-    const ballot = this.currentBallotData();
-    console.log('style', s);
+    const ballotData = this.currentBallotData();
+    const results = _.cloneDeep(ballotData.results);
+    const firstResult = results.sort((a, b)=>b.seats - a.seats)[0];
+    const firstParty = parties.find((p)=> p.id == firstResult.party);
+    const allocatedSeats = d3.sum(results, (r)=>r.seats);
+    const totalSeats = 577;
+    const absoluteMajority = firstResult.seats > Math.ceil(totalSeats/2);
+    console.log('firstParty: ', firstParty);
     return (
       <div>
         <div className={s.pagination}>
@@ -125,18 +138,31 @@ class Ballots extends React.Component {
         </div>
         <div className={s.container + ' ' + s.content}>
           <div className={s['content--left']}>
-            <BallotChart data={ ballot }/>
+            <BallotChart data={ _.cloneDeep(ballotData) }/>
           </div>
           <div className={s['content--right']}>
-            <AssemblyChart data={ ballot }/>
+            <AssemblyChart data={ _.cloneDeep(ballotData) }/>
+            <div className={s.legend}>
+              <div>
+                <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label><span>{ firstParty.name }</span>
+              </div>
+              <div>
+                <label>Sièges attibués</label><span>{ allocatedSeats }/{ totalSeats }</span>
+              </div>
+              <div>
+                <label>Mode de scrutin</label>
+                <p>Scrutin uninominal majoritaire à deux tours avec quorum d'éligibilité de 50% des inscrits.</p>
+              </div>
+              <div className={s.sep}/>
+            </div>
           </div>
         </div>
         <SwipeableViews index={ index }
           onChangeIndex={ this.onChangeIndex.bind(this) }>
           {ballots.map((ballot, key) => {
             return (
-              <div className={s.container}>
-                <Ballot {...ballot} key={key} isActive={this.isActive(key)} parties={parties}/>
+              <div key={key} className={s.container}>
+                <Ballot {...ballot} isActive={this.isActive(key)} parties={parties}/>
               </div>
             );
           })}

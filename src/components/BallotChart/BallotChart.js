@@ -3,6 +3,7 @@ import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import * as d3 from 'd3';
+import * as _ from 'lodash';
 
 import Layout from '../Layout';
 import s from './BallotChart.css';
@@ -73,24 +74,29 @@ class D3BallotChart {
   }
 
   updateData(data) {
-    this.results = data.results.sort((a, b) => b.seats - a.seats);
+    // slice(0) allows us to create a copy of the given array
+    this.results = data.results.slice(0).sort((a, b) => b.seats - a.seats);
+    this.parties = data.parties.slice(0);
     this.squares = [];
+
     for (const i in this.results) {
       const ballot = this.results[i];
-      const r = d3.range(ballot.seats);
-      const squares = r.map((i) => ballot.party);
+      const party = this.parties.find((d)=>d.id == ballot.party);
+      const squares = d3.range(ballot.seats).map((i) =>{ return Object.assign({ seats: ballot.seats }, party) });
       this.squares = this.squares.concat(squares);
     }
-    this.parties = data.parties;
   }
 
   updateSize() {
-    const w = Math.floor(this.$holder.node().parentNode.getBoundingClientRect().width);
+    const elStyle = window.getComputedStyle(this.$holder.node());
+    const innerWidth = +elStyle.width.slice(0, -2);
+    const w = Math.floor(innerWidth);
     const nbRows = this.config.rows;
-    const nbColumns = Math.round(577 / nbRows);
+    const nbColumns = Math.ceil(577 / nbRows);
     const squareMargin = 2;
     const squareWidth = w / nbColumns;
     let h = nbRows * squareWidth;
+
     const squareSize = {
       width:  Math.floor(squareWidth),
       height: Math.floor(squareWidth),
@@ -127,12 +133,12 @@ class D3BallotChart {
     const config = this.config.tooltip;
     this.$chart.selectAll('.square')
       .on('mouseover', (party) => {
-        const partyName = parties.find((p)=>p.id == party).name;
-        const seats     = results.find((r)=>r.party == party).seats;
+        const partyName = party.name;
+        const seats     = party.seats;
         const text      = `${partyName}<br/><b>${seats}`;
         $tooltipContent.html(text);
         $tooltip.style('opacity', 1);
-        this.$chart.selectAll('.square.' + party).style('opacity', 0.8);
+        this.$chart.selectAll('.square.' + party.id).style('opacity', 0.8);
       }).on('mouseleave', () => {
         this.$chart.selectAll('.square').style('opacity', this.config.squareOpacity);
       });
@@ -150,16 +156,13 @@ class D3BallotChart {
 
   draw() {
     const size = this.size.square;
-    let bgColor = (d) => this.parties.find((p) => p.id == d).color;
-
     // process:
     // for each party, draw every square based on the latest square drawn
     let $squares = this.$chart.selectAll('.square').data(this.squares);
 
-    $squares.attr('class', (d) => `square ${d}`).each(function(d){
-      d3.select(this).select('.inner').style('background-color', bgColor(d));
+    $squares.attr('class', (d) => `square ${d.id}`).each(function(d){
+      d3.select(this).select('.inner').style('background-color', d.color);
     });
-    // $squares.selectAll('.inner').style('background-color', bgColor);
 
     let style = (squares) => {
       objectStyle(squares, {
@@ -179,7 +182,7 @@ class D3BallotChart {
       });
     }
 
-    let $squareEnter = $squares.enter().append('div').attr('class', (d) => `square ${d}`);
+    let $squareEnter = $squares.enter().append('div').attr('class', (d) => `square ${d.id}`);
 
     const $innerSquares = $squareEnter.append('div').attr('class', 'inner');
     let pad = px(1);
@@ -192,7 +195,7 @@ class D3BallotChart {
       right: pad,
       bottom: pad,
       transition: 'background-color 350ms ease-out',
-      'background-color': bgColor
+      'background-color': (d)=>d.color
     });
 
     style($squareEnter);
@@ -218,10 +221,11 @@ export class BallotChart extends React.Component {
   }
 
   chartState() {
-    return {data: this.props.data};
+    return {data: Object.assign({}, this.props.data)};
   }
 
   componentDidUpdate() {
+    // console.log('BallotChart.componentDidUpdate', this.props.data);
     this.ballotChart.update(this.node(), this.chartState());
   }
 
