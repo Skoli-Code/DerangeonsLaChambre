@@ -1,21 +1,21 @@
 [{
   "id": "EXG",
-  "color": "#3182bd",
+  "color": "#333333",
   "name": "Extrême gauche",
   "order": 1
 }, {
   "id": "FG",
-  "color": "#6baed6",
+  "color": "#ee2523",
   "name": "Front de Gauche",
   "order": 2
 }, {
   "id": "SOC",
-  "color": "#9ecae1",
+  "color": "#e20040",
   "name": "Socialiste",
   "order": 3
 }, {
   "id": "RDG",
-  "color": "#c6dbef",
+  "color": "#34495e",
   "name": "Radical de gauche",
   "order": 4
 }, {
@@ -65,7 +65,7 @@
   "order": 13
 }, {
   "id": "LR",
-  "color": "#9e9ac8",
+  "color": "#3695FF",
   "name": "Les Républicains",
   "order": 14
 }, {
@@ -75,7 +75,7 @@
   "order": 15
 }, {
   "id": "FN",
-  "color": "#dadaeb",
+  "color": "#0D378A",
   "name": "Front National",
   "order": 16
 }, {
