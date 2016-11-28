@@ -126,7 +126,6 @@ class Ballots extends React.Component {
     const allocatedSeats = d3.sum(results, (r)=>r.seats);
     const totalSeats = 577;
     const absoluteMajority = firstResult.seats > Math.ceil(totalSeats/2);
-    console.log('firstParty: ', firstParty);
     return (
       <div>
         <div className={s.pagination}>
