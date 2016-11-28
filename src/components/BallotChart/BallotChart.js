@@ -25,7 +25,7 @@ let px = (n) => n + 'px';
 class D3BallotChart {
   config = {
     squareOpacity: 0.33,
-    rows: 20,
+    rows: 15,
     tooltip:{
       width: 200,
       height: 75

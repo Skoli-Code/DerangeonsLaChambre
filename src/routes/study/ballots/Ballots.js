@@ -135,7 +135,9 @@ class Ballots extends React.Component {
           onChangeIndex={ this.onChangeIndex.bind(this) }>
           {ballots.map((ballot, key) => {
             return (
-              <Ballot {...ballot} key={key} isActive={this.isActive(key)} parties={parties}/>
+              <div className={s.container}>
+                <Ballot {...ballot} key={key} isActive={this.isActive(key)} parties={parties}/>
+              </div>
             );
           })}
         </SwipeableViews>
