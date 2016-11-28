@@ -33,7 +33,6 @@ class D3AssemblyChart {
 
   }
   updateData(data){
-    // slice(0) will create a copy of the given array
     this.parties = data.parties;
     this.results = data.results.map((r)=>{
       r.party = this.parties.find((p)=>p.id == r.party);
@@ -98,7 +97,6 @@ export class AssemblyChart extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('AssemblyChart.componentDidUpdate', this.props.data);
     this.assemblyChart.update(this.node(), this.chartState());
   }
 
