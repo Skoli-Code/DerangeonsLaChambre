@@ -92,10 +92,10 @@
   "id": "ABS",
   "name": "Abstention",
   "order": 19,
-  "color": null
+  "color": "#d3d3d3"
 }, {
   "id": "CIT",
   "name": "Citoyen",
   "order": 20,
-  "color": null
+  "color": "random"
 }]
