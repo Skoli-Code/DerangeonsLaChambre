@@ -28,6 +28,10 @@ class Link extends Component {
   };
 
   handleClick = (event) => {
+    const isExternal = this.props.to.startsWith('http');
+    console.log('isExternal: ', isExternal);
+    if(isExternal){ return true; }
+
     if (this.props.onClick) {
       this.props.onClick(event);
     }
