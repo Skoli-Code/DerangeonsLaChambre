@@ -6,7 +6,7 @@ import s from './Brand.css';
 
 function Brand(){
   return (
-    <Link className={s.brand} to="//skoli.fr" rel="nofollow" target="_blank">Skoli</Link>
+    <Link className={s.brand} to="http://skoli.fr" rel="nofollow" target="_blank">Skoli</Link>
   )
 }
 
