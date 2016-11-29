@@ -25,17 +25,19 @@ let px = (n) => n + 'px';
 
 class D3BallotChart {
   config = {
-    squareOpacity: 0.5,
+    squareOpacity: 0.15,
     squareOpacityMax:1,
     rows: 15,
     tooltip:{
-      width: 200,
-      height: 75
+      width: 170,
+      height: 50
     }
   };
   constructor(el, props) {
+    this.onPartyHover = props.onPartyHover;
     this.$chart = d3.select(el);
     this.$holder = d3.select(el.parentNode);
+    this.randomColors = d3.schemeCategory20;
     this.initChart();
     this.initTooltip();
     this.updateData(props.data);
@@ -50,6 +52,7 @@ class D3BallotChart {
     }
     objectStyle(this.$chart, chartStyle);
   }
+
   initTooltip() {
     const size = this.config.tooltip;
     const tooltipStyle = {
@@ -61,8 +64,9 @@ class D3BallotChart {
       opacity: 0,
       width:  px(size.width),
       height: px(size.height),
-      background: 'rgba(255,255,255,0.6)'
+      background: 'rgba(255,255,255,0.9)'
     }
+
     this.$tooltip = this.$chart.append('div').attr('class', 'tooltip');
     objectStyle(this.$tooltip, tooltipStyle);
     this.$tooltipContent = this.$tooltip.append('div').attr('class', 'tooltip__content');
@@ -89,11 +93,11 @@ class D3BallotChart {
 
   updateSize() {
     const elStyle = window.getComputedStyle(this.$holder.node());
-    const innerWidth = +elStyle.width.slice(0, -2);
+    const width = elStyle.width;
+    let innerWidth = +elStyle.width.slice(0, -2);
     if(isNaN(innerWidth)){
-      debugger;
+      innerWidth = 700;
     }
-    console.log('innerWidth', innerWidth);
     const w = Math.floor(innerWidth);
     const nbRows = this.config.rows;
     const nbColumns = Math.ceil(577 / nbRows);
@@ -128,6 +132,12 @@ class D3BallotChart {
     this.draw();
   }
 
+  randomColor(){
+    const randIndex = Math.floor(Math.random() * 19);
+    let color =  this.randomColors[randIndex];
+    return color;
+  }
+
   bindEvents() {
     const $tooltip = this.$tooltip;
     const $tooltipContent = this.$tooltipContent;
@@ -137,14 +147,21 @@ class D3BallotChart {
     const config = this.config.tooltip;
     this.$chart.selectAll('.square')
       .on('mouseover', (party) => {
+        if(this.onPartyHover){
+          this.onPartyHover(party);
+        }
         const partyName = party.name;
         const seats     = party.seats;
         const text      = `${partyName}<br/><b>${seats}`;
         $tooltipContent.html(text);
         $tooltip.style('opacity', 1);
+        this.$chart.selectAll('.square').style('opacity', this.config.squareOpacity);
         this.$chart.selectAll('.square.' + party.id).style('opacity', this.config.squareOpacityMax);
       }).on('mouseleave', () => {
-        this.$chart.selectAll('.square').style('opacity', this.config.squareOpacity);
+        if(this.onPartyHover){
+          this.onPartyHover(null);
+        }
+        this.$chart.selectAll('.square').style('opacity', this.config.squareOpacityMax);
       });
 
     this.$chart.on('mousemove', function(d){
@@ -159,13 +176,16 @@ class D3BallotChart {
   }
 
   draw() {
+    const self = this;
     const size = this.size.square;
     // process:
     // for each party, draw every square based on the latest square drawn
     let $squares = this.$chart.selectAll('.square').data(this.squares);
 
-    $squares.attr('class', (d) => `square ${d.id}`).each(function(d){
-      d3.select(this).select('.inner').style('background-color', d.color);
+    $squares.attr('class', (d) => `square ${d.id}`).each(function(d,i){
+      d3.select(this).select('.inner')
+        .style('background-color', d.color == 'random' ? self.randomColor():d.color)
+        .style('border', d.color ? '0':'1px solid #d3d3d3');
     });
 
     let style = (squares) => {
@@ -173,13 +193,13 @@ class D3BallotChart {
         width: px(size.width),
         height: px(size.height),
         position: 'absolute',
-        opacity: this.config.squareOpacity,
+        opacity: this.config.squareOpacityMax,
         transition: 'opacity 350ms ease-out'
       });
       squares.style('top', (d, i) => {
         const top = (i % this.config.rows) * size.height;
         return px(top);
-      })
+      });
       squares.style('left', (d, i) => {
         const left = Math.floor(i / this.config.rows) * size.width;
         return px(left);
@@ -198,8 +218,9 @@ class D3BallotChart {
       left: pad,
       right: pad,
       bottom: pad,
+      'border': (d)=>d.color ? '0' : '1px solid #d3d3d3',
       transition: 'background-color 350ms ease-out',
-      'background-color': (d)=>d.color
+      'background-color':(d,i)=>d.color == 'random' ? self.randomColor():d.color
     });
 
     style($squareEnter);
@@ -225,11 +246,10 @@ export class BallotChart extends React.Component {
   }
 
   chartState() {
-    return {data: Object.assign({}, this.props.data)};
+    return {data: this.props.data, onPartyHover: this.props.onPartyHover};
   }
 
   componentDidUpdate() {
-    // console.log('BallotChart.componentDidUpdate', this.props.data);
     this.ballotChart.update(this.node(), this.chartState());
   }
 
