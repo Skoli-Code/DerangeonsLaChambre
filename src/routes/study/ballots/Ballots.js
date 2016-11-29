@@ -11,7 +11,7 @@ import React, {PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Checkbox from 'rc-checkbox';
-import { StickyContainer, Sticky } from 'react-sticky';
+import Sticky from 'react-stickynode';
 
 // internal
 import Ballot, {BallotPropType, PartiesPropTypes} from '../../../components/Ballot';
@@ -66,7 +66,6 @@ class Ballots extends React.Component {
   }
 
   goNext(){
-    // console.log('goNext');
     const { index } = this.state;
     this.setState({
       index: index + 1
@@ -74,7 +73,6 @@ class Ballots extends React.Component {
   }
 
   goPrevious(){
-    // console.log('goPrevious');
     const { index } = this.state;
     this.setState({
       index: index - 1
@@ -90,7 +88,6 @@ class Ballots extends React.Component {
   }
 
   onChangeIndex(i){
-    // console.log('onChangeIndex !');
     if(i != this.state.index){
       this.setState({index:i});
     }
@@ -113,6 +110,10 @@ class Ballots extends React.Component {
     const results  = this.props.ballots[index].results.slice(0);
     const parties  = this.props.parties.slice(0);
     return { results, parties };
+  }
+
+  onPartyHover(party){
+    this.assemblyChart.hoverParty(party);
   }
 
   onCheckboxToggle(e, checked){
@@ -146,11 +147,11 @@ class Ballots extends React.Component {
           <h2 className={s.subtitle }>{ currentBallot.subtitle }</h2>
           <div className={s.content}>
             <div className={s['content--left']}>
-              <BallotChart data={ _.cloneDeep(ballotData) }/>
+              <BallotChart data={ _.cloneDeep(ballotData) } onPartyHover={ (party)=>this.onPartyHover(party) }/>
             </div>
-            <StickyContainer className={s['content--right']}>
-              <Sticky>
-                <AssemblyChart data={ _.cloneDeep(ballotData) }/>
+            <div className={s['content--right']}>
+              <Sticky top={ 200 } enabled={true} innerZ={200} enableTransforms={true}>
+                <AssemblyChart data={ _.cloneDeep(ballotData) } onRef={ (ref)=> this.assemblyChart = ref }/>
                 <div className={s.legend}>
                   <div>
                     <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label><span>{ firstParty.name }</span>
@@ -166,7 +167,7 @@ class Ballots extends React.Component {
                   <label><Checkbox onChange={ this.onCheckboxToggle.bind(this) }/>Comparer avec l'assemblée actuelle</label>
                 </div>
               </Sticky>
-            </StickyContainer>
+            </div>
           </div>
         </div>
         <SwipeableViews index={ index }
