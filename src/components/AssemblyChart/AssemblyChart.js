@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import * as d3 from 'd3';
@@ -9,6 +9,10 @@ import { BallotChartPropTypes, objectStyle } from '../BallotChart';
 const pi = Math.PI;
 
 class D3AssemblyChart {
+  config = {
+    opacityMin: 0.1,
+    opacityMax: 1
+  }
   constructor(el, props){
     this.$chart = d3.select(el);
     this.initChart();
@@ -22,12 +26,25 @@ class D3AssemblyChart {
     this.$g = this.$svg.append('g');
   }
   updateSize(){
-    const width = this.$chart.node().parentNode.getBoundingClientRect().width;
+    let width = this.$chart.node().parentNode.getBoundingClientRect().width;
+    if(isNaN(width) || width == 0 || width == null){
+      width = 300;
+    }
     const height = width / 2;
     this.$svg.attr('width', width).attr('height', height);
     this.$g.attr('transform', `translate(${width / 2}, ${height})`)
     this.size = {
       radius: width / 2
+    }
+  }
+
+  hoverParty(party){
+    if(party != null){
+      this.$g.selectAll('path').style('opacity', this.config.opacityMin);
+      this.$g.select('path.'+party.id).style('opacity', this.config.opacityMax);
+    } else {
+      this.$g.selectAll('path').style('opacity', this.config.opacityMax);
+
     }
   }
 
@@ -45,7 +62,6 @@ class D3AssemblyChart {
       .endAngle(90*(pi/180));
 
     this.arc = d3.arc().outerRadius(this.size.radius).innerRadius(0);
-    // console.log(this.results, this.pie);
   }
 
   update(el, props){
@@ -56,6 +72,11 @@ class D3AssemblyChart {
   }
 
   draw(){
+    let partyColor = (d)=>{
+      const color = d.data.party.color || 'white';
+      return color == 'random'?'#feec29': color;
+    };
+
     const self = this;
     const key = (d)=>d.data.party.id;
 
@@ -103,7 +124,11 @@ class D3AssemblyChart {
 
     const partiesEnter = parties.enter()
       .append('path').attr('class', (d)=> 'party '+d.data.party.id)
-      .attr('fill', (d)=>d.data.party.color || '#DDDDDD')
+      .style('transition', 'opacity 350ms ease')
+      .style('opacity', this.config.opacityMax)
+      .attr('fill', (d)=>partyColor(d))
+      .attr('stroke-width', (d)=>d.data.party.color ? '0': '1px')
+      .attr('stroke', (d)=>d.data.party.color ? '0':'#d3d3d3')
       .attr('d', this.arc);
 
 
@@ -137,6 +162,15 @@ export class AssemblyChart extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
     this.assemblyChart = new D3AssemblyChart(this.node(), this.chartState());
+    this.props.onRef(this);
+  }
+
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
+
+  hoverParty(party){
+    this.assemblyChart.hoverParty(party);
   }
 
   chartState() {

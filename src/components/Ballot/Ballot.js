@@ -8,7 +8,7 @@ import Markdown from '../Markdown';
 export const PartyPropTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  order: PropTypes
+  order: PropTypes.number.isRequired
 }
 
 export const PartiesPropTypes = PropTypes.arrayOf(PropTypes.shape(PartyPropTypes))
