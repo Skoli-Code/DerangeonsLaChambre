@@ -21,7 +21,6 @@ class D3AssemblyChart {
     this.$svg = this.$chart.append('svg');
     this.$g = this.$svg.append('g');
   }
-
   updateSize(){
     const width = this.$chart.node().parentNode.getBoundingClientRect().width;
     const height = width / 2;
@@ -30,8 +29,8 @@ class D3AssemblyChart {
     this.size = {
       radius: width / 2
     }
-
   }
+
   updateData(data){
     this.parties = data.parties;
     this.results = data.results.map((r)=>{
@@ -57,23 +56,71 @@ class D3AssemblyChart {
   }
 
   draw(){
-    let drawArcs = (p)=>{
-      p.transition().duration(350)
-        .style('opacity', 1)
-        .attr('d', this.arc)
-        .attr('fill', (d)=>d.data.party.color);
-      return p;
-    }
-    const pieData = this.pie(this.results);
-    const parties = this.$g.selectAll('.party').data(pieData);
-    const partiesEnter = parties.enter().append('g').attr('class', (d)=> 'party '+d.data.party.id);
-    const partiesEnterPath = partiesEnter.append('path').style('opacity',0);
+    const self = this;
+    const key = (d)=>d.data.party.id;
 
-    parties.each(function(){
-      drawArcs(d3.select(this).select('path'));
+    // took from http://bl.ocks.org/mbostock/5682158
+    function findNeighborArc(i, data0, data1, key) {
+      var d;
+      return (d = findPreceding(i, data0, data1, key)) ? {startAngle: d.endAngle, endAngle: d.endAngle}
+          : (d = findFollowing(i, data0, data1, key)) ? {startAngle: d.startAngle, endAngle: d.startAngle}
+          : null;
+    }
+
+    // Find the element in data0 that joins the highest preceding element in data1.
+    function findPreceding(i, data0, data1, key) {
+      var m = data0.length;
+      while (--i >= 0) {
+        var k = key(data1[i]);
+        for (var j = 0; j < m; ++j) {
+          if (key(data0[j]) === k) return data0[j];
+        }
+      }
+    }
+
+    // Find the element in data0 that joins the lowest following element in data1.
+    function findFollowing(i, data0, data1, key) {
+      var n = data1.length, m = data0.length;
+      while (++i < n) {
+        var k = key(data1[i]);
+        for (var j = 0; j < m; ++j) {
+          if (key(data0[j]) === k) return data0[j];
+        }
+      }
+    }
+
+    function arcTween(d) {
+      var i = d3.interpolate(this._current, d);
+      this._current = i(0);
+      return function(t) { return self.arc(i(t)); };
+    }
+
+
+    const data0 = this.$g.selectAll('.party').data();
+    const data1 = this.pie(this.results);
+
+    const parties = this.$g.selectAll('.party').data(data1, key);
+
+    const partiesEnter = parties.enter()
+      .append('path').attr('class', (d)=> 'party '+d.data.party.id)
+      .attr('fill', (d)=>d.data.party.color || '#DDDDDD')
+      .attr('d', this.arc);
+
+
+    partiesEnter.each(function(d, i) {
+      this._current = findNeighborArc(i, data0, data1, key) || d;
     });
-    drawArcs(partiesEnterPath);
-    parties.exit().transition().duration(100).style('opacity',0).remove();
+
+    parties.transition().duration(350).attrTween('d', arcTween);
+
+    // drawArcs(partiesEnterPath);
+
+    parties.exit()
+        .datum(function(d, i) { return findNeighborArc(i, data1, data0, key) || d; })
+      .transition()
+        .duration(750)
+        .attrTween("d", arcTween)
+        .remove();
   }
 }
 
