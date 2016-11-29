@@ -6,6 +6,7 @@ Liens vers les données brutes (format .xls) :
 [Données par circonscriptions](http://www.data.gouv.fr/fr/datasets/elections-legislatives-2012-resultats-572079/)
 [Données agrégées à différentes échelles](http://www.data.gouv.fr/fr/datasets/elections-legislatives-2012-resultats-572077/)
 ### Les nuances politiques présentes
+
 | Nuance | Libellé |
 |:------:|:-------:|
 | EXG    | Extrême gauche |

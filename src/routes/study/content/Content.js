@@ -7,13 +7,20 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import Layout from '../../../components/Layout';
+import Markdown from '../../../components/Markdown';
+import s from './Content.css';
 import { View, ViewPropTypes } from '../../../components/View';
-import s from './Introduction.css';
 
-class Introduction extends React.Component {
-  static propTypes = ViewPropTypes;
+class Content extends React.Component {
+  static propTypes = Object.assign({}, {
+    path: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    title: PropTypes.string,
+  }, ViewPropTypes);
 
   componentDidMount() {
     this.props.onRef(this)
@@ -27,20 +34,16 @@ class Introduction extends React.Component {
 
   render(){
     return (
-      // we need to pass to holding View component isActive property
-      // took from ViewPropTypes
-      <View isActive={ this.props.isActive } helmetProps={{
-        title: 'Introduction'
-      }}>
+      <Layout>
+        <Helmet title={this.props.title} />
         <div className={s.root}>
           <div className={s.container}>
-            <h1 className={s.title}>Introduction</h1>
-            <p>Introduction</p>
+            <Markdown content={ this.props.content }/>
           </div>
         </div>
-      </View>
+      </Layout>
     );
   }
 }
 
-export default withStyles(s)(Introduction);
+export default withStyles(s)(Content);

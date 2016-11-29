@@ -7,10 +7,11 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 import SwipeableViews from 'react-swipeable-views';
-import Markdown from 'react-remarkable';
 import React, {PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import Checkbox from 'rc-checkbox';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 // internal
 import Ballot, {BallotPropType, PartiesPropTypes} from '../../../components/Ballot';
@@ -114,6 +115,10 @@ class Ballots extends React.Component {
     return { results, parties };
   }
 
+  onCheckboxToggle(e, checked){
+
+  }
+
   render() {
     const {index,} = this.state;
     const {
@@ -143,30 +148,35 @@ class Ballots extends React.Component {
             <div className={s['content--left']}>
               <BallotChart data={ _.cloneDeep(ballotData) }/>
             </div>
-            <div className={s['content--right']}>
-              <AssemblyChart data={ _.cloneDeep(ballotData) }/>
-              <div className={s.legend}>
-                <div>
-                  <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label><span>{ firstParty.name }</span>
+            <StickyContainer className={s['content--right']}>
+              <Sticky>
+                <AssemblyChart data={ _.cloneDeep(ballotData) }/>
+                <div className={s.legend}>
+                  <div>
+                    <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label><span>{ firstParty.name }</span>
+                  </div>
+                  <div>
+                    <label>Sièges attibués</label><span>{ allocatedSeats }/{ totalSeats }</span>
+                  </div>
+                  <div>
+                    <label>Mode de scrutin</label>
+                    <p>{ currentBallot.legend_title }</p>
+                  </div>
+                  <div className={s.sep}/>
+                  <label><Checkbox onChange={ this.onCheckboxToggle.bind(this) }/>Comparer avec l'assemblée actuelle</label>
                 </div>
-                <div>
-                  <label>Sièges attibués</label><span>{ allocatedSeats }/{ totalSeats }</span>
-                </div>
-                <div>
-                  <label>Mode de scrutin</label>
-                  <p>{ currentBallot.legend_title }</p>
-                </div>
-                <div className={s.sep}/>
-              </div>
-            </div>
+              </Sticky>
+            </StickyContainer>
           </div>
         </div>
         <SwipeableViews index={ index }
           onChangeIndex={ this.onChangeIndex.bind(this) }>
           {ballots.map((ballot, key) => {
             return (
-              <div key={key} className={s.container}>
-                <Ballot {...ballot} isActive={this.isActive(key)} parties={parties}/>
+              <div key={key} className={s.container + ' ' + s.content}>
+                <div className={s['content--left']}>
+                  <Ballot {...ballot} isActive={this.isActive(key)} parties={parties}/>
+                </div>
               </div>
             );
           })}

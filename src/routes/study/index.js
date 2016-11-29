@@ -2,17 +2,23 @@ import Study from './Study';
 import React from 'react';
 import history from '../../core/history';
 
+import ConfigureContentRoute from './content';
+
 export default {
   path : '/%C3%A9tude',
   children : [
-    require('./introduction').default,
+    ConfigureContentRoute('introduction','Introduction', 0),
+    // require('./introduction').default,
     require('./ballots').default,
-    require('./conclusion').default
+    ConfigureContentRoute('conclusion','Conclusion', 2),
+    ConfigureContentRoute('à-propos','À propos', 3),
+    ConfigureContentRoute('méthodologie','Méthodologie', 3),
+    // ConfigureContentRoute('à-propos',3)
   ],
   onChangeIndex(index){
     let route = this.children[index];
     let path = this.path + route.path;
-    history.push(path);
+    history.location.replace(path);
   },
   async action({next}) {
     let route = await next();

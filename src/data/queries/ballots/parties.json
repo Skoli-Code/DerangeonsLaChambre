@@ -1,101 +1,101 @@
 [{
   "id": "EXG",
-  "color": "#333333",
   "name": "Extrême gauche",
-  "order": 1
+  "order": 1,
+  "color": "#6d0b00"
 }, {
   "id": "FG",
-  "color": "#ee2523",
   "name": "Front de Gauche",
-  "order": 2
+  "order": 2,
+  "color": "#d62728"
 }, {
   "id": "SOC",
-  "color": "#e20040",
-  "name": "Socialiste",
-  "order": 3
+  "name": "Parti Socialiste",
+  "order": 3,
+  "color": "#dd4477"
 }, {
   "id": "RDG",
-  "color": "#34495e",
   "name": "Radical de gauche",
-  "order": 4
+  "order": 4,
+  "color": "#e377c2"
 }, {
   "id": "DVG",
-  "color": "#e6550d",
   "name": "Divers gauche",
-  "order": 5
+  "order": 5,
+  "color": "#f7b6d2"
 }, {
   "id": "VEC",
-  "color": "#fd8d3c",
-  "name": "Europe-Ecologie Les Verts",
-  "order": 6
+  "name": "E.E Les Verts",
+  "order": 6,
+  "color": "#2ca02c"
 }, {
   "id": "REG",
-  "color": "#fdae6b",
   "name": "Régionalistes",
-  "order": 7
+  "order": 7,
+  "color": "#B83860"
 }, {
   "id": "ECO",
-  "color": "#fdd0a2",
   "name": "Ecologiste",
-  "order": 8
+  "order": 8,
+  "color": "#98df8a"
 }, {
   "id": "AUT",
-  "color": "#31a354",
   "name": "Autres",
-  "order": 9
+  "order": 9,
+  "color": "#dbdb8d"
 }, {
   "id": "CEN",
-  "color": "#74c476",
-  "name": "Le Centre pour la France",
-  "order": 10
+  "name": "Centre pour la France",
+  "order": 10,
+  "color": "#ff7f0e"
 }, {
   "id": "ALLI",
-  "color": "#a1d99b",
   "name": "Alliance centriste",
-  "order": 11
+  "order": 11,
+  "color": "#ffbb78"
 }, {
   "id": "PRV",
-  "color": "#c7e9c0",
-  "name": "Parti Radical (Valoisien)",
-  "order": 12
+  "name": "Parti Radical",
+  "order": 12,
+  "color": "#9edae5"
 }, {
   "id": "NCE",
-  "color": "#756bb1",
   "name": "Nouveau Centre",
-  "order": 13
+  "order": 13,
+  "color": "#5DB9E4"
 }, {
   "id": "LR",
-  "color": "#3695FF",
   "name": "Les Républicains",
-  "order": 14
+  "order": 14,
+  "color": "#1f77b4"
 }, {
   "id": "DVD",
-  "color": "#bcbddc",
   "name": "Divers droite",
-  "order": 15
+  "order": 15,
+  "color": "#aec7e8"
 }, {
   "id": "FN",
-  "color": "#0D378A",
   "name": "Front National",
-  "order": 16
+  "order": 16,
+  "color": "#37415c"
 }, {
   "id": "EXD",
-  "color": "#636363",
   "name": "Extrême droite",
-  "order": 17
+  "order": 17,
+  "color": "#1e1f31"
 }, {
   "id": "VID",
-  "color": "#969696",
   "name": "Vide",
-  "order": 18
+  "order": 18,
+  "color": null
 }, {
   "id": "ABS",
-  "color": "#bdbdbd",
   "name": "Abstention",
-  "order": 19
+  "order": 19,
+  "color": null
 }, {
   "id": "CIT",
-  "color": "#d9d9d9",
   "name": "Citoyen",
-  "order": 20
+  "order": 20,
+  "color": null
 }]

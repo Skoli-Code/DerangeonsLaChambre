@@ -11,7 +11,6 @@ import fs from 'fs';
 import { join } from 'path';
 import Promise from 'bluebird';
 import fm from 'front-matter';
-import MarkdownIt from 'markdown-it';
 
 import {
   GraphQLString as StringType,
@@ -20,45 +19,22 @@ import {
 
 import ContentType from '../types/ContentType';
 
-const md = new MarkdownIt();
-
 // A folder with Markdown/HTML content pages
 const CONTENT_DIR = join(__dirname, './content');
-
-// Extract 'front matter' metadata and generate HTML
-const parseContent = (path, fileContent, extension) => {
-  const fmContent = fm(fileContent);
-  let htmlContent;
-  switch (extension) {
-    case '.md':
-      htmlContent = md.render(fmContent.body);
-      break;
-    case '.html':
-      htmlContent = fmContent.body;
-      break;
-    default:
-      return null;
-  }
-  return Object.assign({ path, content: htmlContent }, fmContent.attributes);
-};
 
 const readFile = Promise.promisify(fs.readFile);
 const fileExists = filename => new Promise(resolve => {
   fs.exists(filename, resolve);
 });
 
-async function resolveExtension(path, extension) {
-  let fileNameBase = join(CONTENT_DIR, `${path === '/' ? '/index' : path}`);
-  let ext = extension;
-  if (!ext.startsWith('.')) {
-    ext = `.${extension}`;
-  }
 
-  let fileName = fileNameBase + ext;
+async function resolveFileName(path) {
+  let fileNameBase = join(CONTENT_DIR, `${path === '/' ? '/index' : path}`);
+  let fileName = fileNameBase + '.md';
 
   if (!(await fileExists(fileName))) {
     fileNameBase = join(CONTENT_DIR, `${path}/index`);
-    fileName = fileNameBase + ext;
+    fileName = fileNameBase + '.md';
   }
 
   if (!(await fileExists(fileName))) {
@@ -68,33 +44,17 @@ async function resolveExtension(path, extension) {
   return { success: true, fileName };
 }
 
-async function resolveFileName(path) {
-  const extensions = ['.md', '.html'];
-
-  for (let i = 0; i < extensions.length; i += 1) {
-    const extension = extensions[i];
-    const maybeFileName = await resolveExtension(path, extension);
-    if (maybeFileName.success) {
-      return { success: true, fileName: maybeFileName.fileName, extension };
-    }
-  }
-
-  return { success: false, fileName: null, extension: null };
-}
-
 const content = {
   type: ContentType,
   args: {
     path: { type: new NonNull(StringType) },
   },
   async resolve({ request }, { path }) {
-    const { success, fileName, extension } = await resolveFileName(path);
-    if (!success) {
-      return null;
-    }
-
-    const source = await readFile(fileName, { encoding: 'utf8' });
-    return parseContent(path, source, extension);
+    const { success, fileName } = await resolveFileName(path);
+    if(!success){ return null; }
+    const fileContent = await readFile(fileName, {encoding: 'utf8'});
+    const fmContent = fm(fileContent);
+    return Object.assign({ path, content: fileContent }, fmContent.attributes);
   },
 };
 

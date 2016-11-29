@@ -1,6 +1,4 @@
 import fs from 'fs';
-import fm from 'front-matter';
-import MarkdownIt from 'markdown-it';
 import { join } from 'path';
 import Promise from 'bluebird';
 
@@ -9,7 +7,6 @@ import parties from './parties.json';
 
 import {BallotsType} from '../../types/BallotsType';
 
-const md = new MarkdownIt();
 const BALLOTS_DIR = join(__dirname, './content/ballots');
 
 import {

@@ -34,7 +34,7 @@ const PartyType = new ObjectType({
     id: { type: new NonNull(ID) },
     name: { type: new NonNull(StringType) },
     order: { type: new NonNull(Int) },
-    color: { type: new NonNull(StringType) }
+    color: { type: StringType }
   },
 });
 
