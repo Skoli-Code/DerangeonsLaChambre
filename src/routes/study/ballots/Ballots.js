@@ -120,6 +120,7 @@ class Ballots extends React.Component {
       ballots, parties, isActive
     } = this.props;
     const ballotData = this.currentBallotData();
+    const currentBallot = ballots[index];
     const results = _.cloneDeep(ballotData.results);
     const firstResult = results.sort((a, b)=>b.seats - a.seats)[0];
     const firstParty = parties.find((p)=> p.id == firstResult.party);
@@ -135,24 +136,28 @@ class Ballots extends React.Component {
             })}
           </div>
         </div>
-        <div className={s.container + ' ' + s.content}>
-          <div className={s['content--left']}>
-            <BallotChart data={ _.cloneDeep(ballotData) }/>
-          </div>
-          <div className={s['content--right']}>
-            <AssemblyChart data={ _.cloneDeep(ballotData) }/>
-            <div className={s.legend}>
-              <div>
-                <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label><span>{ firstParty.name }</span>
+        <div className={s.container}>
+          <h1>{ currentBallot.title }</h1>
+          <h2 className={s.subtitle }>{ currentBallot.subtitle }</h2>
+          <div className={s.content}>
+            <div className={s['content--left']}>
+              <BallotChart data={ _.cloneDeep(ballotData) }/>
+            </div>
+            <div className={s['content--right']}>
+              <AssemblyChart data={ _.cloneDeep(ballotData) }/>
+              <div className={s.legend}>
+                <div>
+                  <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label><span>{ firstParty.name }</span>
+                </div>
+                <div>
+                  <label>Sièges attibués</label><span>{ allocatedSeats }/{ totalSeats }</span>
+                </div>
+                <div>
+                  <label>Mode de scrutin</label>
+                  <p>{ currentBallot.legend_title }</p>
+                </div>
+                <div className={s.sep}/>
               </div>
-              <div>
-                <label>Sièges attibués</label><span>{ allocatedSeats }/{ totalSeats }</span>
-              </div>
-              <div>
-                <label>Mode de scrutin</label>
-                <p>Scrutin uninominal majoritaire à deux tours avec quorum d'éligibilité de 50% des inscrits.</p>
-              </div>
-              <div className={s.sep}/>
             </div>
           </div>
         </div>

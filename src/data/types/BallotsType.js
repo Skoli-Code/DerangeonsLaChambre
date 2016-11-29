@@ -19,6 +19,9 @@ const BallotType = new ObjectType({
   name: 'Ballot',
   fields: {
     id: { type: new NonNull(ID) },
+    title: { type: new NonNull(StringType) },
+    subtitle: { type: new NonNull(StringType) },
+    legend_title: { type: new NonNull(StringType) },
     order: { type: new NonNull(Int) },
     content: { type: new NonNull(StringType) },
     results: { type: new List(ResultType) }
