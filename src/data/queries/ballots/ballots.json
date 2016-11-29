@@ -1,257 +1,281 @@
 [{
   "id": "A1",
+  "title": "Assemblée actuelle (élections - 2012)",
+  "subtitle": "Assemblée élue au scrutin uninominal majoritaire à 2 tours",
+  "legend_title": "Scrutin majoritaire uninominal à deux tours",
   "order": 1,
-  "results": [{
-    "party": "EXG",
-    "seats": 0
-  }, {
-    "party": "FG",
-    "seats": 10
-  }, {
-    "party": "SOC",
-    "seats": 280
-  }, {
-    "party": "RDG",
-    "seats": 12
-  }, {
-    "party": "DVG",
-    "seats": 22
-  }, {
-    "party": "VEC",
-    "seats": 17
-  }, {
-    "party": "REG",
-    "seats": 2
-  }, {
-    "party": "ECO",
-    "seats": 0
-  }, {
-    "party": "AUT",
-    "seats": 0
-  }, {
-    "party": "CEN",
-    "seats": 2
-  }, {
-    "party": "ALLI",
-    "seats": 2
-  }, {
-    "party": "PRV",
-    "seats": 6
-  }, {
-    "party": "NCE",
-    "seats": 12
-  }, {
-    "party": "LR",
-    "seats": 194
-  }, {
-    "party": "DVD",
-    "seats": 15
-  }, {
-    "party": "FN",
-    "seats": 2
-  }, {
-    "party": "EXD",
-    "seats": 1
-  }, {
-    "party": "VID",
-    "seats": 0
-  }, {
-    "party": "ABS",
-    "seats": 0
-  }, {
-    "party": "CIT",
-    "seats": 0
+  "results": [
+    { "party": "EXG", "seats": 0 },
+    { "party": "FG", "seats": 10 },
+    { "party": "SOC", "seats": 280 },
+    { "party": "RDG", "seats": 12 },
+    { "party": "DVG", "seats": 22 },
+    { "party": "VEC", "seats": 17 },
+    { "party": "REG", "seats": 2 },
+    { "party": "ECO", "seats": 0 },
+    { "party": "AUT", "seats": 0 },
+    { "party": "CEN", "seats": 2 },
+    { "party": "ALLI", "seats": 2 },
+    { "party": "PRV", "seats": 6 },
+    { "party": "NCE", "seats": 12 },
+    { "party": "LR", "seats": 194 },
+    { "party": "DVD", "seats": 15 },
+    { "party": "FN", "seats": 2 },
+    { "party": "EXD", "seats": 1 },
+    { "party": "VID", "seats": 0 },
+    { "party": "ABS", "seats": 0 },
+    { "party": "CIT", "seats": 0
   }]
 }, {
   "id": "A2",
+  "title": "Chambre 'à l'anglaise'",
+  "subtitle": "Scrutin uninominal majoritaire à 1 tour",
+  "legend_title": "Scrutin majoritaire uninominal",
   "order": 2,
-  "results": [{
-    "party": "EXG",
-    "seats": 0
-  }, {
-    "party": "FG",
-    "seats": 9
-  }, {
-    "party": "SOC",
-    "seats": 286
-  }, {
-    "party": "RDG",
-    "seats": 9
-  }, {
-    "party": "DVG",
-    "seats": 17
-  }, {
-    "party": "VEC",
-    "seats": 10
-  }, {
-    "party": "REG",
-    "seats": 1
-  }, {
-    "party": "ECO",
-    "seats": 0
-  }, {
-    "party": "AUT",
-    "seats": 2
-  }, {
-    "party": "CEN",
-    "seats": 1
-  }, {
-    "party": "ALLI",
-    "seats": 1
-  }, {
-    "party": "PRV",
-    "seats": 5
-  }, {
-    "party": "NCE",
-    "seats": 15
-  }, {
-    "party": "LR",
-    "seats": 207
-  }, {
-    "party": "DVD",
-    "seats": 8
-  }, {
-    "party": "FN",
-    "seats": 6
-  }, {
-    "party": "EXD",
-    "seats": 0
-  }, {
-    "party": "VID",
-    "seats": 0
-  }, {
-    "party": "ABS",
-    "seats": 0
-  }, {
-    "party": "CIT",
-    "seats": 0
+  "results": [
+    { "party": "EXG", "seats": 0 },
+    { "party": "FG", "seats": 9 },
+    { "party": "SOC", "seats": 286 },
+    { "party": "RDG", "seats": 9 },
+    { "party": "DVG", "seats": 17 },
+    { "party": "VEC", "seats": 10 },
+    { "party": "REG", "seats": 1 },
+    { "party": "ECO", "seats": 0 },
+    { "party": "AUT", "seats": 2 },
+    { "party": "CEN", "seats": 1 },
+    { "party": "ALLI", "seats": 1 },
+    { "party": "PRV", "seats": 5 },
+    { "party": "NCE", "seats": 15 },
+    { "party": "LR", "seats": 207 },
+    { "party": "DVD", "seats": 8 },
+    { "party": "FN", "seats": 6 },
+    { "party": "EXD", "seats": 0 },
+    { "party": "VID", "seats": 0 },
+    { "party": "ABS", "seats": 0 },
+    { "party": "CIT", "seats": 0
   }]
 }, {
   "id": "A3",
+  "title": "Chambre 'à l'allemande'",
+  "subtitle": "Scrutin proportionnel personnalisé",
+  "legend_title": "Système mixte à finalité proportionnelle (uninominal majoritaire à un tour et proporitonnelle plurinominale avec sièges 'supplémentaires')",
   "order": 3,
-  "results": [{
-    "party": "EXG",
-    "seats": 0
-  }, {
-    "party": "FG",
-    "seats": 45
-  }, {
-    "party": "SOC",
-    "seats": 222
-  }, {
-    "party": "RDG",
-    "seats": 7
-  }, {
-    "party": "DVG",
-    "seats": 13
-  }, {
-    "party": "VEC",
-    "seats": 29
-  }, {
-    "party": "REG",
-    "seats": 1
-  }, {
-    "party": "ECO",
-    "seats": 0
-  }, {
-    "party": "AUT",
-    "seats": 1
-  }, {
-    "party": "CEN",
-    "seats": 1
-  }, {
-    "party": "ALLI",
-    "seats": 1
-  }, {
-    "party": "PRV",
-    "seats": 4
-  }, {
-    "party": "NCE",
-    "seats": 12
-  }, {
-    "party": "LR",
-    "seats": 161
-  }, {
-    "party": "DVD",
-    "seats": 6
-  }, {
-    "party": "FN",
-    "seats": 74
-  }, {
-    "party": "EXD",
-    "seats": 0
-  }, {
-    "party": "VID",
-    "seats": 0
-  }, {
-    "party": "ABS",
-    "seats": 0
-  }, {
-    "party": "CIT",
-    "seats": 0
+  "results": [
+    { "party": "EXG", "seats": 0 },
+    { "party": "FG", "seats": 32 },
+    { "party": "SOC", "seats": 233 },
+    { "party": "RDG", "seats": 7 },
+    { "party": "DVG", "seats": 14 },
+    { "party": "VEC", "seats": 23 },
+    { "party": "REG", "seats": 1 },
+    { "party": "ECO", "seats": 0 },
+    { "party": "AUT", "seats": 2 },
+    { "party": "CEN", "seats": 1 },
+    { "party": "ALLI", "seats": 1 },
+    { "party": "PRV", "seats": 4 },
+    { "party": "NCE", "seats": 12 },
+    { "party": "LR", "seats": 168 },
+    { "party": "DVD", "seats": 6 },
+    { "party": "FN", "seats": 73 },
+    { "party": "EXD", "seats": 0 },
+    { "party": "VID", "seats": 0 },
+    { "party": "ABS", "seats": 0 },
+    { "party": "CIT", "seats": 0
   }]
 }, {
   "id": "A4",
+  "title": "Chambre 'à l'italienne'",
+  "subtitle": "Scrutin proportionnel personnalisé",
+  "legend_title": "Scrutin proportionelle plurinominal à circonscription nationale avec prime au parti majoritaire (quorum d'éligibilité à 3%)",
   "order": 4,
-  "results": [{
-    "party": "EXG",
-    "seats": 0
-  }, {
-    "party": "FG",
-    "seats": 30
-  }, {
-    "party": "SOC",
-    "seats": 317
-  }, {
-    "party": "RDG",
-    "seats": 0
-  }, {
-    "party": "DVG",
-    "seats": 15
-  }, {
-    "party": "VEC",
-    "seats": 24
-  }, {
-    "party": "REG",
-    "seats": 0
-  }, {
-    "party": "ECO",
-    "seats": 0
-  }, {
-    "party": "AUT",
-    "seats": 0
-  }, {
-    "party": "CEN",
-    "seats": 0
-  }, {
-    "party": "ALLI",
-    "seats": 0
-  }, {
-    "party": "PRV",
-    "seats": 0
-  }, {
-    "party": "NCE",
-    "seats": 0
-  }, {
-    "party": "LR",
-    "seats": 117
-  }, {
-    "party": "DVD",
-    "seats": 15
-  }, {
-    "party": "FN",
-    "seats": 59
-  }, {
-    "party": "EXD",
-    "seats": 0
-  }, {
-    "party": "VID",
-    "seats": 0
-  }, {
-    "party": "ABS",
-    "seats": 0
-  }, {
-    "party": "CIT",
-    "seats": 0
+  "results": [
+    { "party": "EXG", "seats": 0 },
+    { "party": "FG", "seats": 30 },
+    { "party": "SOC", "seats": 317 },
+    { "party": "RDG", "seats": 0 },
+    { "party": "DVG", "seats": 15 },
+    { "party": "VEC", "seats": 24 },
+    { "party": "REG", "seats": 0 },
+    { "party": "ECO", "seats": 0 },
+    { "party": "AUT", "seats": 0 },
+    { "party": "CEN", "seats": 0 },
+    { "party": "ALLI", "seats": 0 },
+    { "party": "PRV", "seats": 0 },
+    { "party": "NCE", "seats": 0 },
+    { "party": "LR", "seats": 117 },
+    { "party": "DVD", "seats": 15 },
+    { "party": "FN", "seats": 59 },
+    { "party": "EXD", "seats": 0 },
+    { "party": "VID", "seats": 0 },
+    { "party": "ABS", "seats": 0 },
+    { "party": "CIT", "seats": 0
+  }]
+}, {
+  "id": "B6",
+  "title": "La plus 'représentative' (l'hollandaise) ",
+  "subtitle": "Scrutin à la proportionelle par circonscription nationale",
+  "legend_title": "Scrutin à la proportionelle plurinominale intégrale par circonscription nationale (méthode du quotient de Hare, pas de quorum d'éligibilité)",
+  "order": 6,
+  "results": [
+    { "party": "EXG", "seats": 6 },
+    { "party": "FG", "seats": 40 },
+    { "party": "SOC", "seats": 169 },
+    { "party": "RDG", "seats": 10 },
+    { "party": "DVG", "seats": 20 },
+    { "party": "VEC", "seats": 32 },
+    { "party": "REG", "seats": 3 },
+    { "party": "ECO", "seats": 6 },
+    { "party": "AUT", "seats": 3 },
+    { "party": "CEN", "seats": 10 },
+    { "party": "ALLI", "seats": 3 },
+    { "party": "PRV", "seats": 7 },
+    { "party": "NCE", "seats": 13 },
+    { "party": "LR", "seats": 156 },
+    { "party": "DVD", "seats": 20 },
+    { "party": "FN", "seats": 78 },
+    { "party": "EXD", "seats": 1 },
+    { "party": "VID", "seats": 0 },
+    { "party": "ABS", "seats": 0 },
+    { "party": "CIT", "seats": 0
+  }]
+}, {
+  "id": "A5",
+  "title": "Chambre ' à l'espagnole'",
+  "subtitle": "Scrutin à la proportionelle par circonscription départementale",
+  "legend_title": "Scrutin à la proportionelle plurinominale par circonscription départementale (méthode de Hondt, quorum fixé à 3% par département)",
+  "order": 5,
+  "results": [
+    { "party": "EXG", "seats": 0 },
+    { "party": "FG", "seats": 21 },
+    { "party": "SOC", "seats": 224 },
+    { "party": "RDG", "seats": 6 },
+    { "party": "DVG", "seats": 13 },
+    { "party": "VEC", "seats": 11 },
+    { "party": "REG", "seats": 2 },
+    { "party": "ECO", "seats": 2 },
+    { "party": "AUT", "seats": 0 },
+    { "party": "CEN", "seats": 2 },
+    { "party": "ALLI", "seats": 1 },
+    { "party": "PRV", "seats": 1 },
+    { "party": "NCE", "seats": 3 },
+    { "party": "LR", "seats": 205 },
+    { "party": "DVD", "seats": 14 },
+    { "party": "FN", "seats": 72 },
+    { "party": "EXD", "seats": 0 },
+    { "party": "VID", "seats": 0 },
+    { "party": "ABS", "seats": 0 },
+    { "party": "CIT", "seats": 0
+  }]
+}, {
+  "id": "C8",
+  "title": "L'Assemblée selon les règles du référendum local",
+  "subtitle": "Scrutin majoritaire avec quorum d'éligibilité",
+  "legend_title": "Scrutin uninominal majoritaire à deux tours avec quorum d'éligibilité de 50% du corps electoral",
+  "order": 8,
+  "results": [
+    { "party": "EXG", "seats": 0 },
+    { "party": "FG", "seats": 0 },
+    { "party": "SOC", "seats": 232 },
+    { "party": "RDG", "seats": 12 },
+    { "party": "DVG", "seats": 0 },
+    { "party": "VEC", "seats": 16 },
+    { "party": "REG", "seats": 0 },
+    { "party": "ECO", "seats": 0 },
+    { "party": "AUT", "seats": 0 },
+    { "party": "CEN", "seats": 0 },
+    { "party": "ALLI", "seats": 0 },
+    { "party": "PRV", "seats": 0 },
+    { "party": "NCE", "seats": 11 },
+    { "party": "LR", "seats": 178 },
+    { "party": "DVD", "seats": 12 },
+    { "party": "FN", "seats": 0 },
+    { "party": "EXD", "seats": 0 },
+    { "party": "VID", "seats": 116 },
+    { "party": "ABS", "seats": 0 },
+    { "party": "CIT", "seats": 0
+  }]
+}, {
+  "id": "C7",
+  "title": "Le 'premier parti de France'",
+  "subtitle": "Si l'abstention était un parti",
+  "legend_title": "Scrutin majoritaire uninominal à deux tours dans lequel l'abstention compte comme un parti politique",
+  "order": 7,
+  "results": [
+    { "party": "EXG", "seats": 0 },
+    { "party": "FG", "seats": 0 },
+    { "party": "SOC", "seats": 10 },
+    { "party": "RDG", "seats": 1 },
+    { "party": "DVG", "seats": 2 },
+    { "party": "VEC", "seats": 0 },
+    { "party": "REG", "seats": 0 },
+    { "party": "ECO", "seats": 0 },
+    { "party": "AUT", "seats": 0 },
+    { "party": "CEN", "seats": 0 },
+    { "party": "ALLI", "seats": 0 },
+    { "party": "PRV", "seats": 0 },
+    { "party": "NCE", "seats": 0 },
+    { "party": "LR", "seats": 3 },
+    { "party": "DVD", "seats": 1 },
+    { "party": "FN", "seats": 0 },
+    { "party": "EXD", "seats": 0 },
+    { "party": "VID", "seats": 0 },
+    { "party": "ABS", "seats": 560 },
+    { "party": "CIT", "seats": 0
+  }]
+}, {
+  "id": "C9",
+  "title": "Chambre vide, majorité silencieuse",
+  "subtitle": "A la majorité des inscrits",
+  "legend_title": "Scrutin uninominal à deux tours à la majorité des inscrits ",
+  "order": 9,
+  "results": [
+    { "party": "EXG", "seats": 0 },
+    { "party": "FG", "seats": 0 },
+    { "party": "SOC", "seats": 0 },
+    { "party": "RDG", "seats": 0 },
+    { "party": "DVG", "seats": 0 },
+    { "party": "VEC", "seats": 0 },
+    { "party": "REG", "seats": 0 },
+    { "party": "ECO", "seats": 0 },
+    { "party": "AUT", "seats": 0 },
+    { "party": "CEN", "seats": 0 },
+    { "party": "ALLI", "seats": 0 },
+    { "party": "PRV", "seats": 0 },
+    { "party": "NCE", "seats": 0 },
+    { "party": "LR", "seats": 0 },
+    { "party": "DVD", "seats": 0 },
+    { "party": "FN", "seats": 0 },
+    { "party": "EXD", "seats": 0 },
+    { "party": "VID", "seats": 577 },
+    { "party": "ABS", "seats": 0 },
+    { "party": "CIT", "seats": 0
+  }]
+}, {
+  "id": "C10",
+  "title": "Assemblée 'athénienne'",
+  "subtitle": "Tirage au sort",
+  "legend_title": "Stochocratie",
+  "order": 10,
+  "results": [
+    { "party": "EXG", "seats": 0 },
+    { "party": "FG", "seats": 0 },
+    { "party": "SOC", "seats": 0 },
+    { "party": "RDG", "seats": 0 },
+    { "party": "DVG", "seats": 0 },
+    { "party": "VEC", "seats": 0 },
+    { "party": "REG", "seats": 0 },
+    { "party": "ECO", "seats": 0 },
+    { "party": "AUT", "seats": 0 },
+    { "party": "CEN", "seats": 0 },
+    { "party": "ALLI", "seats": 0 },
+    { "party": "PRV", "seats": 0 },
+    { "party": "NCE", "seats": 0 },
+    { "party": "LR", "seats": 0 },
+    { "party": "DVD", "seats": 0 },
+    { "party": "FN", "seats": 0 },
+    { "party": "EXD", "seats": 0 },
+    { "party": "VID", "seats": 0 },
+    { "party": "ABS", "seats": 0 },
+    { "party": "CIT", "seats": 577
   }]
 }]
