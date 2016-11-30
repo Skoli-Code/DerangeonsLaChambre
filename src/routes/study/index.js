@@ -8,7 +8,6 @@ export default {
   path : '/%C3%A9tude',
   children : [
     ConfigureContentRoute('introduction','Introduction', 0),
-    // require('./introduction').default,
     require('./ballots').default,
     ConfigureContentRoute('conclusion','Conclusion', 2),
     ConfigureContentRoute('à-propos','À propos', 3),
@@ -16,9 +15,10 @@ export default {
     // ConfigureContentRoute('à-propos',3)
   ],
   onChangeIndex(index){
+    if(typeof index != typeof 0 || !history){ return; }
     let route = this.children[index];
     let path = this.path + route.path;
-    history.location.replace(path);
+    history.push(path);
   },
   async action({next}) {
     let route = await next();

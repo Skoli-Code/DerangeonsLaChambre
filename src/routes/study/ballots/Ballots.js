@@ -12,9 +12,11 @@ import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Checkbox from 'rc-checkbox';
 import Sticky from 'react-stickynode';
+// import Portal from 'react-portal';
 
 // internal
-import Ballot, {BallotPropType, PartiesPropTypes} from '../../../components/Ballot';
+import {BallotPropType, PartiesPropTypes} from '../../../components/Ballot';
+import Markdown from '../../../components/Markdown';
 import Layout from '../../../components/Layout';
 import BallotChart from '../../../components/BallotChart';
 import AssemblyChart from '../../../components/AssemblyChart';
@@ -49,7 +51,7 @@ class Ballots extends React.Component {
     const activeBallot = ballots.find((b)=>b.id == activeId);
     const activeIndex  = ballots.indexOf(activeBallot);
     this.state = {
-      index: activeIndex
+      index: activeIndex, compareToActualResults: false
     };
   }
 
@@ -105,28 +107,27 @@ class Ballots extends React.Component {
     return classes.join(' ');
   }
 
-  currentBallotData(){
-    const {index,} = this.state;
-    const results  = this.props.ballots[index].results.slice(0);
-    const parties  = this.props.parties.slice(0);
-    return { results, parties };
-  }
-
   onPartyHover(party){
     this.assemblyChart.hoverParty(party);
   }
 
-  onCheckboxToggle(e, checked){
-
+  onCheckboxToggle(e){
+    const { index } = this.state;
+    const checked = !e.target.checked;
+    console.log('checked: ', checked, e);
+    this.setState({index: index, compareToActualResults:checked});
   }
 
   render() {
-    const {index,} = this.state;
+    const {index, compareToActualResults} = this.state;
     const {
       ballots, parties, isActive
     } = this.props;
-    const ballotData = this.currentBallotData();
-    const currentBallot = ballots[index];
+    let currentBallot = ballots[index];
+    if(compareToActualResults){
+      currentBallot = ballots[0];
+    }
+    const ballotData = { results: currentBallot.results, parties: parties };
     const results = _.cloneDeep(ballotData.results);
     const firstResult = results.sort((a, b)=>b.seats - a.seats)[0];
     const firstParty = parties.find((p)=> p.id == firstResult.party);
@@ -144,29 +145,39 @@ class Ballots extends React.Component {
         </div>
         <div className={s.container}>
           <h1>{ currentBallot.title }</h1>
-          <h2 className={s.subtitle }>{ currentBallot.subtitle }</h2>
-          <div className={s.content}>
+          <h3 className={s.subtitle }>{ currentBallot.subtitle }</h3>
+          <div className={s.content+' '+s['hidden-touch']}>
             <div className={s['content--left']}>
               <BallotChart data={ _.cloneDeep(ballotData) } onPartyHover={ (party)=>this.onPartyHover(party) }/>
             </div>
             <div className={s['content--right']}>
-              <Sticky top={ 200 } enabled={true} innerZ={200} enableTransforms={true}>
+              <div>
                 <AssemblyChart data={ _.cloneDeep(ballotData) } onRef={ (ref)=> this.assemblyChart = ref }/>
                 <div className={s.legend}>
                   <div>
-                    <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label><span>{ firstParty.name }</span>
+                    <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label>
+                    <span>{ firstParty.name }</span>
                   </div>
                   <div>
-                    <label>Sièges attibués</label><span>{ allocatedSeats }/{ totalSeats }</span>
+                    <label>Sièges attibués</label>
+                    <span>{ allocatedSeats }/{ totalSeats }</span>
                   </div>
                   <div>
                     <label>Mode de scrutin</label>
                     <p>{ currentBallot.legend_title }</p>
                   </div>
-                  <div className={s.sep}/>
-                  <label><Checkbox onChange={ this.onCheckboxToggle.bind(this) }/>Comparer avec l'assemblée actuelle</label>
+                  { index > 0 && (
+                    <div>
+                      <div className={s.sep}/>
+                      <label>
+                        <Checkbox checked={compareToActualResults}
+                          onChange={ this.onCheckboxToggle.bind(this) }/>
+                        Comparer avec l'assemblée actuelle
+                      </label>
+                    </div>
+                  )}
                 </div>
-              </Sticky>
+              </div>
             </div>
           </div>
         </div>
@@ -176,7 +187,34 @@ class Ballots extends React.Component {
             return (
               <div key={key} className={s.container + ' ' + s.content}>
                 <div className={s['content--left']}>
-                  <Ballot {...ballot} isActive={this.isActive(key)} parties={parties}/>
+                  <div className={s['visible-touch']}>
+                    <AssemblyChart data={ {results:_.cloneDeep(ballot.results), parties:parties}}/>
+                    <div className={s.legend}>
+                      <div>
+                        <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label>
+                        <span>{ firstParty.name }</span>
+                      </div>
+                      <div>
+                        <label>Sièges attibués</label>
+                        <span>{ allocatedSeats }/{ totalSeats }</span>
+                      </div>
+                      <div>
+                        <label>Mode de scrutin</label>
+                        <p>{ currentBallot.legend_title }</p>
+                      </div>
+                      { index > 0 && (
+                        <div>
+                          <div className={s.sep}/>
+                          <label>
+                            <Checkbox checked={compareToActualResults}
+                              onChange={ this.onCheckboxToggle.bind(this) }/>
+                            Comparer avec l'assemblée actuelle
+                          </label>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <Markdown content={ ballot.content }/>
                 </div>
               </div>
             );

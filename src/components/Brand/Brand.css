@@ -2,4 +2,5 @@
 
 .brand {
   font-family: var(--font-family-brand);
+  text-decoration: none;
 }

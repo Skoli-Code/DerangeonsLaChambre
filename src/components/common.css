@@ -1,8 +1,49 @@
 @import './variables.css';
 
+
 .container {
   margin: 0 auto;
   max-width: var(--max-content-width);
+  @media (--small){
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.hidden-touch {
+  @media (--small){
+    display: none !important;
+  }
+}
+
+.visible-touch {
+  display: none;
+  @media (--small){
+    display: inherit;
+  }
+}
+
+.content {
+  padding-top: 20px;
+  display: flex;
+  flex-flow: row;
+  /*justify-content: space-around;*/
+  align-content: stretch;
+
+  &--left {
+    padding-right: 20px;
+    flex-grow: 7;
+    max-width: 70%;
+  }
+
+  &--right {
+    max-width: 30%;
+    flex-grow: 3;
+  }
+  @media (--small){
+    &--left, &--right {
+      max-width: 100%;
+    }
+  }
 }
 
 .sep {

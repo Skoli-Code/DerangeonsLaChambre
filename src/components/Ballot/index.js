@@ -1,6 +1,20 @@
-import Ballot, { BallotPropTypes as BallotType, PartiesPropTypes as PartiesType } from './Ballot';
+import React, { PropTypes } from 'react';
 
-export const BallotPropTypes = BallotType;
-export const PartiesPropTypes = PartiesType;
+export const PartyPropTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  order: PropTypes.number.isRequired
+}
 
-export default Ballot;
+export const PartiesPropTypes = PropTypes.arrayOf(PropTypes.shape(PartyPropTypes))
+export const ResultsPropTypes = PropTypes.arrayOf(PropTypes.shape({
+  party: PropTypes.string.isRequired,
+  seats: PropTypes.number.isRequired
+}));
+
+export const BallotPropTypes = {
+  id: PropTypes.string.isRequired,
+  order: PropTypes.number.isRequired,
+  content: PropTypes.string.isRequired,
+  results: ResultsPropTypes
+};

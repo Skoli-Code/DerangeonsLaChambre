@@ -28,7 +28,7 @@ class D3AssemblyChart {
   updateSize(){
     let width = this.$chart.node().parentNode.getBoundingClientRect().width;
     console.log('AssemblyChart.updateSize', width);
-    if(isNaN(width) || width == 0 || width == null || width > 1200){
+    if(isNaN(width) || width == 0 || width == null || width > 300){
       width = 300;
     }
     const height = width / 2;
@@ -164,11 +164,15 @@ export class AssemblyChart extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
     this.assemblyChart = new D3AssemblyChart(this.node(), this.chartState());
-    this.props.onRef(this);
+    if(this.props.onRef){
+      this.props.onRef(this);
+    }
   }
 
   componentWillUnmount() {
-    this.props.onRef(undefined)
+    if(this.props.onRef){
+      this.props.onRef(undefined)
+    }
   }
 
   hoverParty(party){

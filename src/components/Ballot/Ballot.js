@@ -1,9 +1,4 @@
 import React, { PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Ballot.css';
-import Layout from '../Layout';
-
-import Markdown from '../Markdown';
 
 export const PartyPropTypes = {
   name: PropTypes.string.isRequired,
@@ -23,16 +18,3 @@ export const BallotPropTypes = {
   content: PropTypes.string.isRequired,
   results: ResultsPropTypes
 }
-
-class Ballot extends React.Component {
-  static propTypes = Object.assign({}, {parties: PartiesPropTypes}, BallotPropTypes);
-  render(){
-    return (<Layout>
-      <div className={s.ballot}>
-        <Markdown content={ this.props.content }/>
-      </div>
-    </Layout>);
-  }
-}
-
-export default withStyles(s)(Ballot);
