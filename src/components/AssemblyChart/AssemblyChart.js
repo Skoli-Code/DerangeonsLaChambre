@@ -27,7 +27,8 @@ class D3AssemblyChart {
   }
   updateSize(){
     let width = this.$chart.node().parentNode.getBoundingClientRect().width;
-    if(isNaN(width) || width == 0 || width == null){
+    console.log('AssemblyChart.updateSize', width);
+    if(isNaN(width) || width == 0 || width == null || width > 1200){
       width = 300;
     }
     const height = width / 2;
@@ -49,6 +50,7 @@ class D3AssemblyChart {
   }
 
   updateData(data){
+    console.log(data);
     this.parties = data.parties;
     this.results = data.results.map((r)=>{
       r.party = this.parties.find((p)=>p.id == r.party);
@@ -66,8 +68,8 @@ class D3AssemblyChart {
 
   update(el, props){
     this.$chart = d3.select(el);
-    this.updateData(props.data);
     this.updateSize();
+    this.updateData(props.data);
     this.draw();
   }
 
@@ -174,7 +176,7 @@ export class AssemblyChart extends React.Component {
   }
 
   chartState() {
-    return {data: this.props.data};
+    return {data: _.cloneDeep(this.props.data)};
   }
 
   componentDidUpdate() {
