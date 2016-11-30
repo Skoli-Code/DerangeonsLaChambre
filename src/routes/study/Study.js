@@ -1,4 +1,6 @@
 // npm deps
+import * as _ from 'lodash';
+
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import SwipeableViews from 'react-swipeable-views';
@@ -12,6 +14,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // internal deps
 import theme from '../../components/theme';
 import Brand from '../../components/Brand';
+import Presentation from '../../components/Presentation';
 
 import Ballots from './ballots/Ballots';
 
@@ -49,9 +52,8 @@ class Study extends React.Component {
     return component.hasSwipeableViews();
   }
 
-
   onChangeIndex(i){
-    const { index } = this.state
+    const { index } = this.state;
     if(this.hasNestedSwipeableView()){
       const nestedView = this.currentTab();
       if(i > index){
@@ -70,8 +72,15 @@ class Study extends React.Component {
     } else {
       this.setState({index:i});
     }
+    // we defer the callback to ensure it won't be fired when animating.
+
     if(this.props.onChangeIndex){
-      this.props.onChangeIndex(this.state.index);
+      _.defer(()=>{
+        _.delay(()=>{
+          const { index } = this.state;
+          this.props.onChangeIndex(index);
+        }, 500);
+      });
     }
   }
 
@@ -94,18 +103,26 @@ class Study extends React.Component {
     return (
       <MuiThemeProvider muiTheme={theme}>
         <div>
+          <Presentation/>
           <AppBar
+              className={s.appBar}
               showMenuIconButton={false}
               title={<Brand/>}
-              titleStyle={ {flexGrow:1} }
+              titleStyle={ {flex:null, width:100, textAlign: 'center'} }
               onLeftIconButtonTouchTap={ null }
-              iconStyleRight={ {flexGrow: 10} }
-              iconElementRight={
-                <Tabs contentContainerStyle={{ marginTop:0 } }value={ index }>
-                  { tabs }
-                </Tabs>
-              }></AppBar>
+              // iconStyleRight={ {flexGrow: 10} }
+              // iconElementRight={
+              // <Tabs contentContainerStyle={{ marginTop:0 } } value={ index }>
+              // { tabs }
+              //</Tabs>
+              // }
+              >
+              <Tabs className={s.appBarTabs} contentContainerStyle={{ marginTop:0, width:'100%' } } value={ index }>
+                { tabs }
+              </Tabs>
+              </AppBar>
           <BindKeyboardSwipeableViews
+            className={s.content}
             onChangeIndex={ this.onChangeIndex.bind(this) }
             index={ index }>
           { this.props.tabs.map((tab, key)=>{
