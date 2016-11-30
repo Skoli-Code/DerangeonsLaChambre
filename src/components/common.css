@@ -24,3 +24,20 @@ label {
 .fixed {
   position: fixed;
 }
+
+.btn {
+  background-color: var(--primary-color);
+  color: var(--black);
+  padding: 0.5em;
+  border-radius: 0.25em;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color(var(--primary-color) lightness(90%));
+  }
+
+  a& {
+    text-decoration: none;
+    color: var(--black);
+  }
+}

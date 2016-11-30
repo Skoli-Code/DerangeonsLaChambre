@@ -15,8 +15,9 @@
   --font-family-base: 'Lato', sans-serif;
   --font-family-brand: 'Josefin Slab', serif;
 
-  --primary-color: red;
+  --primary-color: #dccba7;
   --gray: #d3d3d3;
+  --black: #444;
 
   /*
    * Layout

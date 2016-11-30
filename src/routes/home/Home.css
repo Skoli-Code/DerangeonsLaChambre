@@ -7,33 +7,40 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-@import '../../components/variables.css';
+@import '../../components/common.css';
 
 .root {
+  background-image: url('../../public/cover.jpg');
+  background-size: cover;
   padding-left: 20px;
   padding-right: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: white;
+  text-shadow: 0 0 2px var(--black);
+  .btn {
+    text-shadow: none;
+  }
 }
 
 .container {
   margin: 0 auto;
   padding: 0 0 40px;
   max-width: var(--max-content-width);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.news {
-  padding: 0;
+.title {
+  font-size: 4em;
 }
 
-.newsItem {
-  list-style-type: none;
-  padding-bottom: 6px;
-}
-
-.newsTitle {
-  font-size: 1.125em;
-}
-
-.newsTitle,
-.newsDesc {
-  display: block;
+.subtitle {
+  font-size: 2em;
 }

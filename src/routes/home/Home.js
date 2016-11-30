@@ -10,6 +10,7 @@
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Layout from '../../components/Layout';
+import Link from '../../components/Link';
 import s from './Home.css';
 
 function Home() {
@@ -17,7 +18,10 @@ function Home() {
     <Layout>
       <div className={s.root}>
         <div className={s.container}>
-          <h1 className={s.title}>React.js News</h1>
+          <h1 className={s.title}>Dérangeons la Chambre</h1>
+          <h2 className={s.subtitle}>Une étude des différents mode de scrutins</h2>
+
+          <Link to="/%C3%A9tude/introduction#presentation" className={s.btn}>Dérangez la chambre</Link>
         </div>
       </div>
     </Layout>
