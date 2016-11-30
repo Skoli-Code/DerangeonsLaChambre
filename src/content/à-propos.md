@@ -30,6 +30,7 @@ La réalisation graphique est l’oeuvre de Skoli.
 Cité dans l’étude - Bibliographie
 
 Photos
+https://www.flickr.com/photos/partisocialiste/8047476496/in/photolist-eHneys-dg8Ez7-dg8qoL-xboqq-dg8cfV-dg8n7k-dg8sAj-dg8jdU-dg8rDV-dg8hLd-nJQAWJ/
 Cover
 Fontes & Icônes
 Outils & Librairies
