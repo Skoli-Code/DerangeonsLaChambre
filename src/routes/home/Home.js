@@ -21,7 +21,7 @@ function Home() {
           <h1 className={s.title}>Dérangeons la Chambre</h1>
           <h2 className={s.subtitle}>Une étude des différents mode de scrutins</h2>
 
-          <Link to="/%C3%A9tude/introduction#presentation" className={s.btn}>Dérangez la chambre</Link>
+          <Link to="/%C3%A9tude/introduction" className={s.btn}>Dérangez la chambre</Link>
         </div>
       </div>
     </Layout>
