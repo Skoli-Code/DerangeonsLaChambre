@@ -25,7 +25,7 @@ import * as _ from 'lodash';
 import * as d3 from 'd3';
 
 const BallotsPropTypes = Object.assign({}, {
-  onChangeIndex:PropTypes.function,
+  onBallotChange:PropTypes.function,
   activeIndex: PropTypes.number,
   ballots: PropTypes.arrayOf(PropTypes.shape(BallotPropType)),
   parties: PartiesPropTypes
@@ -89,8 +89,8 @@ class Ballots extends React.Component {
     if(i != this.state.index){
       this.setState({index:i});
     }
-    if(this.props.onChangeIndex){
-      this.props.onChangeIndex(i);
+    if(this.props.onBallotChange){
+      this.props.onBallotChange(i);
     }
   }
 
