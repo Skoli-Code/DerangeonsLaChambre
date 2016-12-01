@@ -5,14 +5,13 @@ import * as d3 from 'd3';
 import * as _ from 'lodash';
 
 import s from './AssemblyChart.css';
-import { BallotChartPropTypes, objectStyle } from '../BallotChart';
+import { ChartPropTypes } from '../PropTypes';
+import { objectStyle } from '../utils';
+import ChartConfig from '../config';
 const pi = Math.PI;
 
 class D3AssemblyChart {
-  config = {
-    opacityMin: 0.1,
-    opacityMax: 1
-  }
+  config = Object.assign({}, ChartConfig);
   constructor(el, props){
     this.$chart = d3.select(el);
     this.initChart();
@@ -27,7 +26,6 @@ class D3AssemblyChart {
   }
   updateSize(){
     let width = this.$chart.node().parentNode.getBoundingClientRect().width;
-    console.log('AssemblyChart.updateSize', width);
     if(isNaN(width) || width == 0 || width == null || width > 300){
       width = 300;
     }
@@ -41,16 +39,15 @@ class D3AssemblyChart {
 
   hoverParty(party){
     if(party != null){
-      this.$g.selectAll('path').style('opacity', this.config.opacityMin);
-      this.$g.select('path.'+party.id).style('opacity', this.config.opacityMax);
+      this.$g.selectAll('path').style('opacity', this.config.partyOpacity.min);
+      this.$g.select('path.'+party.id).style('opacity', this.config.partyOpacity.max);
     } else {
-      this.$g.selectAll('path').style('opacity', this.config.opacityMax);
+      this.$g.selectAll('path').style('opacity', this.config.partyOpacity.max);
 
     }
   }
 
   updateData(data){
-    console.log(data);
     this.parties = data.parties;
     this.results = data.results.map((r)=>{
       r.party = this.parties.find((p)=>p.id == r.party);
@@ -76,7 +73,7 @@ class D3AssemblyChart {
   draw(){
     let partyColor = (d)=>{
       const color = d.data.party.color || 'white';
-      return color == 'random'?'#feec29': color;
+      return color == 'random'?this.config.randomParty.singleColor: color;
     };
 
     const self = this;
@@ -127,7 +124,7 @@ class D3AssemblyChart {
     const partiesEnter = parties.enter()
       .append('path').attr('class', (d)=> 'party '+d.data.party.id)
       .style('transition', 'opacity 350ms ease')
-      .style('opacity', this.config.opacityMax)
+      .style('opacity', this.config.partyOpacity.max)
       .attr('fill', (d)=>partyColor(d))
       .attr('stroke-width', (d)=>d.data.party.color ? '0': '1px')
       .attr('stroke', (d)=>d.data.party.color ? '0':'#d3d3d3')
@@ -152,7 +149,7 @@ class D3AssemblyChart {
 }
 
 export class AssemblyChart extends React.Component {
-  static propTypes = BallotChartPropTypes;
+  static propTypes = ChartPropTypes;
 
   constructor(props) {
     super(props);

@@ -18,8 +18,7 @@ import Sticky from 'react-stickynode';
 import {BallotPropType, PartiesPropTypes} from '../../../components/Ballot';
 import Markdown from '../../../components/Markdown';
 import Layout from '../../../components/Layout';
-import BallotChart from '../../../components/BallotChart';
-import AssemblyChart from '../../../components/AssemblyChart';
+import { BallotChart, BallotTreemapChart, AssemblyChart } from '../../../components/Charts';
 import s from './Ballots.css';
 import { ViewPropTypes } from '../../../components/View';
 import * as _ from 'lodash';
@@ -169,7 +168,6 @@ class Ballots extends React.Component {
           </div>
         )}
       </div>
-
     );
   }
 
@@ -188,8 +186,11 @@ class Ballots extends React.Component {
       <div>
         <Sticky>{ this.pagination(ballots) }</Sticky>
         <div className={s.container}>
-          <h1>{ currentBallot.title }</h1>
-          <h3 className={s.subtitle }>{ currentBallot.subtitle }</h3>
+          <div className={s['hidden-touch']}>
+            <h1>{ currentBallot.title }</h1>
+            <h3 className={s.subtitle }>{ currentBallot.subtitle }</h3>
+          </div>
+
           <div className={s.content+' '+s['hidden-touch']}>
             <div className={s['content--left']}>
               <BallotChart data={ _.cloneDeep(ballotData) } onPartyHover={ (party)=>this.onPartyHover(party) }/>
@@ -205,11 +206,18 @@ class Ballots extends React.Component {
         <SwipeableViews index={ index }
           onChangeIndex={ this.onChangeIndex.bind(this) }>
           {ballots.map((ballot, key) => {
+            const chartData = {
+                results: (compareToActualResults ? currentBallot : ballot).results,
+                parties: parties
+            };
             return (
               <div key={key} className={s.container + ' ' + s.content}>
                 <div className={s['content--left']}>
                   <div className={s['visible-touch']}>
-                    <AssemblyChart data={ {results:_.cloneDeep(ballot.results), parties:parties}}/>
+                    <h1>{ ballot.title }</h1>
+                    <h3 className={s.subtitle }>{ ballot.subtitle }</h3>
+                    <BallotTreemapChart data={ _.cloneDeep(chartData) }/>
+                    <AssemblyChart data={ _.cloneDeep(chartData) }/>
                     { this.legend(ballot) }
                   </div>
                   <Markdown content={ ballot.content }/>

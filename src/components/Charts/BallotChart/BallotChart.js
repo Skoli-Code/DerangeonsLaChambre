@@ -5,39 +5,27 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
 
-import Layout from '../Layout';
 import s from './BallotChart.css';
 
-import {ResultsPropTypes, PartiesPropTypes} from '../Ballot';
-export const BallotChartPropTypes = {
-  className: PropTypes.string,
-  data: PropTypes.shape({parties: PartiesPropTypes, results: ResultsPropTypes})
-}
-let identity = (i) => i;
-export const objectStyle = (sel, styles) => {
-  for (const k in styles) {
-    sel.style(k, styles[k]);
-  }
-  return sel;
-}
+import {ChartPropTypes} from '../PropTypes';
+import { objectStyle } from '../utils';
+import ChartConfig from '../config';
 
+let identity = (i) => i;
 let px = (n) => n + 'px';
 
 class D3BallotChart {
-  config = {
-    squareOpacity: 0.15,
-    squareOpacityMax:1,
+  config = Object.assign({}, ChartConfig, {
     rows: 15,
     tooltip:{
       width: 170,
       height: 50
     }
-  };
+  });
   constructor(el, props) {
     this.onPartyHover = props.onPartyHover;
     this.$chart = d3.select(el);
     this.$holder = d3.select(el.parentNode);
-    this.randomColors = d3.schemeCategory20;
     this.initChart();
     this.initTooltip();
     this.updateData(props.data);
@@ -134,8 +122,7 @@ class D3BallotChart {
 
   randomColor(){
     const randIndex = Math.floor(Math.random() * 19);
-    let color =  this.randomColors[randIndex];
-    return color;
+    return this.config.randomParty.colors[randIndex];
   }
 
   bindEvents() {
@@ -155,13 +142,13 @@ class D3BallotChart {
         const text      = `${partyName}<br/><b>${seats}`;
         $tooltipContent.html(text);
         $tooltip.style('opacity', 1);
-        this.$chart.selectAll('.square').style('opacity', this.config.squareOpacity);
-        this.$chart.selectAll('.square.' + party.id).style('opacity', this.config.squareOpacityMax);
+        this.$chart.selectAll('.square').style('opacity', this.config.partyOpacity.min);
+        this.$chart.selectAll('.square.' + party.id).style('opacity', this.config.partyOpacity.max);
       }).on('mouseleave', () => {
         if(this.onPartyHover){
           this.onPartyHover(null);
         }
-        this.$chart.selectAll('.square').style('opacity', this.config.squareOpacityMax);
+        this.$chart.selectAll('.square').style('opacity', this.config.partyOpacity.max);
       });
 
     this.$chart.on('mousemove', function(d){
@@ -193,7 +180,7 @@ class D3BallotChart {
         width: px(size.width),
         height: px(size.height),
         position: 'absolute',
-        opacity: this.config.squareOpacityMax,
+        opacity: this.config.partyOpacity.max,
         transition: 'opacity 350ms ease-out'
       });
       squares.style('top', (d, i) => {
@@ -231,7 +218,7 @@ class D3BallotChart {
 }
 
 export class BallotChart extends React.Component {
-  static propTypes = BallotChartPropTypes;
+  static propTypes = ChartPropTypes;
 
   constructor(props) {
     super(props);
