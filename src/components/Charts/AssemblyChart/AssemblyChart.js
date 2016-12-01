@@ -23,6 +23,12 @@ class D3AssemblyChart {
   initChart(){
     this.$svg = this.$chart.append('svg');
     this.$g = this.$svg.append('g');
+
+    this.pie = d3.pie()
+      .value((d)=>d.seats)
+      .sort((a,b)=>a.party.order - b.party.order)
+      .startAngle(-90*(pi/180))
+      .endAngle(90*(pi/180));
   }
   updateSize(){
     let width = this.$chart.node().parentNode.getBoundingClientRect().width;
@@ -34,7 +40,8 @@ class D3AssemblyChart {
     this.$g.attr('transform', `translate(${width / 2}, ${height})`)
     this.size = {
       radius: width / 2
-    }
+    };
+    this.arc = d3.arc().outerRadius(this.size.radius).innerRadius(0);
   }
 
   hoverParty(party){
@@ -43,24 +50,12 @@ class D3AssemblyChart {
       this.$g.select('path.'+party.id).style('opacity', this.config.partyOpacity.max);
     } else {
       this.$g.selectAll('path').style('opacity', this.config.partyOpacity.max);
-
     }
   }
 
   updateData(data){
     this.parties = data.parties;
-    this.results = data.results.map((r)=>{
-      r.party = this.parties.find((p)=>p.id == r.party);
-      return r;
-    });
-
-    this.pie = d3.pie()
-      .value((d)=>d.seats)
-      .sort((a,b)=>a.party.order - b.party.order)
-      .startAngle(-90*(pi/180))
-      .endAngle(90*(pi/180));
-
-    this.arc = d3.arc().outerRadius(this.size.radius).innerRadius(0);
+    this.results = data.results;
   }
 
   update(el, props){

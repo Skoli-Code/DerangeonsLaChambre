@@ -15,7 +15,7 @@ import Sticky from 'react-stickynode';
 // import Portal from 'react-portal';
 
 // internal
-import {BallotPropType, PartiesPropTypes} from '../../../components/Ballot';
+import {BallotPropType, PartiesPropTypes} from '../../../components/Charts';
 import Markdown from '../../../components/Markdown';
 import Layout from '../../../components/Layout';
 import { BallotChart, BallotTreemapChart, AssemblyChart } from '../../../components/Charts';
@@ -25,7 +25,8 @@ import * as _ from 'lodash';
 import * as d3 from 'd3';
 
 const BallotsPropTypes = Object.assign({}, {
-  activeBallot: PropTypes.string,
+  onChangeIndex:PropTypes.function,
+  activeIndex: PropTypes.number,
   ballots: PropTypes.arrayOf(PropTypes.shape(BallotPropType)),
   parties: PartiesPropTypes
 }, ViewPropTypes);
@@ -44,13 +45,9 @@ class Ballots extends React.Component {
 
   constructor(props, context, updater) {
     super(props, context, updater);
-
-    let activeId  = this.props.activeBallot;
-    const ballots = this.props.ballots;
-    const activeBallot = ballots.find((b)=>b.id == activeId);
-    const activeIndex  = ballots.indexOf(activeBallot);
     this.state = {
-      index: activeIndex, compareToActualResults: false
+      index: props.activeIndex || 0,
+      compareToActualResults: false
     };
   }
 
@@ -92,6 +89,9 @@ class Ballots extends React.Component {
     if(i != this.state.index){
       this.setState({index:i});
     }
+    if(this.props.onChangeIndex){
+      this.props.onChangeIndex(i);
+    }
   }
 
   isActive(index){
@@ -113,7 +113,6 @@ class Ballots extends React.Component {
   onCheckboxToggle(e){
     const { index } = this.state;
     const checked = !e.target.checked;
-    console.log('checked: ', checked, e);
     this.setState({index: index, compareToActualResults:checked});
   }
 
@@ -138,7 +137,6 @@ class Ballots extends React.Component {
     }
     const results = _.cloneDeep(ballot.results);
     const firstResult = results.sort((a, b)=>b.seats - a.seats)[0];
-    const firstParty = parties.find((p)=> p.id == firstResult.party);
     const allocatedSeats = d3.sum(results, (r)=>r.seats);
     const totalSeats = 577;
     const absoluteMajority = firstResult.seats > Math.ceil(totalSeats/2);
@@ -147,7 +145,7 @@ class Ballots extends React.Component {
       <div className={s.legend}>
         <div>
           <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label>
-          <span>{ firstParty.name }</span>
+          <span>{ firstResult.party.name }</span>
         </div>
         <div>
           <label>Sièges attibués</label>

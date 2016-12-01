@@ -7,10 +7,20 @@ import {
   GraphQLInt as Int,
 } from 'graphql';
 
+const PartyType = new ObjectType({
+  name: 'Party',
+  fields: {
+    id: { type: new NonNull(ID) },
+    name: { type: new NonNull(StringType) },
+    order: { type: new NonNull(Int) },
+    color: { type: StringType }
+  },
+});
+
 const ResultType = new ObjectType({
   name: 'Result',
   fields: {
-    party: { type: new NonNull(ID) },
+    party: { type: PartyType },
     seats: { type: new NonNull(Int) }
   }
 });
@@ -26,16 +36,6 @@ const BallotType = new ObjectType({
     content: { type: new NonNull(StringType) },
     results: { type: new List(ResultType) }
   }
-});
-
-const PartyType = new ObjectType({
-  name: 'Party',
-  fields: {
-    id: { type: new NonNull(ID) },
-    name: { type: new NonNull(StringType) },
-    order: { type: new NonNull(Int) },
-    color: { type: StringType }
-  },
 });
 
 export const BallotsType = new ObjectType({

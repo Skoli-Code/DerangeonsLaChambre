@@ -9,7 +9,7 @@ export const PartyPropTypes = {
 export const PartiesPropTypes = PropTypes.arrayOf(PropTypes.shape(PartyPropTypes));
 
 export const ResultsPropTypes = PropTypes.arrayOf(PropTypes.shape({
-  party: PropTypes.string.isRequired,
+  party: PartyPropTypes,
   seats: PropTypes.number.isRequired
 }));
 
@@ -23,6 +23,6 @@ export const BallotPropTypes = {
 export const ChartPropTypes = {
   className: PropTypes.string,
   data: PropTypes.shape({parties: PartiesPropTypes, results: ResultsPropTypes})
-}
+};
 
 export default BallotPropTypes;

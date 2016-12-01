@@ -21,6 +21,10 @@ export default {
   async resolve() {
     const orderedBallots = ballots.sort((a,b)=>a.order - b.order);
     const parsedBallots = orderedBallots.map(async (ballot)=>{
+      ballot.results = ballot.results.map(async (r)=>{
+        r.party = parties.find((p)=>p.id == r.party);
+        return r;
+      });
       const path    = join(BALLOTS_DIR, ballot.id + '.md');
       const content = await readFile(path, { encoding: 'utf8' });
       return Object.assign({content: content}, ballot);

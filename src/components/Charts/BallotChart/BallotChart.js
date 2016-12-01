@@ -73,8 +73,9 @@ class D3BallotChart {
 
     for (const i in this.results) {
       const ballot = this.results[i];
-      const party = this.parties.find((d)=>d.id == ballot.party);
-      const squares = d3.range(ballot.seats).map((i) =>{ return Object.assign({ seats: ballot.seats }, party) });
+      const squares = d3.range(ballot.seats).map((i) =>{
+        return Object.assign({ seats: ballot.seats }, ballot.party)
+      });
       this.squares = this.squares.concat(squares);
     }
   }

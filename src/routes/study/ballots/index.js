@@ -23,7 +23,7 @@ const resolveBallots = async() => {
       },
       body: JSON.stringify({
         query: `{ballots{
-          list{id,order,title,subtitle,legend_title,content,results{party,seats}},
+          list{id,order,title,subtitle,legend_title,content,results{party{id,order,name,color},seats}},
           parties{id,order,name,color}
         }}`
       })

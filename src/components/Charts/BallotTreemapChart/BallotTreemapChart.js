@@ -14,11 +14,15 @@ class D3BallotTreemapChart {
   });
   constructor(el, props) {
     this.$chart = d3.select(el);
-    this.$holder = d3.select(el.parentNode);
-    this.updateData(props.data);
+    this.initChart();
     this.updateSize();
+    this.updateData(props.data);
     this.draw();
     this.bindEvents();
+  }
+
+  initChart(){
+    this.treemap = d3.treemap().padding(1).round(true);
   }
 
   updateData(data) {
@@ -26,6 +30,19 @@ class D3BallotTreemapChart {
   }
 
   updateSize() {
+    // width = parent node width.
+    // height = height of the golden ratio rectangle
+    let width = this.$chart.node().parentNode.getBoundingClientRect().width;
+    if(isNaN(width) || !width){
+      width = 480;
+    }
+    const height = width*0.618033989;
+    //
+    // this.size = {
+    //   width: width,
+    //   height: height
+    // }
+    this.treemap = this.treemap.size([width, height])
   }
 
   update(el, props) {
@@ -39,7 +56,7 @@ class D3BallotTreemapChart {
   }
 
   draw() {
-
+    this.$chart.selectAll('.party')
   }
 }
 
