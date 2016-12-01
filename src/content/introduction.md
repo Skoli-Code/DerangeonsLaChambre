@@ -4,7 +4,7 @@ Participation en baisse, défiance grandissante vis-à-vis de la “classe polit
 Les résultats des élections parlementaires ont des conséquences potentiellement importantes sur nos vies. Ils dépendent de trois aspects : 1. les candidats, 2. les électeurs et 3. les règles électorales.
 L’importance des règles électorales pour déterminer les résultat d’une élection est souvent sous estimée. C’est pourtant un paramètre déterminant.
 
-Les règles électorales sont nombreuses. Elles vont de l’inscription sur les listes électorales (automatique ? possible le jour de l’élection ?) aux moyens de voter (sur internet, par courrier ?) et sont, dans le cas des législatives, énoncées par le Code Électoral et non par la Constitution, rendant par là possible un changement de règles du jeu par la seule adoption d’une loi organique (ce qui fut d’ailleurs fait en 1986 au bénéfice de la proportionnelle, puis abandonnée).
+Les règles électorales sont nombreuses. Elles vont de l’inscription sur les listes électorales (automatique ? possible le jour de l’élection ?) aux moyens de voter (sur internet, par courrier ?) et sont, dans le cas des législatives, énoncées par le Code Électoral et non par la Constitution, rendant par là possible un changement de règles du jeu par la seule adoption d’une loi organique (ce qui fut d’ailleurs fait en 1986 au bénéfice de la proportionnelle, puis abandonné).
 
 Un bon moyen de visualiser l’influence des règles électorales est de se concentrer sur la façon de compter les voix, et de simuler ce que serait notre Assemblée Nationale si nous étions Allemands, Britanniques, Italiens, Espagnols, Hollandais… bref, si avec exactement les mêmes votants et les mêmes partis, nous avions adopté des règles électorales différentes.
 
@@ -12,7 +12,7 @@ C’est ce que nous vous proposons ici à partir des résultats des élections d
 
 Pour cette raison, on peut se demander qui décide des règles ? Dans la plupart des pays, ce sont les élus qui fixent les règles électorales. Ou plutôt, certains élus. Mais un jeu dont les règles sont choisies par certains joueurs n’est pas tout à fait équitable. C’est l’un des arguments en faveur d’un Sénat composé de citoyens tirés au sort: il pourrait offrir un contrôle bien meilleur sur nos élus, et notamment choisir les règles du jeu.
 
-Mais passons à l’illustration pratique: les élections législatives de 2012. Nous avons vingt-six millions de votants au premier tour, dix-sept groupements politiques candidats, 577 circonscriptions et 101 département. Changeons les règles et voyons ce qui se passe.
+Mais passons à l’illustration pratique: les élections législatives de 2012. Nous avons vingt-six millions de votants au premier tour, dix-sept groupements politiques candidats, 577 circonscriptions et 101 départements. Changeons les règles et voyons ce qui se passe.
 
 Le lecteur notera que simuler ce qu’il se serait passé avec d’autres modes de scrutin n’est bien sûr pas une méthode dénuée de biais. Le vote est en partie déterminé par le mode de scrutin, et rien ne garantit que chaque électeur aurait exprimé le même comportement électoral dans un système différent  (le vote “utile” dans la règle majoritaire à deux tours n’est plus utile dans d’autres systèmes, et vice versa). Mais en dehors de ce problème, l'exercice reste fiable.
 

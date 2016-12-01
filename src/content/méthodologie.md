@@ -1,7 +1,7 @@
 ##MÉTHODOLOGIE
 
 ### Sources
-Les données sont issues du Ministère de l’Intérieur et publiées sur le portail data.gouv.fr
+Les données sont issues du Ministère de l’Intérieur et publiées sur le portail [data.gouv.fr](http://www.data.gouv.fr/fr/)
 Liens vers les données brutes (format .xls) :
 [Données par circonscriptions](http://www.data.gouv.fr/fr/datasets/elections-legislatives-2012-resultats-572079/)
 [Données agrégées à différentes échelles](http://www.data.gouv.fr/fr/datasets/elections-legislatives-2012-resultats-572077/)
@@ -48,7 +48,7 @@ Est réputé élu le candidat agrégeant le plus de suffrages sur son nom au pre
 
 #### Système mixte à finalité proportionnelle (uninominal majoritaire à un tour et proportionnelle plurinominale avec sièges "supplémentaires")
 Il prévoit l'élection d'une première moitié d'élus au scrutin uninominal majoritaire à un tour, puis l'élection d'une seconde moitié au scrutin proportionnel plurinominal. L'élection de la seconde moitié dépend des résultats découlant de l'élection de la première : la part proportionnelle est répartie de manière à corriger la mauvaise transcription des voix en sièges de la part majoritaire.
-Pour cette simulation, ces chiffres sont calculés de la manière suivante : agrégation des résultats d’une proportionnelle (avec seuil de 5%) et d’une élection uninominale majoritaire à un tour. Tant qu’un siège est obtenu lors du scrutin uninominal majoritaire à un tour, il n’est pas redistribué à la proportionnelle. Le résultat est ensuite ramené à 577 sièges.
+Pour cette simulation, ces chiffres sont calculés de la manière suivante : agrégation des résultats d’une proportionnelle (avec seuil de 5%) et d’une élection uninominale majoritaire à un tour. Tant qu’un siège est obtenu lors du scrutin uninominal majoritaire à un tour, il n’est pas redistribué à la proportionnelle. Le résultat est ensuite ramené à 577 sièges afin de respecter l'[Article 24 de la Constitution](https://www.legifrance.gouv.fr/affichTexteArticle.do?cidTexte=LEGITEXT000006071194&idArticle=LEGIARTI000006527488&dateTexte=&categorieLien=cid).
 
 #### Scrutin proportionnelle plurinominal à circonscription nationale avec prime au parti majoritaire (quotient de Hare, quorum fixé à 3%)
 Si un parti obtient au moins 40% des voix au Premier Tour, il obtient 55% des sièges. Le reste est réparti à la proportionnelle. Si aucun parti n’agrège 40% des voix au premier tour, un deuxième tour est organisé entre les deux partis arrivés en tête pour déterminer qui obtiendra la prime à la majorité.
@@ -58,7 +58,7 @@ Le quorum d’éligibilité est fixé à 3%.
 #### Scrutin à la proportionnelle plurinominale (méthode d'Hondt, quorum fixé à 3%) par circonscription départementale
 Les résultats agrégés au niveau départemental sont issus des données publiées par le Ministère de l’Intérieur.
 Un quorum d’éligibilité de 3% est appliqué.
-Les sièges sont répartis selon la Méthode de Hondt :  “On calcule pour chaque liste le rapport voix/sièges. Le siège est attribué à la liste présentant la plus forte moyenne de voix par sièges”.
+Les sièges sont répartis selon la Méthode de Hondt : “On calcule pour chaque liste le rapport voix/sièges. Le siège est attribué à la liste présentant la plus forte moyenne de voix par sièges”.
 
 #### Scrutin à la proportionnelle plurinominale intégrale par circonscription nationale (méthode du quotient de Hare, pas de quorum d'éligibilité)
 Les résultats agrégés au niveau national sont issus des données publiées par le Ministère de l’Intérieur.
@@ -71,15 +71,14 @@ Les calculs sont opérés à partir des résultats du deuxième tour, par circon
 
 #### Scrutin uninominal majoritaire à 2 tours avec quorum d’éligibilité de 50% du corps électoral.
 Est élu député(e) le (la) candidat(e) qui remporte la majorité (absolue au 1e Tour) des suffrages dans sa circonscription, si le taux de participation est supérieur à 50% du corps électoral. Dans le cas contraire, son siège est laissé vide.
-Scrutin majoritaire (des inscrits) uninominal à deux tours
+
+#### Scrutin majoritaire (des inscrits) uninominal à deux tours
 Seuls sont désignés élus les candidats ayant réussi à agréger la majorité des inscrits de leur circonscription autour de leur nom.
-Nous utilisons les nuances politiques du Ministère de l’Intérieur.
 Les calculs sont opérés à partir des résultats du deuxième tour, par circonscription.
 *Les 36 députés élus au premier tour n’ont pas réunis la majorité absolue des inscrits. Ils n’ont pas bénéficié d’un second tour pour arriver à cet objectif. Leur score au premier tour ne leur permet pas d’être élus.*
 
 #### Stochocratie
 Il s’agit ici d’une fiction, les données sont aléatoires et n’ont aucune assise réelle. Les règles du tirage au sort ne permettent par définition pas d’utiliser les données issues du vote.
-La probabilité d’être tiré au sort pour un particulier est donc de 0,00000866007454. Soit 0,000866007454%.
 
 ### Visualisation
 **Préalable**:
