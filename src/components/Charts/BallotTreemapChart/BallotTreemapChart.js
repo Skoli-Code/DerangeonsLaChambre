@@ -21,7 +21,6 @@ class D3BallotTreemapChart {
     this.updateSize();
     this.updateData(props.data);
     this.draw();
-    this.bindEvents();
   }
 
   update(el, props) {
@@ -33,33 +32,42 @@ class D3BallotTreemapChart {
 
   initChart(){
     this.$chart.style('position', 'relative');
-    this.treemap = d3.treemap().padding(1).round(true);
+    this.treemap = d3.treemap().padding(0).round(true);
   }
 
   updateSize() {
     // width = parent node width.
     // height = height of the golden ratio rectangle
-    let width = this.$chart.node().parentNode.getBoundingClientRect().width;
+    let width = this.$chart.node().getBoundingClientRect().width;
     if(isNaN(width) || !width){
       width = 800;
     }
     const height = width*0.618033989;
-    this.treemap = this.treemap.size([width, height])
+    this.treemap = this.treemap.size([width, height]);
+    objectStyle(this.$chart, { width: px(width), height: px(height) });
   }
 
   updateData(data) {
     let stratify = d3.stratify();
-    this.results = data.results.sort((a,b)=>b.seats-a.seats);
+    const results = _.cloneDeep(data.results);
+    this.results = results.sort((a,b)=>b.seats-a.seats);
     this.results = this.results.filter(r=>r.seats > 0)
       .map(r=>(r.parentId='root',r));
     this.results.push({parentId:null, id:'root'});
     this.root = stratify(this.results).sum(r=>r.seats);
-    console.log('root', this.root);
   }
 
   bindEvents() {
   }
+  textColor(result){
+    const bgColor = this.backgroundColor(result);
+    if(bgColor == 'white' || bgColor == this.config.randomParty.singleColor){
+      return '#444';
+    } else {
+      return 'white';
+    }
 
+  }
   backgroundColor(result){
     console.log(result);
     let color = (result.data.party||{}).color;
@@ -73,29 +81,56 @@ class D3BallotTreemapChart {
   }
 
   draw() {
-    const tree = this.treemap(this.root);
-    const $leaves = this.$chart.selectAll('.party')
-      .data(tree.leaves())
-      .enter().append('div')
-        .attr('class', (r)=>`party ${r.data.party.id}`)
-        .attr('title', (r)=> `${r.data.party.name}\n${r.value} sièges`);
-
+    let self = this;
+    let leavesClass = (r)=>`party ${r.data.party.id}`;
+    let leavesHtml  = (r)=>`<b>${r.data.party.name}</b><br/>${r.value} sièges`;
+    let leavesTitle = (r)=>`${r.data.party.name}\n${r.value} sièges`;
+    let leavesStyle = ($leaves)=>{
       objectStyle($leaves, {
-        position:   'absolute',
-        background: (d)=>this.backgroundColor(d),
         left:       (d)=>px(d.x0),
         top:        (d)=>px(d.y0),
         width:      (d)=>px(d.x1-d.x0),
-        height:     (d)=>px(d.y1-d.y0)
+        height:     (d)=>px(d.y1-d.y0),
+        color:      (d)=>this.textColor(d),
+        border:     (d)=>this.backgroundColor(d) == 'white' ? '1px solid #bbb' : '0',
+        background: (d)=>this.backgroundColor(d)
       });
+    };
 
-      const $labels = $leaves.append('div')
-        .attr('class', 'party__label')
-        .html((r)=>`<b>${r.data.party.name}</b><br/>${r.value} sièges`);
+    const tree = this.treemap(this.root);
+    const $leaves = this.$chart.selectAll('.party')
+      .data(tree.leaves());
 
-      objectStyle($labels, {
+    // create
+    const $leavesEnter = $leaves
+      .enter().append('div')
+        .attr('class', leavesClass)
+        .attr('title', leavesTitle);
 
-      });
+    objectStyle($leavesEnter, {
+      position: 'absolute',
+      overflow: 'hidden',
+      'padding-left': '5px',
+    });
+
+    leavesStyle($leavesEnter);
+
+    const $labels = $leavesEnter.append('div')
+      .attr('class', 'party__label')
+      .html(leavesHtml);
+
+    objectStyle($labels, {
+      overflow: 'hidden',
+      width: '100%'
+    });
+
+    // udpate
+    leavesStyle($leaves);
+    $leaves.attr('class', leavesClass).attr('title', leavesTitle);
+    $leaves.select('.party__label').html(leavesHtml);
+
+    // delete
+    $leaves.exit().remove();
 
   }
 }
