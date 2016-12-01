@@ -118,6 +118,61 @@ class Ballots extends React.Component {
     this.setState({index: index, compareToActualResults:checked});
   }
 
+  pagination(ballots){
+    return (
+      <div className={s.pagination} top={62} isActive={true}>
+        <div className={s.container}>
+        {ballots.map((ballot, key) => {
+          return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;
+        })}
+        </div>
+      </div>
+    );
+  }
+
+  legend(ballot){
+    const {index, compareToActualResults} = this.state;
+    const {ballots, parties} = this.props;
+
+    if(!ballot){
+      ballot = ballots[index];
+    }
+    const results = _.cloneDeep(ballot.results);
+    const firstResult = results.sort((a, b)=>b.seats - a.seats)[0];
+    const firstParty = parties.find((p)=> p.id == firstResult.party);
+    const allocatedSeats = d3.sum(results, (r)=>r.seats);
+    const totalSeats = 577;
+    const absoluteMajority = firstResult.seats > Math.ceil(totalSeats/2);
+
+    return (
+      <div className={s.legend}>
+        <div>
+          <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label>
+          <span>{ firstParty.name }</span>
+        </div>
+        <div>
+          <label>Sièges attibués</label>
+          <span>{ allocatedSeats }/{ totalSeats }</span>
+        </div>
+        <div>
+          <label>Mode de scrutin</label>
+          <p>{ ballot.legend_title }</p>
+        </div>
+        { index > 0 && (
+          <div>
+            <div className={s.sep}/>
+            <label>
+              <Checkbox checked={compareToActualResults}
+              onChange={ this.onCheckboxToggle.bind(this) }/>
+              Comparer avec l'assemblée actuelle
+            </label>
+          </div>
+        )}
+      </div>
+
+    );
+  }
+
   render() {
     const {index, compareToActualResults} = this.state;
     const {
@@ -128,21 +183,10 @@ class Ballots extends React.Component {
       currentBallot = ballots[0];
     }
     const ballotData = { results: currentBallot.results, parties: parties };
-    const results = _.cloneDeep(ballotData.results);
-    const firstResult = results.sort((a, b)=>b.seats - a.seats)[0];
-    const firstParty = parties.find((p)=> p.id == firstResult.party);
-    const allocatedSeats = d3.sum(results, (r)=>r.seats);
-    const totalSeats = 577;
-    const absoluteMajority = firstResult.seats > Math.ceil(totalSeats/2);
+
     return (
       <div>
-        <div className={s.pagination}>
-          <div className={s.container}>
-            {ballots.map((ballot, key) => {
-              return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;
-            })}
-          </div>
-        </div>
+        <Sticky>{ this.pagination(ballots) }</Sticky>
         <div className={s.container}>
           <h1>{ currentBallot.title }</h1>
           <h3 className={s.subtitle }>{ currentBallot.subtitle }</h3>
@@ -153,30 +197,7 @@ class Ballots extends React.Component {
             <div className={s['content--right']}>
               <div>
                 <AssemblyChart data={ _.cloneDeep(ballotData) } onRef={ (ref)=> this.assemblyChart = ref }/>
-                <div className={s.legend}>
-                  <div>
-                    <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label>
-                    <span>{ firstParty.name }</span>
-                  </div>
-                  <div>
-                    <label>Sièges attibués</label>
-                    <span>{ allocatedSeats }/{ totalSeats }</span>
-                  </div>
-                  <div>
-                    <label>Mode de scrutin</label>
-                    <p>{ currentBallot.legend_title }</p>
-                  </div>
-                  { index > 0 && (
-                    <div>
-                      <div className={s.sep}/>
-                      <label>
-                        <Checkbox checked={compareToActualResults}
-                          onChange={ this.onCheckboxToggle.bind(this) }/>
-                        Comparer avec l'assemblée actuelle
-                      </label>
-                    </div>
-                  )}
-                </div>
+                { this.legend(null) }
               </div>
             </div>
           </div>
@@ -189,30 +210,7 @@ class Ballots extends React.Component {
                 <div className={s['content--left']}>
                   <div className={s['visible-touch']}>
                     <AssemblyChart data={ {results:_.cloneDeep(ballot.results), parties:parties}}/>
-                    <div className={s.legend}>
-                      <div>
-                        <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label>
-                        <span>{ firstParty.name }</span>
-                      </div>
-                      <div>
-                        <label>Sièges attibués</label>
-                        <span>{ allocatedSeats }/{ totalSeats }</span>
-                      </div>
-                      <div>
-                        <label>Mode de scrutin</label>
-                        <p>{ currentBallot.legend_title }</p>
-                      </div>
-                      { index > 0 && (
-                        <div>
-                          <div className={s.sep}/>
-                          <label>
-                            <Checkbox checked={compareToActualResults}
-                              onChange={ this.onCheckboxToggle.bind(this) }/>
-                            Comparer avec l'assemblée actuelle
-                          </label>
-                        </div>
-                      )}
-                    </div>
+                    { this.legend(ballot) }
                   </div>
                   <Markdown content={ ballot.content }/>
                 </div>
