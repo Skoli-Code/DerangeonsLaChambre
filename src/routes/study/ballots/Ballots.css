@@ -36,9 +36,21 @@
     border-radius: var(--pagination-width/2);
   }
   .previousArrow, .nextArrow {
+    display: none !important;
     height: 24px;
-    line-height: 24x;
+    line-height: 24px;
     border-radius: 12px;
+    position: relative;
+    bottom: -5px;
+    &:hover {
+      span {
+        color: white !important;
+      }
+    }
+
+    @media(--small) {
+      display: inline-block !important;
+    }
   }
 }
 
@@ -48,7 +60,9 @@
   left:0;
   right: 0;
   transform: translate(0, -50%);
-
+  @media(--small){
+    display: none;
+  }
   .previousArrow, .nextArrow {
     cursor: pointer;
     position: absolute;
