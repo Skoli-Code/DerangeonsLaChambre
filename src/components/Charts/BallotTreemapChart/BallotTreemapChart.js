@@ -82,7 +82,7 @@ class D3BallotTreemapChart {
   draw() {
     let self = this;
     let leavesClass = (r)=>`party ${r.data.party.id}`;
-    let leavesHtml  = (r)=>`<b>${r.data.party.name}</b><br/>${r.value} sièges`;
+    let leavesHtml  = (r)=>`<b>${r.data.party.id}</b><br/>${r.value} sièges`;
     let leavesTitle = (r)=>`${r.data.party.name}\n${r.value} sièges`;
     let leavesStyle = ($leaves)=>{
       objectStyle($leaves, {
