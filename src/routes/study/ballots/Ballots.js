@@ -15,7 +15,7 @@ import Sticky from 'react-stickynode';
 // import Portal from 'react-portal';
 
 // internal
-import {BallotPropType, PartiesPropTypes} from '../../../components/Charts';
+import {BallotPropTypes, PartyPropTypes} from '../../../components/Charts';
 import Markdown from '../../../components/Markdown';
 import Layout from '../../../components/Layout';
 import { BallotChart, BallotTreemapChart, AssemblyChart } from '../../../components/Charts';
@@ -27,8 +27,8 @@ import * as d3 from 'd3';
 const BallotsPropTypes = Object.assign({}, {
   onBallotChange:PropTypes.function,
   activeIndex: PropTypes.number,
-  ballots: PropTypes.arrayOf(PropTypes.shape(BallotPropType)),
-  parties: PartiesPropTypes
+  ballots: PropTypes.arrayOf(PropTypes.shape(BallotPropTypes)),
+  parties: PropTypes.arrayOf(PropTypes.shape(PartyPropTypes))
 }, ViewPropTypes);
 
 class Ballots extends React.Component {
@@ -51,8 +51,11 @@ class Ballots extends React.Component {
     };
   }
 
-  setIndex(index){
-    this.setState({index:index});
+  setIndex(i){
+    this.setState({index:i});
+    if(this.props.onBallotChange){
+      this.props.onBallotChange(i);
+    }
   }
 
   atLastTab(){
@@ -66,17 +69,25 @@ class Ballots extends React.Component {
   goNext(){
     console.log('Ballots.goNext');
     const { index } = this.state;
+    const i = index + 1;
     this.setState({
-      index: index + 1
+      index: i
     });
+    if(this.props.onBallotChange){
+      this.props.onBallotChange(i);
+    }
   }
 
   goPrevious(){
     console.log('Ballots.goPrevious');
     const { index } = this.state;
+    const i =  index - 1;
     this.setState({
-      index: index - 1
+      index: i
     });
+    if(this.props.onBallotChange){
+      this.props.onBallotChange(i);
+    }
   }
 
   onNextClicked() {
@@ -120,7 +131,7 @@ class Ballots extends React.Component {
 
   pagination(ballots){
     return (
-      <div className={s.pagination} top={62} isActive={true}>
+      <div className={s.pagination}>
         <div className={s.container}>
         {ballots.map((ballot, key) => {
           return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;

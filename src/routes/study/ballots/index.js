@@ -52,8 +52,14 @@ const render = async(id) => {
   if(globBallots && (!id || typeof id != typeof '')){
     id = globBallots.list[0].id;
   }
+
+  let onBallotChange = (index)=>{
+    console.log('onBallotChanged !', index);
+  };
+
   return Object.assign({}, routeParams, {
     componentProps: {
+      onBallotChange: onBallotChange,
       ballots: globBallots.list,
       parties: globBallots.parties,
       activeBallot: id
