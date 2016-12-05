@@ -1,19 +1,20 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { grey300,grey900,indigo500 } from 'material-ui/styles/colors';
+import { grey300,grey900,blue500, blue200 } from 'material-ui/styles/colors';
+const darkGray = grey900;
 const theme = getMuiTheme({
   fontFamily:'Lato',
   palette: {
-    primary1Color:grey300,
-    primary2Color:indigo500
+    primary1Color:darkGray,
+    primary2Color:blue500
   },
   appBar: {
     height: 50,
-    color: grey300
+    color: darkGray
   },
   tabs: {
-    backgroundColor: grey300,
-    textColor: grey900,
-    selectedTextColor: indigo500,
+    backgroundColor: darkGray,
+    textColor: 'white',
+    selectedTextColor: blue200,
   }
 });
 export default theme;
