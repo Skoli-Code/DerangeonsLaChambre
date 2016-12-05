@@ -9,6 +9,7 @@ import bindKeyboard from 'react-swipeable-views/lib/bindKeyboard';
 // MUI
 import AppBar from 'material-ui/AppBar/AppBar';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import FontIcon from 'material-ui/FontIcon';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // internal deps
@@ -35,6 +36,7 @@ class Study extends React.Component {
     onChangeIndex: PropTypes.func,
     activeIndex: PropTypes.number,
     tabs: PropTypes.arrayOf(PropTypes.shape({
+      mobileIcon: PropTypes.string,
       title: PropTypes.string,
       component: PropTypes.node,
       componentProps: PropTypes.object
@@ -91,14 +93,32 @@ class Study extends React.Component {
     }
   }
 
+  tabs(){
+    const tabs = this.props.tabs.map((tab,key)=>{
+      console.log('tab.mobileIcon:', tab.mobileIcon);
+      const hasIcon = tab.mobileIcon != null;
+      const klassName = s.tab + ' ' + (hasIcon ? s.tabWithIcon : '');
+      let tabProps = {
+        className:klassName,
+        onClick:this.onTabClick.bind(this, key),
+        style:{height: 62},
+        key:key,
+        value:key,
+        label:<div className={ s.tabText }>{ tab.title}</div>
+      }
+      if(hasIcon){
+        tabProps['icon'] = <FontIcon className={s.tabIcon + ' material-icons'}>{tab.mobileIcon}</FontIcon>;
+      }
+      return <Tab {...tabProps}/>;
+    });
+    return tabs;
+  }
+
   render(){
     const {
       index,
     } = this.state;
 
-    const tabs = this.props.tabs.map((tab,key)=>{
-      return <Tab onClick={ this.onTabClick.bind(this, key) } style={ {height: 62 } } key={key} value={key} label={tab.title}/>;
-    });
     const BrandStyle = {
       flex:null,
       width:100,
@@ -111,20 +131,11 @@ class Study extends React.Component {
         <div>
           <Presentation/>
           <AppBar
-              className={s.appBar}
-              showMenuIconButton={false}
-              title={<Brand/>}
-              titleStyle={BrandStyle}
-              onLeftIconButtonTouchTap={ null }
-              // iconStyleRight={ {flexGrow: 10} }
-              // iconElementRight={
-              // <Tabs contentContainerStyle={{ marginTop:0 } } value={ index }>
-              // { tabs }
-              //</Tabs>
-              // }
-              >
+              className={s.appBar} showMenuIconButton={false}
+              title={<Brand/>} titleStyle={BrandStyle}
+              onLeftIconButtonTouchTap={ null }>
               <Tabs className={s.appBarTabs} contentContainerStyle={{ marginTop:0, width:'100%' } } value={ index }>
-                { tabs }
+                { this.tabs() }
               </Tabs>
               </AppBar>
           <BindKeyboardSwipeableViews

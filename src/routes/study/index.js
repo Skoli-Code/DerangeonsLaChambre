@@ -7,11 +7,11 @@ import ConfigureContentRoute from './content';
 export default {
   path : '/%C3%A9tude',
   children : [
-    ConfigureContentRoute('introduction','Intro', 0),
+    ConfigureContentRoute({ path: 'introduction', title: 'Intro', key: 0}),
     require('./ballots').default,
-    ConfigureContentRoute('conclusion','Bilan', 2),
-    ConfigureContentRoute('à-propos','À propos', 3),
-    ConfigureContentRoute('méthodologie','Méthodologie', 3),
+    ConfigureContentRoute({ path: 'conclusion', title: 'Bilan', key: 2}),
+    ConfigureContentRoute({ path: 'à-propos', title: 'À propos', key: 3, mobileIcon:'info'}),
+    ConfigureContentRoute({ path: 'méthodologie',title: 'Méthodologie', key: 4, mobileIcon:'description'}),
     // ConfigureContentRoute('à-propos',3)
   ],
   onChangeIndex(index){

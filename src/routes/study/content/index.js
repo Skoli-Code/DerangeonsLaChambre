@@ -11,7 +11,7 @@ import React from 'react';
 import Content from './Content';
 import fetch from '../../../core/fetch';
 
-const configureRoute = (path,title, key)=>{
+const configureRoute = ({path,title,key,mobileIcon})=>{
   return {
     path: '/'+encodeURIComponent(path),
     async action() { // eslint-disable-line react/prop-types
@@ -30,6 +30,7 @@ const configureRoute = (path,title, key)=>{
       const { data } = await resp.json();
       if (!data || !data.content) return undefined;
       return {
+        mobileIcon:mobileIcon,
         key: key,
         title: title,
         componentProps: Object.assign({}, {title}, data.content),

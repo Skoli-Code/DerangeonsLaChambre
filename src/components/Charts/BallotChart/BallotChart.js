@@ -16,7 +16,7 @@ let px = (n) => n + 'px';
 
 class D3BallotChart {
   config = Object.assign({}, ChartConfig, {
-    rows: 15,
+    rows: 20,
     tooltip:{
       width: 170,
       height: 50

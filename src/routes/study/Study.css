@@ -15,7 +15,6 @@
   &Tabs {
     width: 100%;
   }
-
   @media (--small){
     & {
       display: block !important;
@@ -29,6 +28,24 @@
   }
 }
 
+.tab {
+  &Text {
+
+  }
+  &WithIcon {
+    .tabText {
+      @media(--small){
+        display: none;
+      }
+    }
+  }
+  &Icon {
+    display: none;
+    @media(--small){
+      display: block;
+    }
+  }
+}
 .content {
   overflow: hidden;
   padding-top: 62px;
