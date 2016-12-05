@@ -19,7 +19,7 @@ function Home() {
       <div className={s.root}>
         <div className={s.container}>
           <h1 className={s.title}>Dérangeons la Chambre</h1>
-          <h2 className={s.subtitle}>Une étude des différents mode de scrutins</h2>
+          <h2 className={s.subtitle}>Assemblée Nationale : et si on changeait les règles du jeu ?</h2>
 
           <Link to="/%C3%A9tude/introduction" className={s.btn}>Dérangez la chambre</Link>
         </div>
