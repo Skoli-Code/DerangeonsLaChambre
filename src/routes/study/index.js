@@ -22,13 +22,15 @@ export default {
   },
   async action({next}) {
     let route = await next();
+    const trueRoute = route;
     let routeIndex = route.key;
     if(!route){
       routeIndex = 0;
     }
     routes = (routes && routes.length) ? routes : await Promise.all(this.children.map((r) => r.action()));
-    if (!route) {
-      route = routes[0];
+    route = routes[routeIndex];
+    if(trueRoute){
+      routes[routeIndex] = trueRoute;
     }
     return {
       title: route.title,

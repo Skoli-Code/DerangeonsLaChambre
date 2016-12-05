@@ -38,7 +38,6 @@ const resolveBallots = async() => {
     }
     return data.ballots;
   } catch(e){
-    console.error(e)
     return null;
   }
 };
@@ -48,14 +47,13 @@ const routeParams = {
   title: 'Scrutins'
 };
 
-const render = async(id) => {
+const render = async(index) => {
   globBallots = globBallots || await resolveBallots();
-  if(globBallots && (!id || typeof id != typeof '')){
-    id = globBallots.list[0].id;
+  if(globBallots && !index){
+    index = 0;
   }
 
   let onBallotChange = (index)=>{
-    console.log('onBallotChanged !', index);
     history.push('/%C3%A9tude/scrutins/'+index);
   };
 
@@ -64,7 +62,7 @@ const render = async(id) => {
       onBallotChange: onBallotChange,
       ballots: globBallots.list,
       parties: globBallots.parties,
-      activeBallot: id
+      activeBallot: index
     },
     component: Ballots
   });
@@ -83,12 +81,12 @@ export default {
     {
       path: '/',
       async action(){
-        return render(true);
+        return render();
       }
     }, {
-      path: '/:id',
+      path: '/:index',
       async action(context) {
-        return render(true, context.params.id);
+        return render(+context.params.index);
       }
     }
   ]

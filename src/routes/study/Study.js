@@ -57,7 +57,6 @@ class Study extends React.Component {
   }
 
   onChangeIndex(i){
-    console.log('onChangeIndex!');
     const { index } = this.state;
     if(this.hasNestedSwipeableView()){
       const nestedView = this.currentTab();

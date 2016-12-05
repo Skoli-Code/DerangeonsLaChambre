@@ -18,7 +18,7 @@ import * as d3 from 'd3';
 
 const BallotsPropTypes = Object.assign({}, {
   onBallotChange:PropTypes.function,
-  activeIndex: PropTypes.number,
+  activeBallot: PropTypes.number,
   ballots: PropTypes.arrayOf(PropTypes.shape(BallotPropTypes)),
   parties: PropTypes.arrayOf(PropTypes.shape(PartyPropTypes))
 }, ViewPropTypes);
@@ -38,7 +38,7 @@ class Ballots extends React.Component {
   constructor(props, context, updater) {
     super(props, context, updater);
     this.state = {
-      index: props.activeIndex || 0,
+      index: props.activeBallot || 0,
       compareToActualResults: false
     };
   }
@@ -59,7 +59,6 @@ class Ballots extends React.Component {
   }
 
   goNext(){
-    console.log('Ballots.goNext');
     const { index } = this.state;
     const i = index + 1;
     this.setState({
@@ -71,7 +70,6 @@ class Ballots extends React.Component {
   }
 
   goPrevious(){
-    console.log('Ballots.goPrevious');
     const { index } = this.state;
     const i =  index - 1;
     this.setState({
@@ -249,7 +247,6 @@ class Ballots extends React.Component {
                 results: (compareToActualResults ? currentBallot : ballot).results,
                 parties: parties
               };
-              // console.log(ballot.title, 'isActive:', key == index, this.props.isActive);
               return (
               <div key={key} className={s.container + ' ' + s.content}>
                 {  isActive &&
