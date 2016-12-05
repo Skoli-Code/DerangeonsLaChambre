@@ -40,9 +40,9 @@
     }
   }
   &Icon {
-    display: none;
+    display: none !important;
     @media(--small){
-      display: block;
+      display: block !important;
     }
   }
 }

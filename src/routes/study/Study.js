@@ -27,6 +27,7 @@ const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 class Study extends React.Component {
   constructor(props,context,updater){
     super(props, context, updater);
+    this.tabsContent = {};
     this.state = {index:props.activeIndex };
     this.onTabClick = this.onTabClick.bind(this);
     this._children = {};
@@ -55,6 +56,7 @@ class Study extends React.Component {
   }
 
   onChangeIndex(i){
+    console.log('onChangeIndex!');
     const { index } = this.state;
     if(this.hasNestedSwipeableView()){
       const nestedView = this.currentTab();
@@ -95,7 +97,6 @@ class Study extends React.Component {
 
   tabs(){
     const tabs = this.props.tabs.map((tab,key)=>{
-      console.log('tab.mobileIcon:', tab.mobileIcon);
       const hasIcon = tab.mobileIcon != null;
       const klassName = s.tab + ' ' + (hasIcon ? s.tabWithIcon : '');
       let tabProps = {
@@ -114,6 +115,34 @@ class Study extends React.Component {
     return tabs;
   }
 
+  tabsContent(){
+    const {
+      index,
+    } = this.state;
+    let tabsContent = this.tabsContent;
+
+    return this.props.tabs.map((tab, key)=>{
+      let isActive = index == key;
+      let tabContent = this.tabsContent[key] || {};
+      if(!tabContent.props || tabContent.props['isActive'] != isActive){
+        const props = Object.assign(tab.componentProps || {}, {
+          isActive: isActive,
+          onRef: (ref)=> this._children[key] = ref
+        });
+        tabContent['props'] = props;
+        tabContent['component'] = React.createElement(tab.component, props , null);
+        this.tabsContent[key] = tabContent;
+      }
+      return (
+        <div className={s.innerTab} key={key}>
+          { tabContent['component'] }
+        </div>
+      );
+    });
+  }
+
+
+
   render(){
     const {
       index,
@@ -126,6 +155,7 @@ class Study extends React.Component {
       height: 63,
       lineHeight:'63px'
     };
+
     return (
       <MuiThemeProvider muiTheme={theme}>
         <div>
@@ -134,7 +164,7 @@ class Study extends React.Component {
               className={s.appBar} showMenuIconButton={false}
               title={<Brand/>} titleStyle={BrandStyle}
               onLeftIconButtonTouchTap={ null }>
-              <Tabs className={s.appBarTabs} contentContainerStyle={{ marginTop:0, width:'100%' } } value={ index }>
+              <Tabs className={s.appBarTabs} contentContainerStyle={{ marginTop:0, width:'100%' }} value={ index }>
                 { this.tabs() }
               </Tabs>
               </AppBar>
@@ -142,16 +172,7 @@ class Study extends React.Component {
             className={s.content}
             onChangeIndex={ this.onChangeIndex.bind(this) }
             index={ index }>
-          { this.props.tabs.map((tab, key)=>{
-            const props = Object.assign(tab.componentProps || {}, {
-                isActive: index == key,
-                onRef: (ref)=> this._children[key] = ref
-              });
-            const tabComponent = React.createElement(tab.component, props , null);
-            return <div className={s.innerTab} key={key}>
-              { tabComponent }
-            </div>;
-          })}
+            { this.tabsContent() }
           </BindKeyboardSwipeableViews>
         </div>
       </MuiThemeProvider>

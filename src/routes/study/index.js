@@ -3,7 +3,7 @@ import React from 'react';
 import history from '../../core/history';
 
 import ConfigureContentRoute from './content';
-
+let routes;
 export default {
   path : '/%C3%A9tude',
   children : [
@@ -26,7 +26,7 @@ export default {
     if(!route){
       routeIndex = 0;
     }
-    const routes = await Promise.all(this.children.map((r) => r.action()));
+    routes = (routes && routes.length) ? routes : await Promise.all(this.children.map((r) => r.action()));
     if (!route) {
       route = routes[0];
     }
