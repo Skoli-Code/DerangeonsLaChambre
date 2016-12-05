@@ -8,6 +8,7 @@
  */
 
 import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Layout from '../../components/Layout';
 import Link from '../../components/Link';
@@ -16,6 +17,7 @@ import s from './Home.css';
 function Home() {
   return (
     <Layout>
+      <Helmet title="Acceuil | Dérangeons la Chambre"/>
       <div className={s.root}>
         <div className={s.container}>
           <h1 className={s.title}>Dérangeons la Chambre</h1>
