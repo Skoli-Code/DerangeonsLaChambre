@@ -38,7 +38,6 @@
     "react-helmet": "^3.2.2",
     "react-motion": "^0.4.5",
     "react-showdown": "^1.0.1",
-    "react-sticky": "^5.0.5",
     "react-swipeable-views": "^0.8.1",
     "react-tap-event-plugin": "^2.0.1",
     "sequelize": "3.24.8",
