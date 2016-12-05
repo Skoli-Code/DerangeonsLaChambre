@@ -48,6 +48,7 @@ class D3BallotChart {
       'pointer-events': 'none',
       position: 'absolute',
       'text-align': 'center',
+      'font-size': px(14),
       'vertical-align': 'center',
       opacity: 0,
       width:  px(size.width),
@@ -200,7 +201,7 @@ class D3BallotChart {
     let pad = px(1);
 
     objectStyle($innerSquares, {
-      'border-radius': px(2),
+      'border-radius': px(0),
       position: 'absolute',
       top: pad,
       left: pad,

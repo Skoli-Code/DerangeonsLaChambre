@@ -13,8 +13,7 @@ import ChartConfig from '../config';
 let px = (n)=>`${n}px`;
 
 class D3BallotTreemapChart {
-  config = Object.assign({}, ChartConfig, {
-  });
+  config = Object.assign({}, ChartConfig, );
   constructor(el, props) {
     this.$chart = d3.select(el);
     this.initChart();
