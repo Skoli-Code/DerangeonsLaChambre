@@ -11,7 +11,6 @@ import React, {PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Checkbox from 'rc-checkbox';
-import Sticky from 'react-stickynode';
 // import Portal from 'react-portal';
 
 // internal

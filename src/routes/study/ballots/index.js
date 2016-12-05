@@ -10,6 +10,7 @@ import React from 'react';
 
 import Ballots from './Ballots';
 import fetch from '../../../core/fetch';
+import history from '../../../core/history';
 
 let globBallots;
 
@@ -55,6 +56,7 @@ const render = async(id) => {
 
   let onBallotChange = (index)=>{
     console.log('onBallotChanged !', index);
+    history.push('/%C3%A9tude/scrutins/'+index);
   };
 
   return Object.assign({}, routeParams, {
