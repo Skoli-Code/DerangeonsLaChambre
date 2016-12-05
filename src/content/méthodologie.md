@@ -9,75 +9,30 @@ Liens vers les données brutes (format .xls) :
 
 <table>
   <thead>
-    <tr>
-      <th>Nuance</th>
-      <th>Libellé</th>
-    </tr>
+    <tr><th>Nuance</th><th>Libellé</th></tr>
   </thead>
   <tbody>
-  <tr>
-    <td>EXG</td><td>Extrême gauche</td>
-  </tr>
-  <tr>
-    <td>FG</td><td>Front de Gauche</td>
-  </tr>
-  <tr>
-    <td>SOC</td><td>Parti Socialiste</td>
-  </tr>
-  <tr>
-    <td>RDG</td><td>Parti Radical de Gauche</td>
-  </tr>
-  <tr>
-    <td>DVG</td><td>Divers Gauche</td>
-  </tr>
-  <tr>
-    <td>VEC</td><td>Europe Ecologie Les Vert</td>
-  </tr>
-  <tr>
-    <td>REG</td><td>Régionalistes</td>
-  </tr>
-  <tr>
-    <td>ECO</td><td>Ecologistes</td>
-  </tr>
-  <tr>
-    <td>AUT</td><td>Autres</td>
-  </tr>
-  <tr>
-    <td>CEN</td><td>Le Centre Pour la France</td>
-  </tr>
-  <tr>
-    <td>ALLI</td><td>Alliance Centriste</td>
-  </tr>
-  <tr>
-    <td>PRV</td><td>Parti Radical Valoisien</td>
-  </tr>
-  <tr>
-    <td>NCE</td><td>Nouveau Centre</td>
-  </tr>
-  <tr>
-    <td><i>LR</i></td><td><i>Les Républicain</i></td>
-  </tr>
-  <tr>
-    <td>DVD</td><td>Divers Droite</td>
-  </tr>
-  <tr>
-    <td>FN</td><td>Front National</td>
-  </tr>
-  <tr>
-    <td>EXD</td><td>Extrême Droite</td>
-  </tr>
-  <tr>
-    <td><i>ABS</i></td><td><i>Abstention</i></td>
-  </tr>
-  <tr>
-    <td><i>VID</i></td><td><i>Sièges vides</i></td>
-  </tr>
-  <tr>
-    <td><i>CIT</i></td><td><i>Citoyens</i></td>
-  </tr>
+    <tr><td>EXG</td><td>Extrême gauche</td></tr>
+    <tr><td>FG</td><td>Front de Gauche</td></tr>
+    <tr><td>SOC</td><td>Parti Socialiste</td></tr>
+    <tr><td>RDG</td><td>Parti Radical de Gauche</td></tr>
+    <tr><td>DVG</td><td>Divers Gauche</td></tr>
+    <tr><td>VEC</td><td>Europe Ecologie Les Vert</td></tr>
+    <tr><td>REG</td><td>Régionalistes</td></tr>
+    <tr><td>ECO</td><td>Ecologistes</td></tr>
+    <tr><td>AUT</td><td>Autres</td></tr>
+    <tr><td>CEN</td><td>Le Centre Pour la France</td></tr>
+    <tr><td>ALLI</td><td>Alliance Centriste</td></tr>
+    <tr><td>PRV</td><td>Parti Radical Valoisien</td></tr>
+    <tr><td>NCE</td><td>Nouveau Centre</td></tr>
+    <tr><td><i>LR</i></td><td><i>Les Républicain</i></td></tr>
+    <tr><td>DVD</td><td>Divers Droite</td></tr>
+    <tr><td>FN</td><td>Front National</td></tr>
+    <tr><td>EXD</td><td>Extrême Droite</td></tr>
+    <tr><td><i>ABS</i></td><td><i>Abstention</i></td></tr>
+    <tr><td><i>VID</i></td><td><i>Sièges vides</i></td></tr>
+    <tr><td><i>CIT</i></td><td><i>Citoyens</i></td></tr>
   </tbody>
-
-
 </table>
 
 NB : *En Italique* les éléments modifiés par rapport à la typologie établie par le Ministère de l'Intérieur et en vigueur lors des élections législatives de 2012. (Conformément à la décision du 28 mai 2015, l'*Union pour un Mouvement Populaire* est devenu *Les Républicains*, concernant les nuances *ABS*, *VID*, *CIT*, elles n'existent pas dans la typologie officielle et ont été ajoutées pour les besoins de la simulation.)
