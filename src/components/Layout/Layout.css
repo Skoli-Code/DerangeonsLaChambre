@@ -20,14 +20,14 @@
 html {
   color: #222;
   font-weight: 100;
-  font-size: 1em; /* ~16px; */
+  font-size: 1.3em; /* ~16px; */
   font-family: var(--font-family-base);
   line-height: 1.375; /* ~22px */
 }
 
-a {
+/*a {
   color: #0074c2;
-}
+}*/
 
 /*
  * Remove text-shadow in selection highlight:
