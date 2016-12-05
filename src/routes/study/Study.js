@@ -115,7 +115,7 @@ class Study extends React.Component {
     return tabs;
   }
 
-  tabsContent(){
+  getTabsContent(){
     const {
       index,
     } = this.state;
@@ -172,7 +172,7 @@ class Study extends React.Component {
             className={s.content}
             onChangeIndex={ this.onChangeIndex.bind(this) }
             index={ index }>
-            { this.tabsContent() }
+            { this.getTabsContent() }
           </BindKeyboardSwipeableViews>
         </div>
       </MuiThemeProvider>
