@@ -35,7 +35,9 @@ class Content extends React.Component {
   render(){
     return (
       <Layout>
-        <Helmet title={this.props.title} />
+        { this.props.isActive &&
+          <Helmet title={this.props.title} />
+        }
         <div className={s.root}>
           <div className={s.container}>
             <Markdown content={ this.props.content }/>

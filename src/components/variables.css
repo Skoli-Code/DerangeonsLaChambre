@@ -17,6 +17,9 @@
 
   --primary-color: #dccba7;
   --gray: #d3d3d3;
+
+  --light-gray: #FAFAFA; /* gray500 */
+  --dark-gray: #212121; /* gray900 */
   --black: #444;
 
   /*
@@ -24,7 +27,6 @@
    * ======================================================================== */
 
   --max-content-width: 1000px;
-
   --left-content-width: 80%;
   --right-content-width: 20%;
 

@@ -7,6 +7,7 @@ import SwipeableViews from 'react-swipeable-views';
 import bindKeyboard from 'react-swipeable-views/lib/bindKeyboard';
 
 // MUI
+import {indigo500} from 'material-ui/styles/colors';
 import AppBar from 'material-ui/AppBar/AppBar';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
@@ -164,7 +165,7 @@ class Study extends React.Component {
               className={s.appBar} showMenuIconButton={false}
               title={<Brand/>} titleStyle={BrandStyle}
               onLeftIconButtonTouchTap={ null }>
-              <Tabs className={s.appBarTabs} contentContainerStyle={{ marginTop:0, width:'100%' }} value={ index }>
+              <Tabs className={s.appBarTabs} inkBarStyle={{backgroundColor:theme.palette.primary2Color, marginTop: 0}} contentContainerStyle={{ marginTop:0, width:'100%' }} value={ index }>
                 { this.tabs() }
               </Tabs>
               </AppBar>
