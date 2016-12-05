@@ -53,8 +53,11 @@ const render = async(index) => {
     index = 0;
   }
 
-  let onBallotChange = (index)=>{
-    history.push('/%C3%A9tude/scrutins/'+index);
+  let onBallotChange = (i)=>{
+
+    const path = '/%C3%A9tude/scrutins/'+i;
+    console.log('onBallotChange',i, 'path: ', path);
+    history.push(path);
   };
 
   return Object.assign({}, routeParams, {

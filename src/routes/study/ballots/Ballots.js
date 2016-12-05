@@ -179,7 +179,7 @@ class Ballots extends React.Component {
             <label>
               <Checkbox checked={compareToActualResults}
               onChange={ this.onCheckboxToggle.bind(this) }/>
-              Comparer avec l'assemblée actuelle
+              Assemblée actuelle
             </label>
           </div>
         )}
@@ -191,12 +191,16 @@ class Ballots extends React.Component {
     return (
       <Portal isOpened={this.props.isActive}>
       <div className={s.arrowNavigation}>
-        <div className={s.previousArrow} onClick={ this.onPreviousClicked.bind(this) }>
+        { !this.atFirstTab() &&
+          <div className={s.previousArrow} onClick={ this.onPreviousClicked.bind(this) }>
           <FontIcon className="material-icons">chevron_left</FontIcon>
-        </div>
+          </div>
+        }
+        { !this.atLastTab() &&
         <div className={s.nextArrow} onClick={ this.onNextClicked.bind(this) }>
           <FontIcon className="material-icons">chevron_right</FontIcon>
         </div>
+        }
       </div>
       </Portal>
     );

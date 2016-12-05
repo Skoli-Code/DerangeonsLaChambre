@@ -78,7 +78,7 @@ class Study extends React.Component {
     }
     // we defer the callback to ensure it won't be fired when animating.
 
-    if(this.props.onChangeIndex){
+    if(this.props.onChangeIndex && !this.hasNestedSwipeableView()){
       _.defer(()=>{
         _.delay(()=>{
           const { index } = this.state;
