@@ -135,4 +135,3 @@ Il s’agit ici d’une fiction, les données sont aléatoires et n’ont aucune
 Les données sont visualisées selon un tri décroissant, le contingent le plus important est placé en haut à gauche, selon le sens de la lecture.
 La position de gauche à droite est déterminée par la liste de nuances du Ministère de l’Intérieur.
 L’indication “Majorité” spécifie le parti ayant la majorité simple, ou la majorité absolue.
-**Les couleurs**
