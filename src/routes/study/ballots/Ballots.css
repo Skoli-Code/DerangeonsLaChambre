@@ -9,23 +9,82 @@
 
 @import '../../../components/common.css';
 
+:root {
+  --pagination-width: 14px;
+}
+
 .pagination {
-  background-color: #bbb;
+  background-color: var(--gray);
   height: 40px;
   line-height: 40px;
 
-  &Item {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
+  .previousArrow, .nextArrow, &Item {
     cursor: pointer;
+    display: inline-block;
+    background: white;
+    text-align: center;
     background-color: white;
-    color: #333;
     margin-right: 10px;
-    &--active {
-      background-color: var(--primary-color);
+    &--active, &:hover {
+      background-color: var(--dark-gray);
+    }
+  }
+
+  &Item {
+    width: var(--pagination-width);
+    height: var(--pagination-width);
+    border-radius: var(--pagination-width/2);
+  }
+  .previousArrow, .nextArrow {
+    height: 24px;
+    line-height: 24x;
+    border-radius: 12px;
+  }
+}
+
+.arrowNavigation {
+  position: fixed;
+  top: 50%;
+  left:0;
+  right: 0;
+  transform: translate(0, -50%);
+
+  .previousArrow, .nextArrow {
+    cursor: pointer;
+    position: absolute;
+    height: 150px;
+    width: 80px;
+    border: 1px solid var(--gray);
+    background-color: var(--light-gray);
+    text-align: center;
+    &:hover {
+      background-color: var(--gray);
+    }
+    span {
+      font-size: 50px !important;
+      line-height: 150px !important;
+    }
+  }
+
+  .previousArrow {
+    transition: left 350ms ease;
+    left: -15px;
+    border-left: 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    &:hover {
+      left: 0;
+    }
+  }
+
+  .nextArrow {
+    transition: right 350ms ease;
+    border-right: 0;
+    right: -15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    &:hover {
+      right: 0;
     }
   }
 }

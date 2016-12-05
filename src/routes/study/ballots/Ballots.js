@@ -1,17 +1,10 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 import SwipeableViews from 'react-swipeable-views';
 import React, {PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Checkbox from 'rc-checkbox';
-// import Portal from 'react-portal';
+import FontIcon from 'material-ui/FontIcon';
+import Portal from 'react-portal';
 
 // internal
 import {BallotPropTypes, PartyPropTypes} from '../../../components/Charts';
@@ -132,9 +125,15 @@ class Ballots extends React.Component {
     return (
       <div className={s.pagination}>
         <div className={s.container}>
+          <div className={s.previousArrow+' '+s['visible-touch']} onClick={ this.onPreviousClicked.bind(this) }>
+            <FontIcon className="material-icons">chevron_left</FontIcon>
+          </div>
         {ballots.map((ballot, key) => {
-          return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }>{key+1}</div>;
+          return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }></div>;
         })}
+          <div className={s.nextArrow+' '+s['visible-touch']} onClick={ this.onNextClicked.bind(this) }>
+            <FontIcon className="material-icons">chevron_right</FontIcon>
+          </div>
         </div>
       </div>
     );
@@ -188,6 +187,21 @@ class Ballots extends React.Component {
     );
   }
 
+  arrowNavigation(){
+    return (
+      <Portal isOpened={this.props.isActive}>
+      <div className={s.arrowNavigation}>
+        <div className={s.previousArrow} onClick={ this.onPreviousClicked.bind(this) }>
+          <FontIcon className="material-icons">chevron_left</FontIcon>
+        </div>
+        <div className={s.nextArrow} onClick={ this.onNextClicked.bind(this) }>
+          <FontIcon className="material-icons">chevron_right</FontIcon>
+        </div>
+      </div>
+      </Portal>
+    );
+  }
+
   render() {
     const {index, compareToActualResults} = this.state;
     const {
@@ -209,6 +223,7 @@ class Ballots extends React.Component {
           </div>
 
           <div className={s.content+' '+s['hidden-touch']}>
+            { this.arrowNavigation() }
             <div className={s['content--left']}>
               <BallotChart data={ _.cloneDeep(ballotData) } onPartyHover={ (party)=>this.onPartyHover(party) }/>
             </div>
@@ -227,12 +242,17 @@ class Ballots extends React.Component {
             if(!this.showBallot(key)){
               return;
             } else {
+              const isActive = key == index && this.props.isActive;
               const chartData = {
                 results: (compareToActualResults ? currentBallot : ballot).results,
                 parties: parties
               };
+              // console.log(ballot.title, 'isActive:', key == index, this.props.isActive);
               return (
               <div key={key} className={s.container + ' ' + s.content}>
+                {  isActive &&
+                  <Helmet title={ballot.title}/>
+                }
                 <div className={s['content--left']}>
                   <div className={s['visible-touch']}>
                     <h1>{ ballot.title }</h1>
