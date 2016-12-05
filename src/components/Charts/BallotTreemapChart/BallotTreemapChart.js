@@ -69,7 +69,6 @@ class D3BallotTreemapChart {
 
   }
   backgroundColor(result){
-    console.log(result);
     let color = (result.data.party||{}).color;
     if(color == null){
       color = 'white';
