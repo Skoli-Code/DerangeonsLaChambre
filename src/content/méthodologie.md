@@ -31,8 +31,7 @@ Liens vers les données brutes (format .xls) :
     <td>DVG</td><td>Divers Gauche</td>
   </tr>
   <tr>
-    <td>VEC</td>
-    <td>Europe Ecologie Les Vert</td>
+    <td>VEC</td><td>Europe Ecologie Les Vert</td>
   </tr>
   <tr>
     <td>REG</td><td>Régionalistes</td>
@@ -56,7 +55,7 @@ Liens vers les données brutes (format .xls) :
     <td>NCE</td><td>Nouveau Centre</td>
   </tr>
   <tr>
-    <td>*LR*</td><td>Les Républicain</td>
+    <td><i>LR</i></td><td><i>Les Républicain</i></td>
   </tr>
   <tr>
     <td>DVD</td><td>Divers Droite</td>
@@ -68,13 +67,13 @@ Liens vers les données brutes (format .xls) :
     <td>EXD</td><td>Extrême Droite</td>
   </tr>
   <tr>
-    <td>*ABS*</td><td>*Abstention*</td>
+    <td><i>ABS</i></td><td><i>Abstention</i></td>
   </tr>
   <tr>
-    <td>*VID*</td><td>Sièges vides</td>
+    <td><i>VID</i></td><td><i>Sièges vides</i></td>
   </tr>
   <tr>
-    <td>*CIT*</td><td>*Citoyens*</td>
+    <td><i>CIT</i></td><td><i>Citoyens</i></td>
   </tr>
   </tbody>
 
