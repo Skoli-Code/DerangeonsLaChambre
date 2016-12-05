@@ -7,9 +7,9 @@ import ConfigureContentRoute from './content';
 export default {
   path : '/%C3%A9tude',
   children : [
-    ConfigureContentRoute('introduction','Introduction', 0),
+    ConfigureContentRoute('introduction','Intro', 0),
     require('./ballots').default,
-    ConfigureContentRoute('conclusion','Conclusion', 2),
+    ConfigureContentRoute('conclusion','Bilan', 2),
     ConfigureContentRoute('à-propos','À propos', 3),
     ConfigureContentRoute('méthodologie','Méthodologie', 3),
     // ConfigureContentRoute('à-propos',3)

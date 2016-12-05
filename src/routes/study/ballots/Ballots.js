@@ -64,6 +64,7 @@ class Ballots extends React.Component {
   }
 
   goNext(){
+    console.log('Ballots.goNext');
     const { index } = this.state;
     this.setState({
       index: index + 1
@@ -71,6 +72,7 @@ class Ballots extends React.Component {
   }
 
   goPrevious(){
+    console.log('Ballots.goPrevious');
     const { index } = this.state;
     this.setState({
       index: index - 1
@@ -128,6 +130,13 @@ class Ballots extends React.Component {
     );
   }
 
+  showBallot(i){
+    const {
+      index
+    } = this.state;
+    return i == index || i == (index - 1) || i == (index + 1);
+  }
+
   legend(ballot){
     const {index, compareToActualResults} = this.state;
     const {ballots, parties} = this.props;
@@ -182,7 +191,7 @@ class Ballots extends React.Component {
 
     return (
       <div>
-        <Sticky>{ this.pagination(ballots) }</Sticky>
+        { this.pagination(ballots) }
         <div className={s.container}>
           <div className={s['hidden-touch']}>
             <h1>{ currentBallot.title }</h1>
@@ -201,14 +210,18 @@ class Ballots extends React.Component {
             </div>
           </div>
         </div>
-        <SwipeableViews index={ index }
+        <SwipeableViews
+          index={ index }
           onChangeIndex={ this.onChangeIndex.bind(this) }>
           {ballots.map((ballot, key) => {
-            const chartData = {
+            if(!this.showBallot(key)){
+              return;
+            } else {
+              const chartData = {
                 results: (compareToActualResults ? currentBallot : ballot).results,
                 parties: parties
-            };
-            return (
+              };
+              return (
               <div key={key} className={s.container + ' ' + s.content}>
                 <div className={s['content--left']}>
                   <div className={s['visible-touch']}>
@@ -222,6 +235,7 @@ class Ballots extends React.Component {
                 </div>
               </div>
             );
+            }
           })}
         </SwipeableViews>
       </div>

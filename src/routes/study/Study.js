@@ -99,7 +99,13 @@ class Study extends React.Component {
     const tabs = this.props.tabs.map((tab,key)=>{
       return <Tab onClick={ this.onTabClick.bind(this, key) } style={ {height: 62 } } key={key} value={key} label={tab.title}/>;
     });
-
+    const BrandStyle = {
+      flex:null,
+      width:100,
+      textAlign: 'center',
+      height: 63,
+      lineHeight:'63px'
+    };
     return (
       <MuiThemeProvider muiTheme={theme}>
         <div>
@@ -108,7 +114,7 @@ class Study extends React.Component {
               className={s.appBar}
               showMenuIconButton={false}
               title={<Brand/>}
-              titleStyle={ {flex:null, width:100, textAlign: 'center'} }
+              titleStyle={BrandStyle}
               onLeftIconButtonTouchTap={ null }
               // iconStyleRight={ {flexGrow: 10} }
               // iconElementRight={
@@ -131,7 +137,7 @@ class Study extends React.Component {
                 onRef: (ref)=> this._children[key] = ref
               });
             const tabComponent = React.createElement(tab.component, props , null);
-            return <div key={key}>
+            return <div className={s.innerTab} key={key}>
               { tabComponent }
             </div>;
           })}
