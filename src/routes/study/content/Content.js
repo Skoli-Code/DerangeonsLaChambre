@@ -11,7 +11,8 @@ import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Layout from '../../../components/Layout';
-import Markdown from '../../../components/Markdown';
+// import Markdown from '../../../components/Markdown';
+import Markdown from 'react-markdown';
 import s from './Content.css';
 import { View, ViewPropTypes } from '../../../components/View';
 
@@ -40,7 +41,7 @@ class Content extends React.Component {
         }
         <div className={s.root}>
           <div className={s.container}>
-            <Markdown content={ this.props.content }/>
+            <Markdown source={ this.props.content }/>
           </div>
         </div>
       </Layout>

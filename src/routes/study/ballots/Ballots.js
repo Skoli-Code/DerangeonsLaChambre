@@ -5,10 +5,11 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Checkbox from 'rc-checkbox';
 import FontIcon from 'material-ui/FontIcon';
 import Portal from 'react-portal';
+import Markdown from 'react-markdown';
 
 // internal
 import {BallotPropTypes, PartyPropTypes} from '../../../components/Charts';
-import Markdown from '../../../components/Markdown';
+// import Markdown from '../../../components/Markdown';
 import Layout from '../../../components/Layout';
 import { BallotChart, BallotTreemapChart, AssemblyChart } from '../../../components/Charts';
 import s from './Ballots.css';
@@ -264,7 +265,7 @@ class Ballots extends React.Component {
                     <AssemblyChart data={ _.cloneDeep(chartData) }/>
                     { this.legend(ballot) }
                   </div>
-                  <Markdown content={ ballot.content }/>
+                  <Markdown source={ ballot.content }/>
                 </div>
               </div>
             );

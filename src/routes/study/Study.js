@@ -28,8 +28,12 @@ const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 class Study extends React.Component {
   constructor(props,context,updater){
     super(props, context, updater);
+    const modals = this.initModals();
     this.tabsContent = {};
-    this.state = {index:props.activeIndex };
+    this.state = Object.assign({
+      index:props.activeIndex,
+      modals
+    });
     this.onTabClick = this.onTabClick.bind(this);
     this._children = {};
   }
@@ -45,6 +49,13 @@ class Study extends React.Component {
     }))
   };
 
+  initModals(){
+    this.modals = this.props.tabs.filter(tab=>tab.isModal);
+    return this.modals.map(modal=>{
+      return { [modal.key]: false };
+    });
+  }
+
   currentTab(){
     const { index } = this.state;
     return this._children[index];
@@ -57,7 +68,7 @@ class Study extends React.Component {
   }
 
   openModal(tab){
-
+    this.setState({ [tab.key]: true });
   }
 
   onChangeIndex(i){
