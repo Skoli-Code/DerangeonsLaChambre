@@ -1,6 +1,5 @@
 // npm deps
 import * as _ from 'lodash';
-
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import SwipeableViews from 'react-swipeable-views';
@@ -14,8 +13,9 @@ import FontIcon from 'material-ui/FontIcon';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // internal deps
-import theme from '../../components/theme';
-import Brand from '../../components/Brand';
+import theme  from '../../components/theme';
+import Brand  from '../../components/Brand';
+import Footer from '../../components/Footer';
 import Presentation from '../../components/Presentation';
 
 import Ballots from './ballots/Ballots';
@@ -56,6 +56,10 @@ class Study extends React.Component {
     return component.hasSwipeableViews();
   }
 
+  openModal(tab){
+
+  }
+
   onChangeIndex(i){
     const { index } = this.state;
     if(this.hasNestedSwipeableView()){
@@ -89,9 +93,14 @@ class Study extends React.Component {
   }
 
   onTabClick(i){
-    this.setState({ index: i });
-    if(this.props.onChangeIndex){
-      this.props.onChangeIndex(i);
+    const tab = this.props.tabs[i];
+    if(tab.isModal){
+      this.openModal(tab);
+    } else {
+      this.setState({ index: i });
+      if(this.props.onChangeIndex){
+        this.props.onChangeIndex(i);
+      }
     }
   }
 
@@ -120,8 +129,8 @@ class Study extends React.Component {
       index,
     } = this.state;
     let tabsContent = this.tabsContent;
-
-    return this.props.tabs.map((tab, key)=>{
+    let tabs = this.props.tabs.filter(tab=>!tab.isModal);
+    return tabs.map((tab, key)=>{
       let isActive = index == key;
       let tabContent = this.tabsContent[key] || {};
       if(!tabContent.props || tabContent.props['isActive'] != isActive){
@@ -141,13 +150,12 @@ class Study extends React.Component {
     });
   }
 
-
-
   render(){
-    const {
-      index,
-    } = this.state;
-
+    const {index,} = this.state;
+    const InkBarStyle = {
+      backgroundColor:theme.palette.primary2Color,
+      marginTop: 0
+    };
     const BrandStyle = {
       flex:null,
       width:100,
@@ -158,22 +166,23 @@ class Study extends React.Component {
 
     return (
       <MuiThemeProvider muiTheme={theme}>
-        <div>
+
+        <div class={s.root}>
           <Presentation/>
-          <AppBar
-              className={s.appBar} showMenuIconButton={false}
-              title={<Brand/>} titleStyle={BrandStyle}
+          <AppBar className={s.appBar} showMenuIconButton={false}
+              title={<Brand/>}  titleStyle={BrandStyle}
               onLeftIconButtonTouchTap={ null }>
-              <Tabs className={s.appBarTabs} inkBarStyle={{backgroundColor:theme.palette.primary2Color, marginTop: 0}} contentContainerStyle={{ marginTop:0, width:'100%' }} value={ index }>
+              <Tabs className={s.appBarTabs} inkBarStyle={InkBarStyle}
+                    contentContainerStyle={{ marginTop:0, width:'100%' }} value={ index }>
                 { this.tabs() }
               </Tabs>
-              </AppBar>
-          <BindKeyboardSwipeableViews
-            className={s.content}
+          </AppBar>
+          <BindKeyboardSwipeableViews className={s.content}
             onChangeIndex={ this.onChangeIndex.bind(this) }
             index={ index }>
             { this.getTabsContent() }
           </BindKeyboardSwipeableViews>
+          <Footer/>
         </div>
       </MuiThemeProvider>
     );

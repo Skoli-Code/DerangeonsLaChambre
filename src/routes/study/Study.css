@@ -4,6 +4,7 @@
 :root {
 
 }
+
 .appBar {
   position: fixed !important;
   top: 0;
@@ -49,6 +50,7 @@
 .content {
   overflow: hidden;
   padding-top: 62px;
+  padding-bottom: 62px;
   > div:first-child {
     width: 100%;
   }

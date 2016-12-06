@@ -11,8 +11,7 @@ export default {
     require('./ballots').default,
     ConfigureContentRoute({ path: 'conclusion', title: 'Bilan', key: 2}),
     ConfigureContentRoute({ path: 'à-propos', title: 'À propos', key: 3, mobileIcon:'info'}),
-    ConfigureContentRoute({ path: 'méthodologie',title: 'Méthodologie', key: 4, mobileIcon:'description'}),
-    // ConfigureContentRoute('à-propos',3)
+    ConfigureContentRoute({ path: 'méthodologie',title: 'Méthodologie', key: 4, mobileIcon:'description', isModal:true}),
   ],
   onChangeIndex(index){
     if(typeof index != typeof 0 || !history){ return; }
@@ -29,13 +28,16 @@ export default {
     }
     routes = (routes && routes.length) ? routes : await Promise.all(this.children.map((r) => r.action()));
     route = routes[routeIndex];
+
     if(trueRoute){
       routes[routeIndex] = trueRoute;
     }
+
     return {
       title: route.title,
       component: <Study onChangeIndex={this.onChangeIndex.bind(this)}
         tabs={routes}
-        activeIndex={routeIndex}/>}
+        activeIndex={routeIndex}/>
+    }
   }
 };

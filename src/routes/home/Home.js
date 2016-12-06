@@ -10,9 +10,11 @@
 import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import RaisedButton from 'material-ui/RaisedButton';
 import Layout from '../../components/Layout';
 import Link from '../../components/Link';
 import s from './Home.css';
+// import theme from '../../components/theme';
 
 function Home() {
   return (
@@ -23,7 +25,10 @@ function Home() {
           <h1 className={s.title}>Dérangeons la Chambre</h1>
           <h2 className={s.subtitle}>Assemblée Nationale : et si on changeait les règles du jeu ?</h2>
 
-          <Link to="/%C3%A9tude/introduction" className={s.btn}>Dérangez la chambre</Link>
+          <Link to="/%C3%A9tude/introduction">
+            <RaisedButton label="Dérangez la chambre"
+              primary={true} style={{background:'none'}} overlayStyle={{ lineHeight: '30px'}}/>
+          </Link>
         </div>
       </div>
     </Layout>
