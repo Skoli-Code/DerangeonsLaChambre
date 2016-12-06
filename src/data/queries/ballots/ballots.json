@@ -28,7 +28,7 @@
   }]
 }, {
   "id": "A2",
-  "title": "Chambre 'à l'anglaise'",
+  "title": "Chambre \"à l'anglaise\"",
   "subtitle": "Scrutin uninominal majoritaire à 1 tour",
   "legend_title": "Scrutin majoritaire uninominal",
   "order": 2,
@@ -56,7 +56,7 @@
   }]
 }, {
   "id": "A3",
-  "title": "Chambre 'à l'allemande'",
+  "title": "Chambre \"à l'allemande\"",
   "subtitle": "Scrutin proportionnel personnalisé",
   "legend_title": "Système mixte à finalité proportionnelle (uninominal majoritaire à un tour et proporitonnelle plurinominale avec sièges 'supplémentaires')",
   "order": 3,
@@ -84,9 +84,9 @@
   }]
 }, {
   "id": "A4",
-  "title": "Chambre 'à l'italienne'",
+  "title": "Chambre \"à l'italienne\"",
   "subtitle": "Scrutin proportionnel personnalisé",
-  "legend_title": "Scrutin proportionelle plurinominal à circonscription nationale avec prime au parti majoritaire (quorum d'éligibilité à 3%)",
+  "legend_title": "Scrutin proportionnel plurinominal à circonscription nationale avec prime au parti majoritaire (quorum d'éligibilité à 3%)",
   "order": 4,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -112,9 +112,9 @@
   }]
 }, {
   "id": "B6",
-  "title": "La plus 'représentative' (l'hollandaise) ",
-  "subtitle": "Scrutin à la proportionelle par circonscription nationale",
-  "legend_title": "Scrutin à la proportionelle plurinominale intégrale par circonscription nationale (méthode du quotient de Hare, pas de quorum d'éligibilité)",
+  "title": "La \"plus représentative\" (l'hollandaise) ",
+  "subtitle": "Scrutin à la proportionnelle par circonscription nationale",
+  "legend_title": "Scrutin à la proportionnelle plurinominale intégrale par circonscription nationale (méthode du quotient de Hare, pas de quorum d'éligibilité)",
   "order": 6,
   "results": [
     { "party": "EXG", "seats": 6 },
@@ -140,9 +140,9 @@
   }]
 }, {
   "id": "A5",
-  "title": "Chambre ' à l'espagnole'",
-  "subtitle": "Scrutin à la proportionelle par circonscription départementale",
-  "legend_title": "Scrutin à la proportionelle plurinominale par circonscription départementale (méthode de Hondt, quorum fixé à 3% par département)",
+  "title": "Chambre \"à l'espagnole\"",
+  "subtitle": "Scrutin à la proportionnelle par circonscription départementale",
+  "legend_title": "Scrutin à la proportionnelle plurinominale par circonscription départementale (méthode de Hondt, quorum fixé à 3% par département)",
   "order": 5,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -196,7 +196,7 @@
   }]
 }, {
   "id": "C7",
-  "title": "Le 'premier parti de France'",
+  "title": "Le \"premier parti de France\"",
   "subtitle": "Si l'abstention était un parti",
   "legend_title": "Scrutin majoritaire uninominal à deux tours dans lequel l'abstention compte comme un parti politique",
   "order": 7,
@@ -224,7 +224,7 @@
   }]
 }, {
   "id": "C9",
-  "title": "Chambre vide, majorité silencieuse",
+  "title": "Chambre vide, \"majorité silencieuse\"",
   "subtitle": "A la majorité des inscrits",
   "legend_title": "Scrutin uninominal à deux tours à la majorité des inscrits ",
   "order": 9,
@@ -252,7 +252,7 @@
   }]
 }, {
   "id": "C10",
-  "title": "Assemblée 'athénienne'",
+  "title": "Assemblée \"athénienne\"",
   "subtitle": "Tirage au sort",
   "legend_title": "Stochocratie",
   "order": 10,
