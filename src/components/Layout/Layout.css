@@ -24,6 +24,14 @@ html {
   line-height: 1.375; /* ~22px */
 }
 
+a,a:link, a:visited {
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: color(var(--primary-color) lightness(25%));
+}
+
 /*a {
   color: #0074c2;
 }*/
