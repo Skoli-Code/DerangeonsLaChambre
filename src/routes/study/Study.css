@@ -50,7 +50,6 @@
 .content {
   overflow: hidden;
   padding-top: 62px;
-  padding-bottom: 62px;
   > div:first-child {
     width: 100%;
   }
