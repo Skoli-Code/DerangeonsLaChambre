@@ -19,11 +19,11 @@ import s from './Home.css';
 function Home() {
   return (
     <Layout>
-      <Helmet title="Acceuil | Dérangeons la Chambre"/>
+      <Helmet title="Accueil | Dérangeons la Chambre"/>
       <div className={s.root}>
         <div className={s.container}>
           <h1 className={s.title}>Dérangeons la Chambre</h1>
-          <h2 className={s.subtitle}>Assemblée Nationale : et si on changeait les règles du jeu ?</h2>
+          <h2 className={s.subtitle}>Assemblée Nationale : si on changeait les règles du jeu ?</h2>
 
           <Link to="/%C3%A9tude/introduction">
             <RaisedButton label="Dérangez la chambre"
