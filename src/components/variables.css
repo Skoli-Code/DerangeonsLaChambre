@@ -47,5 +47,6 @@
   --screen-lg-min: 1200px; /* Large screen / wide desktop */
 
   @custom-media --desktop (min-width: 1200px);
-  @custom-media --small (max-width: 1200px);
+  @custom-media --small (max-width: 992px);
+  @custom-media --xsmall (max-width: 600px);
 }

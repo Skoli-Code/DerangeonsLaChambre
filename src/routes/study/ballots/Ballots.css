@@ -44,27 +44,49 @@
     }
   }
   .previousArrow, .nextArrow {
-    background-color: var(--dark-gray);
     display: none !important;
-    height: 24px;
-    line-height: 24px;
-    border-radius: 12px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
     position: relative;
-    bottom: -5px;
+    bottom: -2px;
+    background-color: var(--light-gray);
+    border: 1px solid var(--gray);
 
     &:hover {
-      background-color: color(var(--dark-gray) lightness(75%));
+      background-color: var(--gray);
       span {
-        color: var(--black) !important;
+        color: white !important;
       }
     }
+
     span {
-      color: white !important;
+      color: var(--black) !important;
     }
 
     @media(--small) {
       display: inline-block !important;
     }
+  }
+
+  @media(--xsmall){
+    &Item, .previousArrow, .nextArrow {
+      margin-right: 7px;
+    }
+
+    &Item {
+      width: var(--pagination-width - 5);
+      height: var(--pagination-width - 5);
+      border-radius: var((--pagination-width - 5)/2);
+    }
+
+    .previousArrow, .nextArrow {
+
+    }
+    .container {
+      padding: 0;
+    }
+
   }
 }
 

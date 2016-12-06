@@ -125,14 +125,14 @@ class Ballots extends React.Component {
       <div className={s.pagination}>
         <div className={s.container}>
         { !this.atFirstTab() && <div className={s.previousArrow+' '+s['visible-touch']} onClick={ this.onPreviousClicked.bind(this) }>
-            <FontIcon className="material-icons">chevron_left</FontIcon>
+            <FontIcon style={{height:20, width: 20, fontSize:20}} className="material-icons">chevron_left</FontIcon>
           </div>
         }
         {ballots.map((ballot, key) => {
           return <div key={key} className={ this.paginationItemClass(key) } onClick={ this.setIndex.bind(this, key) }></div>;
         })}
         { !this.atLastTab() && <div className={s.nextArrow+' '+s['visible-touch']} onClick={ this.onNextClicked.bind(this) }>
-            <FontIcon className="material-icons">chevron_right</FontIcon>
+            <FontIcon style={{height:20, width: 20, fontSize:20}} className="material-icons">chevron_right</FontIcon>
           </div>
         }
         </div>
