@@ -8,16 +8,21 @@
  */
 
 import React, { PropTypes } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Layout.css';
+import theme from '../theme';
 import Footer from '../Footer';
 
 function Layout({ children }) {
   return (
-    <div>
-      {children}
-    </div>
+    <MuiThemeProvider muiTheme={theme}>
+      <div>
+        {children}
+      </div>
+    </MuiThemeProvider>
   );
 }
 

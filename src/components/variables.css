@@ -9,13 +9,19 @@
 
 :root {
   /*
+   * Z-Indexes
+   */
+  --z-index-footer: 100;
+  /*
    * Typography
    * ======================================================================== */
 
   --font-family-base: 'Lato', sans-serif;
   --font-family-brand: 'Josefin Slab', serif;
 
-  --primary-color: #dccba7;
+  --blue: rgb(33, 150, 243);
+
+  --primary-color: var(--blue);
   --gray: #d3d3d3;
 
   --light-gray: #FAFAFA; /* gray500 */

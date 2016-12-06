@@ -10,8 +10,13 @@
 @import '../variables.css';
 
 .root {
-  background: #333;
-  color: #fff;
+  background: white;
+  color: var(--black);
+  position: fixed;
+  bottom: 0;
+  left:0;
+  right:0;
+  z-index: var(--z-index-footer);
 }
 
 .container {
@@ -22,16 +27,16 @@
 }
 
 .text {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .textMuted {
   composes: text;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .spacer {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .text,
@@ -43,10 +48,10 @@
 .link,
 .link:active,
 .link:visited {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
 }
 
 .link:hover {
-  color: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);
 }

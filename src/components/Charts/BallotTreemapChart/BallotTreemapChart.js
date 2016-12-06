@@ -85,6 +85,7 @@ class D3BallotTreemapChart {
     let leavesTitle = (r)=>`${r.data.party.name}\n${r.value} sièges`;
     let leavesStyle = ($leaves)=>{
       objectStyle($leaves, {
+        transition: 'left 350ms ease,top 350ms ease,width 350ms,height 350ms',
         left:       (d)=>px(d.x0),
         top:        (d)=>px(d.y0),
         width:      (d)=>px(d.x1-d.x0),
