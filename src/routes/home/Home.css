@@ -10,11 +10,10 @@
 @import '../../components/common.css';
 
 .root {
-  background-image: url('../../public/cover.jpg');
-  background-size: cover;
   padding-left: 20px;
   padding-right: 20px;
   position: absolute;
+  overflow: hidden;
   top: 0;
   left: 0;
   right: 0;
@@ -24,7 +23,18 @@
   .btn {
     text-shadow: none;
   }
-  &:before {
+}
+
+.backgroundHolder {
+  background-image: url('../../public/cover.jpg');
+  background-size: cover;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  filter: blur(3px);
+  /*&:before {
     content: ' ';
     position: absolute;
     top: 0;
@@ -32,13 +42,13 @@
     right: 0;
     bottom: 0;
     background: rgba(0,0,0,0.2);
-  }
+  }*/
 }
 
 .container {
   margin: 0 auto;
   padding: 0 0 40px;
-  max-width: var(--max-content-width);
+  width: 100%;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -48,8 +58,56 @@
 
 .title {
   font-size: 4em;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .subtitle {
+  margin-top: 20px;
   font-size: 2em;
+  margin-bottom: 50px;
+}
+
+.logo {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media(--medium){
+  }
+
+  @media(--small){
+    height: 200px;
+    .title {
+      font-size: 2.5em;
+    }
+    .subtitle {
+      font-size:1.5em;
+      margin-bottom: 10px;
+    }
+    svg {
+      width: 300px !important;
+    }
+  }
+
+  @media(--xsmall){
+    .title {
+      font-size: 1.5em;
+    }
+    .subtitle {
+      font-size:1.1em;
+      margin-bottom: 10px;
+    }
+    height: 150px;
+    svg {
+      width: 250px !important;
+    }
+  }
 }

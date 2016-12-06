@@ -13,6 +13,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import RaisedButton from 'material-ui/RaisedButton';
 import Layout from '../../components/Layout';
 import Link from '../../components/Link';
+import {Logo} from '../../components/Pictos';
 import s from './Home.css';
 // import theme from '../../components/theme';
 
@@ -21,7 +22,12 @@ function Home() {
     <Layout>
       <Helmet title="Accueil | Dérangeons la Chambre"/>
       <div className={s.root}>
+        <div className={s.backgroundHolder}></div>
         <div className={s.container}>
+          <div className={s.logo}>
+            <Logo style={{width:500, height: 'auto'}}/>
+          </div>
+
           <h1 className={s.title}>Dérangeons la Chambre</h1>
           <h2 className={s.subtitle}>Assemblée Nationale : si on changeait les règles du jeu ?</h2>
 
