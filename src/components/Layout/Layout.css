@@ -19,7 +19,7 @@
 html {
   color: #222;
   font-weight: 100;
-  font-size: 1.3em; /* ~16px; */
+  font-size: 1.2em;
   font-family: var(--font-family-base);
   line-height: 1.375; /* ~22px */
 }
