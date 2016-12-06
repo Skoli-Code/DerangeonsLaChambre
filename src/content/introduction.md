@@ -20,8 +20,11 @@ Mais passons à l’illustration pratique: les élections législatives de 2012.
 
 Le lecteur notera que simuler ce qu’il se serait passé avec d’autres modes de scrutin n’est bien sûr pas une méthode dénuée de biais. Le vote est en partie déterminé par le mode de scrutin, et rien ne garantit que chaque électeur aurait exprimé le même comportement électoral dans un système différent  (le vote “utile” dans la règle majoritaire à deux tours n’est plus utile dans d’autres systèmes, et vice versa). Mais en dehors de ce problème, l'exercice reste fiable.
 
-**Raul Magni-Berton**
-
-[Professeur à Sciences-Po Grenoble](http://www.sciencespo-grenoble.fr/membres/magni-berton-raul/)
-
-Décembre 2016
+<p style="text-align:right">
+  <b>Raul Magni-Berton</b> <br/>
+  <a href="http://www.sciencespo-grenoble.fr/membres/magni-berton-raul/"
+     rel="nofollow" target="_blank">
+     Professeur à Sciences-Po Grenoble
+  </a><br/>
+  Décembre 2016
+</p>
