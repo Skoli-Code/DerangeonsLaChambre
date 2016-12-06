@@ -6,8 +6,41 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: white;
+  background: rgba(255, 255,255,0.8);
   color: var(--black);
-  &__content {
+  z-index: var(--z-index-presentation);
+  cursor: pointer;
+  transition: bottom 0.8s ease, top 0.8s ease;
+
+  &--hidden {
+      top: -9999px;
+      bottom: 9999px;
   }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    width: 70%;
+    left: 50%;
+    margin: auto;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    @media(--small){
+      width: 100%;
+      padding: 20px;
+    }
+  }
+}
+
+.lead {
+  text-shadow: 0 0 2px solid var(--black);
+  font-size: 2.5em;
+}
+.pictos {
+  line-height: 200px;
+  height: 200px;
+  svg {
+    display: inline-block;
+  }
+
 }
