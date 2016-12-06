@@ -19,7 +19,7 @@ class Footer extends React.Component {
         <div className={s.container}>
           <span className={s.text}>© <Link className={s.link} to="http://skoli.fr" rel="nofollow" target="_blank" label="Skoli"/></span>
           <span className={s.spacer}>·</span>
-          <Link className={s.link} to="/">Acceuil</Link>
+          <Link className={s.link} to="/">Accueil</Link>
           <span className={s.spacer}>·</span>
           <Link className={s.link} to="/">Mentions Légales</Link>
         </div>
