@@ -24,10 +24,14 @@ class Content extends React.Component {
   }, ViewPropTypes);
 
   componentDidMount() {
-    this.props.onRef(this)
+    if(this.props.onRef){
+      this.props.onRef(this)
+    }
   }
   componentWillUnmount() {
-    this.props.onRef(undefined)
+    if(this.props.onRef){
+      this.props.onRef(undefined)
+    }
   }
 
   hasSwipeableViews(){ return false; }

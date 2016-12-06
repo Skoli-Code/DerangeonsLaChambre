@@ -22,7 +22,7 @@ class Link extends Component {
 
   static propTypes = {
     label:PropTypes.string,
-    to: PropTypes.string.isRequired,
+    to: PropTypes.string,
     children: PropTypes.node,
     onClick: PropTypes.func,
   };

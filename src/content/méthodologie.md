@@ -1,5 +1,3 @@
-## Méthodologie
-
 ### Sources
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Les données sont issues du Ministère de l’Intérieur et publiées sur le portail [data.gouv.fr](http://www.data.gouv.fr/fr/)
 

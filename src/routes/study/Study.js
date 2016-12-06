@@ -10,6 +10,8 @@ import {indigo500} from 'material-ui/styles/colors';
 import AppBar from 'material-ui/AppBar/AppBar';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // internal deps
@@ -28,11 +30,10 @@ const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 class Study extends React.Component {
   constructor(props,context,updater){
     super(props, context, updater);
-    const modals = this.initModals();
     this.tabsContent = {};
     this.state = Object.assign({
       index:props.activeIndex,
-      modals
+      modals:this.initModals()
     });
     this.onTabClick = this.onTabClick.bind(this);
     this._children = {};
@@ -56,6 +57,34 @@ class Study extends React.Component {
     });
   }
 
+  closeModal(modal){
+    this.setState({ modals: {[modal.key]: false} });
+  }
+
+  getModals(){
+    return this.modals.map((modal)=>{
+      const modalContent = React.createElement(
+        modal.component, modal.componentProps, null
+      );
+      return (
+        <Dialog
+          title={modal.title}
+          style={{height: '80vh'}}
+          open={this.state.modals[modal.key]}
+          actions={[
+            <FlatButton label="Fermer" primary={true}
+              onClick={this.closeModal.bind(this, modal)}
+              onTouchTap={this.closeModal.bind(this, modal)}/>,
+          ]}
+          modal={true}
+          autoScrollBodyContent={true}
+          onRequestClose={this.closeModal.bind(this, modal)}>
+          { modalContent }
+        </Dialog>
+      );
+    });
+  }
+
   currentTab(){
     const { index } = this.state;
     return this._children[index];
@@ -68,7 +97,7 @@ class Study extends React.Component {
   }
 
   openModal(tab){
-    this.setState({ [tab.key]: true });
+    this.setState({ modals: { [tab.key]: true }});
   }
 
   onChangeIndex(i){
@@ -141,7 +170,7 @@ class Study extends React.Component {
     } = this.state;
     let tabsContent = this.tabsContent;
     let tabs = this.props.tabs.filter(tab=>!tab.isModal);
-    return tabs.map((tab, key)=>{
+    return this.props.tabs.filter(tab=>!tab.isModal).map((tab, key)=>{
       let isActive = index == key;
       let tabContent = this.tabsContent[key] || {};
       if(!tabContent.props || tabContent.props['isActive'] != isActive){
@@ -177,8 +206,8 @@ class Study extends React.Component {
 
     return (
       <MuiThemeProvider muiTheme={theme}>
-
         <div class={s.root}>
+        { this.getModals() }
           <Presentation/>
           <AppBar className={s.appBar} showMenuIconButton={false}
               title={<Brand/>}  titleStyle={BrandStyle}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Markdown from '../Markdown';
+import Markdown from 'react-markdown';
 
 const content = `
 ### Mentions légales
@@ -76,7 +76,7 @@ const content = `
 export default class Legals extends React.Component {
   render(){
     return (
-      <Markdown content={content}/>
+      <Markdown source={content}/>
     );
   }
 }
