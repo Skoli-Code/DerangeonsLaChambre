@@ -26,7 +26,8 @@ function Html({ head, style, script, chunk, children }) {
       rel="stylesheet"/>
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         {style && <style id="css" dangerouslySetInnerHTML={{ __html: style }} />}
       </head>
       <body>

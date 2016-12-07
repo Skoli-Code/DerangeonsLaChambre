@@ -22,6 +22,7 @@ import Brand  from '../../components/Brand';
 import Footer from '../../components/Footer';
 import Presentation from '../../components/Presentation';
 import Socials from '../../components/Socials';
+import {extendMeta} from '../../components/Socials/Config';
 
 import Ballots from './ballots/Ballots';
 
@@ -207,7 +208,7 @@ class Study extends React.Component {
         <div className={s.root}>
           { this.getModals() }
           <Presentation/>
-          <Helmet title={ activeTab.title + ' | Dérangeons la chambre'} meta={activeTab.meta}/>
+          <Helmet title={ activeTab.title + ' | Dérangeons la chambre'} meta={extendMeta(activeTab.meta)}/>
           <AppBar className={s.appBar} showMenuIconButton={false}
               title={<Brand/>}  titleStyle={BrandStyle}
               onLeftIconButtonTouchTap={ null }>
