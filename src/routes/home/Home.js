@@ -22,7 +22,10 @@ function Home() {
     <Layout>
       <Helmet title="Accueil | Dérangeons la Chambre"/>
       <div className={s.root}>
-        <div className={s.backgroundHolder}></div>
+        <div className={s.backgroundHolder}>
+          <div className={s.background}></div>
+        </div>
+
         <div className={s.container}>
           <div className={s.logo}>
             <Logo style={{width:500, height: 'auto'}}/>
@@ -36,6 +39,8 @@ function Home() {
               primary={true} style={{background:'none'}} overlayStyle={{ lineHeight: '30px'}}/>
           </Link>
         </div>
+
+
       </div>
     </Layout>
   );
