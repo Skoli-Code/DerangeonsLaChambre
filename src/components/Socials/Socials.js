@@ -9,13 +9,20 @@ import s from './Socials.css';
 import history from '../../core/history';
 
 class Socials extends React.Component {
+  constructor(props){
+    super(props);
+    this.config = SocialConfig;
+    console.log('config', this.config);
+  }
 
   shouldComponentUpdate(){
     return false;
   }
 
   fbAppId(){
-    return SocialConfig.helmet.meta.find(m=>m.property=='fb:app_id').content;
+    const appId = this.config.helmet.meta.find(m=>m.property=='fb:app_id');
+    console.log('appId: ', appId);
+    return +appId.content
   }
 
   href(){
@@ -47,12 +54,12 @@ class Socials extends React.Component {
 
   twitterHref(){
     const url = encodeURIComponent(this.href());
-    return  `https://twitter.com/intent/tweet?text=${SocialConfig.twitter.tweet_text}&url=${url}&hashtags=${SocialConfig.twitter.hashtags}`;
+    return  `https://twitter.com/intent/tweet?text=${this.config.twitter.tweet_text}&url=${url}&hashtags=${this.config.twitter.hashtags}`;
 
   }
 
   linkedInHref(){
-    const meta = SocialConfig.linkedIn;
+    const meta = this.config.linkedIn;
     const url = encodeURIComponent(this.href());
     return  `https://www.linkedin.com/shareArticle?url=${url}&source=${meta.source}&title=${meta.title}&summary=${meta.summary}&mini=true`;
   }
@@ -62,18 +69,18 @@ class Socials extends React.Component {
         <div className={s.socials}>
           <ul>
             <li>
-              <FacebookProvider appId={this.fbAppId()}>
-                <Share><Facebook style={{width: 50, height: 50 }}/></Share>
+              <FacebookProvider appID={this.fbAppId()}>
+                <Share><Facebook/></Share>
               </FacebookProvider>
             </li>
             <li>
               <div onClick={ this.onTwitterClick.bind(this) }>
-                <Twitter style={{width: 50, height: 50 }}/>
+                <Twitter/>
               </div>
             </li>
             <li>
               <div onClick={ this.onLinkedInClick.bind(this) }>
-                <LinkedIn style={{width: 50, height: 50 }}/>
+                <LinkedIn/>
               </div>
             </li>
           </ul>
