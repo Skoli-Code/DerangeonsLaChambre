@@ -39,6 +39,9 @@ Ses recherches sont majoritairement sur les démocraties, plus particulièrement
   Ce site web a été créé à l'aide de ces projets open-source : [React](https://facebook.github.io/react/) et [D3js](https://d3js.org/).
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pictogramme : "Swipe Left" par [Scott Lewis](https://thenounproject.com/iconify) du Noun Project
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pictogramme
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Swipe Left" par [Scott Lewis](https://thenounproject.com/iconify) du Noun Project
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pictogramme : "Keyboard" par [Paul te Kortschot](https://thenounproject.com/Kortschot) du Noun Project
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Keyboard" par [Paul te Kortschot](https://thenounproject.com/Kortschot) du Noun Project
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Elegant Font Pack](http://www.flaticon.com/packs/elegant-font) depuis Faticon
