@@ -31,17 +31,21 @@ Ses recherches sont majoritairement sur les démocraties, plus particulièrement
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La réalisation graphique est l’oeuvre de Skoli.
 
 ### Crédits
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Photos
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Photos**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Couverture : Philippe Grangeaud pour le [Parti Socialiste](https://www.flickr.com/photos/partisocialiste/8047476496/in/photolist-eHneys-dg8Ez7-dg8qoL-xboqq-dg8cfV-dg8n7k-dg8sAj-dg8jdU-dg8rDV-dg8hLd-nJQAWJ/)
-  Fontes & Icônes
-  Outils & Librairies
-  Ce site web a été créé à l'aide de ces projets open-source : [React](https://facebook.github.io/react/) et [D3js](https://d3js.org/).
+Couverture : Philippe Grangeaud pour le [Parti Socialiste](https://www.flickr.com/photos/partisocialiste/8047476496/in/photolist-eHneys-dg8Ez7-dg8qoL-xboqq-dg8cfV-dg8n7k-dg8sAj-dg8jdU-dg8rDV-dg8hLd-nJQAWJ/)
 
+Introduction : Palais Bourbon de [Benoît Mars](https://www.flickr.com/photos/xispics/14747292807/in/photolist-otaJn6-576Vma-dSADyY-a82NiT-54uHZD-54uHvX-77RDpy-9kkcxs-6JuEj4-a85CS3-66sEHM-add6nz-boTVCY-aCwCsQ-57fcB9-6HAEJV-6HEJmS-6HxZ5q-s2UWHQ-9ao2z3-6JyM9m-9ao2Cq-shcebj-6JuD9T-6LgrDr-6LgnRK-pRLBFJ-6LmZAu-6LgfqT-75g1qP-6LmH7s-6LmbTo-6LhY5r-6LhfjF-nga7BH-s2TKuY-6LhZSe-6LkQy9-6LmTpS-6Lhwh2-6Lm9WW-6LhGMB-6Ln2vy-6LmPvu-6LmXyo-6Lghpc-6LgMRe-6Li82Z-fhkrvC-6LmjYA)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pictogramme
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Swipe Left" par [Scott Lewis](https://thenounproject.com/iconify) du Noun Project
+Conclusion : Coupole de l'assemblée nationale par [Benoît Mars](https://www.flickr.com/photos/benoitmars/5357000548/in/album-72157625827838696/)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Outils & Librairies**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Keyboard" par [Paul te Kortschot](https://thenounproject.com/Kortschot) du Noun Project
+Ce site web a été créé à l'aide de ces projets open-source : [React](https://facebook.github.io/react/) et [D3js](https://d3js.org/).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Elegant Font Pack](http://www.flaticon.com/packs/elegant-font) depuis Faticon
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Pictogrammes**
+
+Pictogramme : "Swipe Left" par [Scott Lewis](https://thenounproject.com/iconify) du Noun Project
+
+Pictogramme : "Keyboard" par [Paul te Kortschot](https://thenounproject.com/Kortschot) du Noun Project
+
+Pictogramme : [Elegant Font Pack](http://www.flaticon.com/packs/elegant-font) depuis Faticon
