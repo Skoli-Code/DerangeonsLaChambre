@@ -68,7 +68,7 @@ class D3BallotChart {
   }
 
   updateData(data) {
-    this.results = data.results.sort((a, b) => b.seats - a.seats);
+    this.results = data.ballot.results.sort((a, b) => b.seats - a.seats);
     this.parties = data.parties;
     this.squares = [];
 
@@ -227,6 +227,10 @@ export class BallotChart extends React.Component {
     // define the method this way so that we have a clear reference to it
     // this is necessary so that window.removeEventListener will work properly
     this.handleResize = (e => this._handleResize(e));
+  }
+
+  shouldComponentUpdate(nextProps){
+    return this.props.data.ballot.id != nextProps.data.ballot.id;
   }
 
   componentDidMount() {

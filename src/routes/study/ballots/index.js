@@ -54,9 +54,7 @@ const render = async(index) => {
   }
 
   let onBallotChange = (i)=>{
-
     const path = '/%C3%A9tude/scrutins/'+i;
-    console.log('onBallotChange',i, 'path: ', path);
     history.push(path);
   };
 

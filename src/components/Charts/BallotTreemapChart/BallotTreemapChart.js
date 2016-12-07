@@ -48,7 +48,7 @@ class D3BallotTreemapChart {
 
   updateData(data) {
     let stratify = d3.stratify();
-    const results = _.cloneDeep(data.results);
+    const results = data.ballot.results;
     this.results = results.sort((a,b)=>b.seats-a.seats);
     this.results = this.results.filter(r=>r.seats > 0)
       .map(r=>(r.parentId='root',r));
@@ -58,6 +58,7 @@ class D3BallotTreemapChart {
 
   bindEvents() {
   }
+
   textColor(result){
     const bgColor = this.backgroundColor(result);
     if(bgColor == 'white' || bgColor == this.config.randomParty.singleColor){
@@ -144,13 +145,17 @@ export class BallotTreemapChart extends React.Component {
     this.handleResize = (e => this._handleResize(e));
   }
 
+  shouldComponentUpdate(nextProps){
+    return this.props.data.ballot.id != nextProps.data.ballot.id;
+  }
+
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
     this.ballotTreemapChart = new D3BallotTreemapChart(this.node(), this.chartState());
   }
 
   chartState() {
-    return {data: this.props.data, onPartyHover: this.props.onPartyHover};
+    return {data: this.props.data };
   }
 
   componentDidUpdate() {

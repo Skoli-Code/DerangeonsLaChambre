@@ -192,7 +192,6 @@ class Study extends React.Component {
   }
 
   render(){
-    console.log('render');
     const {index,} = this.state;
     const InkBarStyle = {
       backgroundColor:theme.palette.primary2Color,

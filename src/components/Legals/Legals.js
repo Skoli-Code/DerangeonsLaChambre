@@ -74,6 +74,9 @@ const content = `
 `;
 
 export default class Legals extends React.Component {
+  shouldComponentUpdate(){
+    return false;
+  }
   render(){
     return (
       <Markdown source={content}/>

@@ -25,20 +25,23 @@ class Content extends React.Component {
 
   componentDidMount() {
     if(this.props.onRef){
-      this.props.onRef(this)
+      this.props.onRef(this);
     }
   }
   componentWillUnmount() {
     if(this.props.onRef){
-      this.props.onRef(undefined)
+      this.props.onRef(undefined);
     }
+  }
+
+  shouldComponentUpdate(nextProps){
+    return this.props.isActive != nextProps.isActive;
   }
 
   hasSwipeableViews(){ return false; }
 
 
   render(){
-    console.log('Content.render!');
     return (
       <Layout>
         { this.props.isActive &&

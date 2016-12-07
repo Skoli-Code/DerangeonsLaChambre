@@ -22,7 +22,7 @@ export const BallotPropTypes = {
 
 export const ChartPropTypes = {
   className: PropTypes.string,
-  data: PropTypes.shape({parties: PartiesPropTypes, results: ResultsPropTypes})
+  data: PropTypes.shape({parties: PartiesPropTypes, ballot: BallotPropTypes})
 };
 
 export default BallotPropTypes;

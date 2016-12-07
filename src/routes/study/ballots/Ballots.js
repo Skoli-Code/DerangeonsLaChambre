@@ -28,10 +28,14 @@ class Ballots extends React.Component {
   static propTypes = BallotsPropTypes;
 
   componentDidMount() {
-    this.props.onRef(this)
+    this.props.onRef(this);
   }
   componentWillUnmount() {
-    this.props.onRef(undefined)
+    this.props.onRef(undefined);
+  }
+
+  shouldComponentUpdate(nextProps){
+    return nextProps.activeBallot != this.state.index;
   }
 
   hasSwipeableViews(){ return true; }
@@ -216,8 +220,7 @@ class Ballots extends React.Component {
     if(compareToActualResults){
       currentBallot = ballots[0];
     }
-    const ballotData = { results: currentBallot.results, parties: parties };
-
+    const ballotData = { ballot: currentBallot, parties: parties };
     return (
       <div>
         { this.pagination(ballots) }
@@ -249,7 +252,7 @@ class Ballots extends React.Component {
             } else {
               const isActive = key == index && this.props.isActive;
               const chartData = {
-                results: (compareToActualResults ? currentBallot : ballot).results,
+                ballot: (compareToActualResults ? currentBallot : ballot),
                 parties: parties
               };
               return (

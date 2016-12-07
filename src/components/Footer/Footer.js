@@ -16,6 +16,10 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
 class Footer extends React.Component {
+  shouldComponentUpdate(){
+    return false;
+  }
+
   constructor(){
     super();
     this.state = { legalsOpened: false };

@@ -55,7 +55,7 @@ class D3AssemblyChart {
 
   updateData(data){
     this.parties = data.parties;
-    this.results = data.results;
+    this.results = data.ballot.results;
   }
 
   update(el, props){
@@ -145,6 +145,10 @@ class D3AssemblyChart {
 
 export class AssemblyChart extends React.Component {
   static propTypes = ChartPropTypes;
+
+  shouldComponentUpdate(nextProps){
+    return this.props.data.ballot.id != nextProps.data.ballot.id;
+  }
 
   constructor(props) {
     super(props);

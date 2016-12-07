@@ -10,6 +10,10 @@ import history from '../../core/history';
 
 class Socials extends React.Component {
 
+  shouldComponentUpdate(){
+    return false;
+  }
+
   fbAppId(){
     return SocialConfig.helmet.meta.find(m=>m.property=='fb:app_id').content;
   }
@@ -21,14 +25,14 @@ class Socials extends React.Component {
 
   onTwitterClick(e){
     e.preventDefault();
-    const link = this.twitterHref();
+    const href = this.twitterHref();
     this.openSocialModal('Partagez sur twitter', href, 780, 400 );
   }
 
   onLinkedInClick(e){
     e.preventDefault();
-    const link = this.twitterHref();
-    this.openSocialModal('Partagez sur LinkedIn', href, 780, 400 );
+    const href = this.linkedInHref();
+    this.openSocialModal('Partagez sur LinkedIn', href, 500, 800 );
   }
 
   openSocialModal(name, href, w, h){
@@ -38,7 +42,7 @@ class Socials extends React.Component {
         height=${h},width=${w},top=${(wh/2)-h/2},left=${(ww/2)-(w/2)},
         toolbar=0,location=0
     `;
-    window.open(href, wname, wstyle);
+    window.open(href, name, wstyle);
   }
 
   twitterHref(){
