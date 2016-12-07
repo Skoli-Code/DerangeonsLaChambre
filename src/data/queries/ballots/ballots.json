@@ -4,7 +4,13 @@
   "subtitle": "Assemblée élue au scrutin uninominal majoritaire à 2 tours",
   "legend_title": "Scrutin majoritaire uninominal à deux tours",
   "meta":[
-    { "name":"twitter:title", "content":"Dérangeons la chambre !"}
+    { "name":"twitter:title", "content":"Dérangeons la chambre !"},
+    { "name":"twitter:description", "content":"A quoi ressemblerait l’Assemblée Nationale si l’on changeait le mode de scrutin aux élections législatives ? Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."},
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/A1.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/0"},
+    { "property":"og:title", "content":"Dérangeons la chambre !"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/A1.png"},
+    { "property":"og:description", "content":"Simulation électorale - A quoi ressemblerait l’Assemblée Nationale si l’on changeait le mode de scrutin aux élections législatives ? Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 1,
   "results": [

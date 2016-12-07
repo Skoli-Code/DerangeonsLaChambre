@@ -8,6 +8,8 @@ import Portal from 'react-portal';
 import Markdown from 'react-markdown';
 
 // internal
+import {extendMeta} from '../../../components/Socials/Config';
+
 import {BallotPropTypes, PartyPropTypes} from '../../../components/Charts';
 // import Markdown from '../../../components/Markdown';
 import Layout from '../../../components/Layout';
@@ -250,6 +252,8 @@ class Ballots extends React.Component {
             if(!this.showBallot(key)){
               return;
             } else {
+              const ballotMeta = extendMeta(ballot.meta);
+              console.log('ballot meta:', ballotMeta, ballot.meta);
               const isActive = key == index && this.props.isActive;
               const chartData = {
                 ballot: (compareToActualResults ? currentBallot : ballot),
@@ -258,7 +262,7 @@ class Ballots extends React.Component {
               return (
               <div key={key} className={s.container + ' ' + s.content}>
                 {  isActive &&
-                  <Helmet title={ballot.title} meta={ballots.meta}/>
+                  <Helmet title={ballot.title} meta={ballotMeta}/>
                 }
                 <div className={s['content--left']}>
                   <div className={s['visible-touch']}>

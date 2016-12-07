@@ -4,6 +4,7 @@ import {
   GraphQLString as StringType,
   GraphQLID as ID,
   GraphQLNonNull as NonNull,
+  GraphQLUnionType as UnionType,
   GraphQLInt as Int,
 } from 'graphql';
 
@@ -25,6 +26,30 @@ const ResultType = new ObjectType({
   }
 });
 
+const TwitterMeta = new ObjectType({
+  name: 'TwitterMeta',
+  fields: {
+    name: { type: StringType },
+    content: { type: StringType }
+  }
+});
+
+const FacebookMeta = new ObjectType({
+  name: 'FacebookMeta',
+  fields: {
+    property: { type: StringType },
+    content: { type: StringType }
+  }
+});
+
+const MetaType = new UnionType({
+  name: 'Meta',
+  types: [TwitterMeta, FacebookMeta ],
+  resolveType:(value)=>{
+    if(value['name']){ return TwitterMeta; } else { return FacebookMeta; }
+  }
+});
+
 const BallotType = new ObjectType({
   name: 'Ballot',
   fields: {
@@ -34,7 +59,8 @@ const BallotType = new ObjectType({
     legend_title: { type: new NonNull(StringType) },
     order: { type: new NonNull(Int) },
     content: { type: new NonNull(StringType) },
-    results: { type: new List(ResultType) }
+    results: { type: new List(ResultType) },
+    meta: { type: new List(MetaType) }
   }
 });
 

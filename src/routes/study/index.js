@@ -1,13 +1,21 @@
 import Study from './Study';
 import React from 'react';
 import history from '../../core/history';
+import {extendMeta} from '../../components/Socials/Config';
 
 import ConfigureContentRoute from './content';
 let routes;
 export default {
-  path : '/%C3%A9tude',
+  path : '/etude',
   children : [
-    ConfigureContentRoute({ path: 'introduction', title: 'Intro', key: 0}),
+    ConfigureContentRoute({
+      path: 'introduction',
+      title: 'Intro',
+      key: 0,
+      helmetProps: extendMeta([
+        { property: 'og:url', content: 'http://www.derangeonslachambre.fr/etude/introduction' }
+      ])
+    }),
     require('./ballots').default,
     ConfigureContentRoute({ path: 'conclusion', title: 'Bilan', key: 2}),
     ConfigureContentRoute({ path: 'à-propos', title: 'À propos', key: 3, mobileIcon:'info'}),

@@ -24,7 +24,13 @@ const resolveBallots = async() => {
       },
       body: JSON.stringify({
         query: `{ballots{
-          list{id,order,title,subtitle,legend_title,content,results{party{id,order,name,color},seats}},
+          list{
+            id,order,title,subtitle,legend_title,content,
+            meta{
+              ... on TwitterMeta{name,content}
+              ... on FacebookMeta{property,content}
+            }
+            results{party{id,order,name,color},seats}},
           parties{id,order,name,color}
         }}`
       })
@@ -54,7 +60,7 @@ const render = async(index) => {
   }
 
   let onBallotChange = (i)=>{
-    const path = '/%C3%A9tude/scrutins/'+i;
+    const path = '/etude/scrutins/'+i;
     history.push(path);
   };
 

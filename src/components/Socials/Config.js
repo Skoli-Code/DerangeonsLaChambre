@@ -13,14 +13,10 @@ const Config = {
   helmet: {
     meta: [
       { property:"fb:app_id", content:"226290154474919" },
-      { property:"fb:app_id", content:"226290154474919" },
       { property:"og:type", content:"website" },
-      { property:"og:url", content:"http://derangeonslachambre.fr" },
+      { property:"og:url",  content:"http://www.derangeonslachambre.fr" },
       { property:"og:title", content:"Dérangeons la chambre !" },
       { property:"og:description", content:"Analyse de données textuelles et datavisualisations sur le traitement de l'islam dans la presse française (1997-2015), à partir des archives numériques de trois grands quotidiens. Par Skoli et M.Bourekba." },
-      { property:"og:image", content:"http://derangeonslachambre/socials/stacked.png" },
-      { property:"og:image", content:"http://derangeonslachambre/socials/cover.png" },
-      { property:"og:image", content:"http://derangeonslachambre/socials/wordcloud.png"},
       { name:"twitter:card", content:"summary_large_image"},
       { name:"twitter:title", content:"Dérangeons la chambre !"},
       { name:"twitter:description", content:"Analyse de données textuelles et datavisualisations sur le traitement de l'islam dans la presse française (1997-2015). Par Skoli et M.Bourekba."},
@@ -30,21 +26,26 @@ const Config = {
 };
 
 
-const extendConfig = (config)=>{
-  let _config = _.cloneDeep(Config);
-  for(let i in config.meta){
-    const meta = config.meta[i];
+const extendMeta = (metas)=>{
+  let _metas = _.cloneDeep(Config.helmet.meta);
+  for(let i in metas){
+    const meta = metas[i];
     const content = meta['content'];
     let key_name = 'property';
     if(meta['name']){
       key_name = 'name';
     }
     const key = meta[key_name];
-    _config.meta.find(meta=>meta[key_name] == key)['content'] = content;
+    let _meta = _metas.find(meta=>meta[key_name] == key)
+    if(!meta || key == 'og:image'){
+      _metas.push(meta);
+    } else {
+      _meta['content'] = content;
+    }
   }
-  return _config;
+  return _metas;
 };
 
-export { extendConfig, Config };
+export { extendMeta, Config };
 
 export default Config;

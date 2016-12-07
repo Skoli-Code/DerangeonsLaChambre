@@ -12,7 +12,6 @@ class Socials extends React.Component {
   constructor(props){
     super(props);
     this.config = SocialConfig;
-    console.log('config', this.config, 'hasNestedSwipeableView: ', props.hasNestedSwipeableView);
   }
 
   shouldComponentUpdate(nextProps){

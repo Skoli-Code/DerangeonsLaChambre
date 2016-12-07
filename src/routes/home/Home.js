@@ -34,7 +34,7 @@ function Home() {
           <h1 className={s.title}>Dérangeons la Chambre</h1>
           <h2 className={s.subtitle}>Assemblée Nationale&nbsp;: si on changeait les règles du jeu ?</h2>
 
-          <Link to="/%C3%A9tude/introduction">
+          <Link to="/etude/introduction">
             <RaisedButton label="Dérangez la chambre"
               primary={true} style={{background:'none'}} overlayStyle={{ lineHeight: '30px'}}/>
           </Link>
