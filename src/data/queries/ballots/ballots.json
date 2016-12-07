@@ -3,6 +3,9 @@
   "title": "Assemblée actuelle (élections - 2012)",
   "subtitle": "Assemblée élue au scrutin uninominal majoritaire à 2 tours",
   "legend_title": "Scrutin majoritaire uninominal à deux tours",
+  "meta":[
+    { "name":"twitter:title", "content":"Dérangeons la chambre !"}
+  ],
   "order": 1,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -31,6 +34,10 @@
   "title": "Chambre \"à l'anglaise\"",
   "subtitle": "Scrutin uninominal majoritaire à 1 tour",
   "legend_title": "Scrutin majoritaire uninominal",
+  "meta":[
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si nous étions allemands ?" },
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." }
+  ],
   "order": 2,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -59,6 +66,9 @@
   "title": "Chambre \"à l'allemande\"",
   "subtitle": "Scrutin proportionnel personnalisé",
   "legend_title": "Système mixte à finalité proportionnelle (uninominal majoritaire à un tour et proporitonnelle plurinominale avec sièges 'supplémentaires')",
+  "meta":[
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si nous étions italiens ?"}
+  ],
   "order": 3,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -87,6 +97,9 @@
   "title": "Chambre \"à l'italienne\"",
   "subtitle": "Scrutin proportionnel personnalisé",
   "legend_title": "Scrutin proportionnel plurinominal à circonscription nationale avec prime au parti majoritaire (quorum d'éligibilité à 3%)",
+  "meta":[
+    { "name":"twitter:title", "content":""}
+  ],
   "order": 4,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -115,6 +128,9 @@
   "title": "La \"plus représentative\" (l'hollandaise) ",
   "subtitle": "Scrutin à la proportionnelle par circonscription nationale",
   "legend_title": "Scrutin à la proportionnelle plurinominale intégrale par circonscription nationale (méthode du quotient de Hare, pas de quorum d'éligibilité)",
+  "meta":[
+    { "name":"twitter:title", "content":""}
+  ],
   "order": 6,
   "results": [
     { "party": "EXG", "seats": 6 },
@@ -143,6 +159,9 @@
   "title": "Chambre \"à l'espagnole\"",
   "subtitle": "Scrutin à la proportionnelle par circonscription départementale",
   "legend_title": "Scrutin à la proportionnelle plurinominale par circonscription départementale (méthode de Hondt, quorum fixé à 3% par département)",
+  "meta":[
+    { "name":"twitter:title", "content":""}
+  ],
   "order": 5,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -171,6 +190,9 @@
   "title": "L'Assemblée selon les règles du référendum local",
   "subtitle": "Scrutin majoritaire avec quorum d'éligibilité",
   "legend_title": "Scrutin uninominal majoritaire à deux tours avec quorum d'éligibilité de 50% du corps electoral",
+  "meta":[
+    { "name":"twitter:title", "content":""}
+  ],
   "order": 8,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -199,6 +221,9 @@
   "title": "Le \"premier parti de France\"",
   "subtitle": "Si l'abstention était un parti",
   "legend_title": "Scrutin majoritaire uninominal à deux tours dans lequel l'abstention compte comme un parti politique",
+  "meta":[
+    { "name":"twitter:title", "content":""}
+  ],
   "order": 7,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -227,6 +252,9 @@
   "title": "Chambre vide, \"majorité silencieuse\"",
   "subtitle": "A la majorité des inscrits",
   "legend_title": "Scrutin uninominal à deux tours à la majorité des inscrits ",
+  "meta":[
+    { "name":"twitter:title", "content":""}
+  ],
   "order": 9,
   "results": [
     { "party": "EXG", "seats": 0 },
@@ -255,6 +283,9 @@
   "title": "Assemblée \"athénienne\"",
   "subtitle": "Tirage au sort",
   "legend_title": "Stochocratie",
+  "meta":[
+    { "name":"twitter:title", "content":""}
+  ],
   "order": 10,
   "results": [
     { "party": "EXG", "seats": 0 },

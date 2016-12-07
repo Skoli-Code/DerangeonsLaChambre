@@ -15,11 +15,13 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Layout.css';
 import theme from '../theme';
 import Footer from '../Footer';
+import SocialConfig from '../Socials/Config';
 
 function Layout({ children }) {
   return (
     <MuiThemeProvider muiTheme={theme}>
       <div>
+        <Helmet {...SocialConfig.helmet }/>
         {children}
       </div>
     </MuiThemeProvider>

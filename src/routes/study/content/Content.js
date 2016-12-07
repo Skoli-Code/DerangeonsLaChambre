@@ -41,7 +41,7 @@ class Content extends React.Component {
     return (
       <Layout>
         { this.props.isActive &&
-          <Helmet title={this.props.title + ' | Dérangeons la Chambre'} />
+          <Helmet title={this.props.title + ' | Dérangeons la Chambre'} { ...this.props.helmetProps }/>
         }
         <div className={s.root}>
           <div className={s.container}>

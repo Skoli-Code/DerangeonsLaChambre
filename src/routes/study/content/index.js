@@ -10,8 +10,9 @@
 import React from 'react';
 import Content from './Content';
 import fetch from '../../../core/fetch';
+import {extendConfig} from '../../../components/Socials/Config'; 
 
-const configureRoute = ({path,title,key,mobileIcon,isModal})=>{
+const configureRoute = ({path,title,key,mobileIcon,isModal,helmetProps})=>{
   return {
     path: '/'+encodeURIComponent(path),
     async action() { // eslint-disable-line react/prop-types
@@ -34,7 +35,7 @@ const configureRoute = ({path,title,key,mobileIcon,isModal})=>{
         mobileIcon,
         key,
         title,
-        componentProps: Object.assign({}, {title}, data.content),
+        componentProps: Object.assign({}, {title, helmetProps}, data.content),
         component: Content
       };
     }

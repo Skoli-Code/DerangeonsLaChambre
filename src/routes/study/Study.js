@@ -19,6 +19,7 @@ import theme  from '../../components/theme';
 import Brand  from '../../components/Brand';
 import Footer from '../../components/Footer';
 import Presentation from '../../components/Presentation';
+import Socials from '../../components/Socials';
 
 import Ballots from './ballots/Ballots';
 
@@ -70,7 +71,7 @@ class Study extends React.Component {
         <Dialog
           title={modal.title}
           style={{height: '80vh'}}
-          open={this.state.modals[modal.key]}
+          open={this.state.modals[modal.key]||false}
           actions={[
             <FlatButton label="Fermer" primary={true}
               onClick={this.closeModal.bind(this, modal)}
@@ -191,6 +192,7 @@ class Study extends React.Component {
   }
 
   render(){
+    console.log('render');
     const {index,} = this.state;
     const InkBarStyle = {
       backgroundColor:theme.palette.primary2Color,
@@ -207,7 +209,8 @@ class Study extends React.Component {
     return (
       <MuiThemeProvider muiTheme={theme}>
         <div class={s.root}>
-        { this.getModals() }
+          <Socials/>
+          { this.getModals() }
           <Presentation/>
           <AppBar className={s.appBar} showMenuIconButton={false}
               title={<Brand/>}  titleStyle={BrandStyle}
