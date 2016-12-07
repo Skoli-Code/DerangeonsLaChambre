@@ -38,6 +38,7 @@ class Content extends React.Component {
 
 
   render(){
+    console.log('Content.render!');
     return (
       <Layout>
         { this.props.isActive &&

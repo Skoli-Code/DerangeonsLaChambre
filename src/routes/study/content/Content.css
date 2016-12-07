@@ -11,4 +11,11 @@
 
 .root {
   width: 100%;
+
+}
+
+.container {
+  img {
+    width: 100%;
+  }
 }
