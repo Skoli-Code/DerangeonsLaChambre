@@ -1,9 +1,12 @@
 import React from 'react';
 import SvgIcon from 'material-ui/SvgIcon';
+import * as _ from 'lodash';
 
 const Logo = (props)=>{
-  const path1Color = props.useWhite ? 'white': '#051440';
-  const path2Color = props.useWhite ? 'white': '#ec1920';
+  const useWhite = props.useWhite;
+  const path1Color = useWhite ? 'white': '#051440';
+  const path2Color = useWhite ? 'white': '#ec1920';
+  const _props = _.pick(props, _.keys(props).filter(k=>k!='useWhite'));
   return (
     <SvgIcon {...props} viewBox="0 0 770 770">
       <g transform="matrix(0.88751309,0,0,0.90283159,-189.06802,228.13917)">
