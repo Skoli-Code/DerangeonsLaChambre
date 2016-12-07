@@ -14,14 +14,13 @@ import Layout from '../../../components/Layout';
 // import Markdown from '../../../components/Markdown';
 import Markdown from 'react-markdown';
 import s from './Content.css';
-import { View, ViewPropTypes } from '../../../components/View';
 
 class Content extends React.Component {
   static propTypes = Object.assign({}, {
     path: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     title: PropTypes.string,
-  }, ViewPropTypes);
+  });
 
   componentDidMount() {
     if(this.props.onRef){

@@ -15,7 +15,6 @@ import {BallotPropTypes, PartyPropTypes} from '../../../components/Charts';
 // import Layout from '../../../components/Layout';
 import { BallotChart, BallotTreemapChart, AssemblyChart } from '../../../components/Charts';
 import s from './Ballots.css';
-import { ViewPropTypes } from '../../../components/View';
 import * as _ from 'lodash';
 import * as d3 from 'd3';
 
@@ -24,17 +23,17 @@ const BallotsPropTypes = Object.assign({}, {
   activeBallot: PropTypes.number,
   ballots: PropTypes.arrayOf(PropTypes.shape(BallotPropTypes)),
   parties: PropTypes.arrayOf(PropTypes.shape(PartyPropTypes))
-}, ViewPropTypes);
+});
 
 class Ballots extends React.Component {
   static propTypes = BallotsPropTypes;
 
-  componentDidMount() {
-    this.props.onRef(this);
-  }
-  componentWillUnmount() {
-    this.props.onRef(undefined);
-  }
+  // componentDidMount() {
+  //   this.props.onRef(this);
+  // }
+  // componentWillUnmount() {
+  //   this.props.onRef(undefined);
+  // }
 
   shouldComponentUpdate(nextProps){
     return nextProps.activeBallot != this.state.index;

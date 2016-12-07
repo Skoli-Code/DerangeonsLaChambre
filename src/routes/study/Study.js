@@ -174,23 +174,12 @@ class Study extends React.Component {
     let tabsContent = this.tabsContent;
     let tabs = this.props.tabs.filter(tab=>!tab.isModal);
     return this.props.tabs.filter(tab=>!tab.isModal).map((tab, key)=>{
-      let isActive = index == key;
-      let tabContent = this.tabsContent[key] || {};
-      if(!tabContent.props || tabContent.props['isActive'] != isActive){
-        const props = Object.assign(tab.componentProps || {}, {
-          isActive: isActive,
-          onRef: (ref)=> this._children[key] = ref
-        });
-        tabContent['props'] = props;
-        tabContent['component'] = React.createElement(tab.component, props , null);
-        this.tabsContent[key] = tabContent;
-      }
       return (
         <div className={s.innerTab} key={key}>
           { index == key &&
             <Helmet title={ tab.title + ' | Dérangeons la chambre'} meta={tab.meta}/>
           }
-          { tabContent['component'] }
+          { React.createElement(tab.component, tab.componentProps, null) }
         </div>
       );
     });
