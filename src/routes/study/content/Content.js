@@ -42,13 +42,14 @@ class Content extends React.Component {
 
 
   render(){
+    const modalClass = this.props.isModal ? s['container--modal'] : '';
     return (
       <Layout>
         { this.props.isActive &&
           <Helmet title={this.props.title + ' | Dérangeons la Chambre'} { ...this.props.helmetProps }/>
         }
         <div className={s.root}>
-          <div className={s.container}>
+          <div className={s.container + ' ' + modalClass }>
             <Markdown source={ this.props.content }/>
           </div>
         </div>

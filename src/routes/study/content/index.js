@@ -10,7 +10,7 @@
 import React from 'react';
 import Content from './Content';
 import fetch from '../../../core/fetch';
-import {extendConfig} from '../../../components/Socials/Config'; 
+import {extendConfig} from '../../../components/Socials/Config';
 
 const configureRoute = ({path,title,key,mobileIcon,isModal,helmetProps})=>{
   return {
@@ -35,7 +35,7 @@ const configureRoute = ({path,title,key,mobileIcon,isModal,helmetProps})=>{
         mobileIcon,
         key,
         title,
-        componentProps: Object.assign({}, {title, helmetProps}, data.content),
+        componentProps: Object.assign({isModal:isModal}, {title, helmetProps}, data.content),
         component: Content
       };
     }

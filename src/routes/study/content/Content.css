@@ -22,4 +22,7 @@
   @media(--small){
     padding-top: 35px;
   }
+  &--modal {
+    padding-top: 0 !important;
+  }
 }
