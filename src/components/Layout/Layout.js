@@ -21,7 +21,6 @@ function Layout({ children }) {
   return (
     <MuiThemeProvider muiTheme={theme}>
       <div>
-        <Helmet {...SocialConfig.helmet }/>
         {children}
       </div>
     </MuiThemeProvider>

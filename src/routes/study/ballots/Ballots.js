@@ -222,9 +222,13 @@ class Ballots extends React.Component {
     if(compareToActualResults){
       currentBallot = ballots[0];
     }
+
     const ballotData = { ballot: currentBallot, parties: parties };
     return (
       <div>
+        { this.props.isActive &&
+          <Helmet title={ballots[index].title} meta={ballots[index].meta}/>
+        }
         { this.pagination(ballots) }
         <div className={s.container}>
           <div className={s['hidden-touch']}>
@@ -252,18 +256,12 @@ class Ballots extends React.Component {
             if(!this.showBallot(key)){
               return;
             } else {
-              const ballotMeta = extendMeta(ballot.meta);
-              console.log('ballot meta:', ballotMeta, ballot.meta);
-              const isActive = key == index && this.props.isActive;
               const chartData = {
                 ballot: (compareToActualResults ? currentBallot : ballot),
                 parties: parties
               };
               return (
               <div key={key} className={s.container + ' ' + s.content}>
-                {  isActive &&
-                  <Helmet title={ballot.title} meta={ballotMeta}/>
-                }
                 <div className={s['content--left']}>
                   <div className={s['visible-touch']}>
                     <h1>{ ballot.title }</h1>

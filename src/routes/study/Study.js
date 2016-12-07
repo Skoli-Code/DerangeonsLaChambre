@@ -1,6 +1,8 @@
 // npm deps
 import * as _ from 'lodash';
 import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
+
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import SwipeableViews from 'react-swipeable-views';
 import bindKeyboard from 'react-swipeable-views/lib/bindKeyboard';
@@ -185,6 +187,9 @@ class Study extends React.Component {
       }
       return (
         <div className={s.innerTab} key={key}>
+          { index == key &&
+            <Helmet title={ tab.title + ' | Dérangeons la chambre'} meta={tab.meta}/>
+          }
           { tabContent['component'] }
         </div>
       );

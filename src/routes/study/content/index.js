@@ -34,7 +34,8 @@ const configureRoute = ({path,title,key,mobileIcon,isModal,meta})=>{
         mobileIcon,
         key,
         title,
-        componentProps: Object.assign({isModal:isModal}, {title, meta}, data.content),
+        meta,
+        componentProps: Object.assign({isModal:isModal}, {title}, data.content),
         component: Content
       };
     }

@@ -15,37 +15,6 @@ import history from '../../../core/history';
 let globBallots;
 
 const resolveBallots = async() => {
-  try {
-    const resp = await fetch('/graphql', {
-      method: 'post',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        query: `{ballots{
-          list{
-            id,order,title,subtitle,legend_title,content,
-            meta{
-              ... on TwitterMeta{name,content}
-              ... on FacebookMeta{property,content}
-            }
-            results{party{id,order,name,color},seats}},
-          parties{id,order,name,color}
-        }}`
-      })
-    });
-    if (resp.status !== 200) {
-      throw new Error(resp.statusText);
-    }
-    const {data} = await resp.json();
-    if (!data){
-      return undefined;
-    }
-    return data.ballots;
-  } catch(e){
-    return null;
-  }
 };
 
 const routeParams = {
@@ -54,12 +23,43 @@ const routeParams = {
 };
 
 const render = async(index) => {
-  globBallots = globBallots || await resolveBallots();
-  if(globBallots && !index){
-    index = 0;
+  const resp = await fetch('/graphql', {
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      query: `{ballots{
+        list{
+          id,order,title,subtitle,legend_title,content,
+          meta{
+            ... on TwitterMeta{name,content}
+            ... on FacebookMeta{property,content}
+          }
+          results{party{id,order,name,color},seats}},
+        parties{id,order,name,color}
+      }}`
+    })
+  });
+  if (resp.status !== 200) {
+    throw new Error(resp.statusText);
+  }
+  const {data} = await resp.json();
+  if (!data){
+    return undefined;
   }
 
-  let onBallotChange = (i)=>{
+  const ballots = data.ballots;
+
+  if(ballots && !index){
+    index = 0;
+    // history.push('/etude/scrutins/0')
+  }
+
+  const ballot = ballots.list[index];
+
+  const onBallotChange = (i)=>{
     const path = '/etude/scrutins/'+i;
     history.push(path);
   };
@@ -67,11 +67,12 @@ const render = async(index) => {
   return Object.assign({}, routeParams, {
     componentProps: {
       onBallotChange: onBallotChange,
-      ballots: globBallots.list,
-      parties: globBallots.parties,
+      ballots: ballots.list,
+      parties: ballots.parties,
       activeBallot: index
     },
-    component: Ballots
+    component: Ballots,
+    meta: ballot.meta
   });
 };
 
@@ -79,7 +80,7 @@ export default {
   path : '/scrutins',
   async action(context) {
     if(context){
-      return await context.next();
+      return context.next();
     } else {
       return render();
     }

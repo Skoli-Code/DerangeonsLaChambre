@@ -12,7 +12,7 @@ export default {
       path: 'introduction',
       title: 'Intro',
       key: 0,
-      helmetProps: extendMeta([
+      meta: extendMeta([
         { property: 'og:url', content: 'http://www.derangeonslachambre.fr/etude/introduction' }
       ])
     }),
