@@ -33,7 +33,7 @@ function Home() {
 
         <div className={s.container}>
           <div className={s.logo}>
-            <Logo style={{width:500, height: 'auto'}}/>
+            <Logo style={{width:300, height: 'auto'}}/>
           </div>
 
           <h1 className={s.title}>Dérangeons la Chambre</h1>

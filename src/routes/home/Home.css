@@ -64,7 +64,7 @@
 }
 
 .title {
-  font-size: 4em;
+  font-size: 3.5em;
   margin-top: 20px;
   margin-bottom: 0;
   @media(--small){
@@ -75,7 +75,7 @@
 .subtitle {
   margin-top: 20px;
   font-size: 2em;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 
   @media(--small){
     font-size:1.5em;
@@ -92,7 +92,7 @@
   height: 235px;
   overflow: hidden;
   position: relative;
-
+  max-height: 30vh;
   @media(--small){
     height: 200px;
   }
