@@ -258,7 +258,7 @@ class Ballots extends React.Component {
               return (
               <div key={key} className={s.container + ' ' + s.content}>
                 {  isActive &&
-                  <Helmet title={ballot.title}/>
+                  <Helmet title={ballot.title} meta={ballots.meta}/>
                 }
                 <div className={s['content--left']}>
                   <div className={s['visible-touch']}>

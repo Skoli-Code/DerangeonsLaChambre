@@ -53,6 +53,9 @@
     svg {
       max-height: 100px;
       /*width: auto !important;*/
+      &:nth-child(2){
+        width: 80px;
+      }
     }
   }
 

@@ -12,17 +12,16 @@ class Socials extends React.Component {
   constructor(props){
     super(props);
     this.config = SocialConfig;
-    console.log('config', this.config);
+    console.log('config', this.config, 'hasNestedSwipeableView: ', props.hasNestedSwipeableView);
   }
 
-  shouldComponentUpdate(){
-    return false;
+  shouldComponentUpdate(nextProps){
+    return this.props.hasNestedSwipeableView != nextProps.hasNestedSwipeableView;
   }
 
   fbAppId(){
     const appId = this.config.helmet.meta.find(m=>m.property=='fb:app_id');
-    console.log('appId: ', appId);
-    return +appId.content
+    return appId.content
   }
 
   href(){
@@ -66,7 +65,7 @@ class Socials extends React.Component {
 
   render(){
     return (
-        <div className={s.socials}>
+        <div className={s.socials + ' ' + (this.props.hasNestedSwipeableView ? s['socials--nested']: '')}>
           <ul>
             <li>
               <FacebookProvider appID={this.fbAppId()}>

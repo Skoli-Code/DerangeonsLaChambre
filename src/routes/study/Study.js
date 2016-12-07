@@ -208,7 +208,6 @@ class Study extends React.Component {
     return (
       <MuiThemeProvider muiTheme={theme}>
         <div class={s.root}>
-          <Socials/>
           { this.getModals() }
           <Presentation/>
           <AppBar className={s.appBar} showMenuIconButton={false}
@@ -219,6 +218,7 @@ class Study extends React.Component {
                 { this.tabs() }
               </Tabs>
           </AppBar>
+          <Socials hasNestedSwipeableView={ this.hasNestedSwipeableView() }/>
           <BindKeyboardSwipeableViews className={s.content}
             onChangeIndex={ this.onChangeIndex.bind(this) }
             index={ index }>
