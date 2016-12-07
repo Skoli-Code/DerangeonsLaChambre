@@ -174,12 +174,17 @@ class Study extends React.Component {
     let tabsContent = this.tabsContent;
     let tabs = this.props.tabs.filter(tab=>!tab.isModal);
     return this.props.tabs.filter(tab=>!tab.isModal).map((tab, key)=>{
+      let tabContent = this.tabsContent[key] || {};
+      const props = Object.assign({},{
+        isActive: index==key,
+        onRef: (comp)=>{ this._children[key]=comp }
+      }, tab.componentProps);
       return (
         <div className={s.innerTab} key={key}>
           { index == key &&
             <Helmet title={ tab.title + ' | Dérangeons la chambre'} meta={tab.meta}/>
           }
-          { React.createElement(tab.component, tab.componentProps, null) }
+          { React.createElement(tab.component, props, null) }
         </div>
       );
     });
@@ -201,7 +206,7 @@ class Study extends React.Component {
 
     return (
       <MuiThemeProvider muiTheme={theme}>
-        <div class={s.root}>
+        <div className={s.root}>
           { this.getModals() }
           <Presentation/>
           <AppBar className={s.appBar} showMenuIconButton={false}

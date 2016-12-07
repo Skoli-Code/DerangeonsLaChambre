@@ -17,6 +17,7 @@ import s from './Content.css';
 
 class Content extends React.Component {
   static propTypes = Object.assign({}, {
+    isActive: PropTypes.bool,
     path: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     title: PropTypes.string,
@@ -27,6 +28,7 @@ class Content extends React.Component {
       this.props.onRef(this);
     }
   }
+  
   componentWillUnmount() {
     if(this.props.onRef){
       this.props.onRef(undefined);

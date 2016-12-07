@@ -19,6 +19,7 @@ import * as _ from 'lodash';
 import * as d3 from 'd3';
 
 const BallotsPropTypes = Object.assign({}, {
+  onRef: PropTypes.function,
   onBallotChange:PropTypes.function,
   activeBallot: PropTypes.number,
   ballots: PropTypes.arrayOf(PropTypes.shape(BallotPropTypes)),
@@ -28,16 +29,20 @@ const BallotsPropTypes = Object.assign({}, {
 class Ballots extends React.Component {
   static propTypes = BallotsPropTypes;
 
-  // componentDidMount() {
-  //   this.props.onRef(this);
-  // }
-  // componentWillUnmount() {
-  //   this.props.onRef(undefined);
-  // }
-
-  shouldComponentUpdate(nextProps){
-    return nextProps.activeBallot != this.state.index;
+  componentDidMount() {
+    if(this.props.onRef){
+       this.props.onRef(this);
+    }
   }
+  componentWillUnmount() {
+    if(this.props.onRef){
+       this.props.onRef(undefined);
+    }
+  }
+
+  // shouldComponentUpdate(nextProps){
+  //   return nextProps.activeBallot != this.state.index;
+  // }
 
   hasSwipeableViews(){ return true; }
 
