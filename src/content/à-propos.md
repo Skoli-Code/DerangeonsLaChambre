@@ -50,3 +50,5 @@ Pictogramme : "Swipe Left" par [Scott Lewis](https://thenounproject.com/iconify)
 Pictogramme : "Keyboard" par [Paul te Kortschot](https://thenounproject.com/Kortschot) du Noun Project
 
 Pictogramme : [Elegant Font Pack](http://www.flaticon.com/packs/elegant-font) depuis Faticon
+
+Pictogramme : Logo détourné de l'Assemblée Nationale, il ne s'agit en aucun cas d'une tentative de falsification d'un document officiel. 
