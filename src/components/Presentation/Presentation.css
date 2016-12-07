@@ -35,12 +35,25 @@
 .lead {
   text-shadow: 0 0 2px solid var(--black);
   font-size: 2.5em;
+  margin-bottom: 0;
+  @media(--small){
+    font-size: 1.5em;
+  }
 }
 .pictos {
   line-height: 200px;
   height: 200px;
   svg {
     display: inline-block;
+  }
+  @media(--small){
+    margin: 10px 0;
+    height: 100px;
+    line-height: 100px;
+    svg {
+      max-height: 100px;
+      /*width: auto !important;*/
+    }
   }
 
 }
