@@ -20,8 +20,8 @@ import s from './Home.css';
 
 function Home() {
   const meta = extendMeta([
-    { name:'og:image', content:'http://www.derangeonslachambre.fr/cover.jpg'},
-    { name:'twitter:image', content:'http://www.derangeonslachambre.fr/cover.jpg'}
+    { name:'og:image', content:'http://www.derangeonslachambre.fr/cover-socials.jpg'},
+    { name:'twitter:image', content:'http://www.derangeonslachambre.fr/cover-socials.jpg'}
   ]);
   return (
     <Layout>
