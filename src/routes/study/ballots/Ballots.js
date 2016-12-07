@@ -12,7 +12,7 @@ import {extendMeta} from '../../../components/Socials/Config';
 
 import {BallotPropTypes, PartyPropTypes} from '../../../components/Charts';
 // import Markdown from '../../../components/Markdown';
-import Layout from '../../../components/Layout';
+// import Layout from '../../../components/Layout';
 import { BallotChart, BallotTreemapChart, AssemblyChart } from '../../../components/Charts';
 import s from './Ballots.css';
 import { ViewPropTypes } from '../../../components/View';

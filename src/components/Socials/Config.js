@@ -20,7 +20,7 @@ const Config = {
       { name:"twitter:card", content:"summary_large_image"},
       { name:"twitter:title", content:"Dérangeons la chambre !"},
       { name:"twitter:description", content:"Analyse de données textuelles et datavisualisations sur le traitement de l'islam dans la presse française (1997-2015). Par Skoli et M.Bourekba."},
-      { name:"twitter:image", content:"http://derangeonslachambre/socials/wordcloud.png"},
+      { name:"twitter:image", content:"http://derangeonslachambre/cover.png"},
     ]
   }
 };
@@ -37,7 +37,7 @@ const extendMeta = (metas)=>{
     }
     const key = meta[key_name];
     let _meta = _metas.find(meta=>meta[key_name] == key)
-    if(!meta || key == 'og:image'){
+    if(key == 'og:image' || !_meta){
       _metas.push(meta);
     } else {
       _meta['content'] = content;

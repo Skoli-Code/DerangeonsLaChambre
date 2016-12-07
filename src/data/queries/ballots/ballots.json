@@ -41,8 +41,13 @@
   "subtitle": "Scrutin uninominal majoritaire à 1 tour",
   "legend_title": "Scrutin majoritaire uninominal",
   "meta":[
-    { "name":"twitter:title", "content":"Assemblée Nationale : et si nous étions allemands ?" },
-    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." }
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si nous étions anglais ?" },
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/A2.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/1"},
+    { "property":"og:title", "content":"Assemblée Nationale : et si nous étions anglais ?"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/A2.png"},
+    { "property":"og:description", "content":"Simulation électorale - Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 2,
   "results": [
@@ -73,7 +78,14 @@
   "subtitle": "Scrutin proportionnel personnalisé",
   "legend_title": "Système mixte à finalité proportionnelle (uninominal majoritaire à un tour et proporitonnelle plurinominale avec sièges 'supplémentaires')",
   "meta":[
-    { "name":"twitter:title", "content":"Assemblée Nationale : et si nous étions italiens ?"}
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si nous étions allemands ?" },
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
+    { "name":"twitter:description", "content":"A quoi ressemblerait l’Assemblée Nationale si l’on changeait le mode de scrutin aux élections législatives ? Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."},
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/A3.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/2"},
+    { "property":"og:title", "content":"Assemblée Nationale : et si nous étions allemands ?"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/A3.png"},
+    { "property":"og:description", "content":"Simulation électorale - Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 3,
   "results": [
@@ -104,7 +116,14 @@
   "subtitle": "Scrutin proportionnel personnalisé",
   "legend_title": "Scrutin proportionnel plurinominal à circonscription nationale avec prime au parti majoritaire (quorum d'éligibilité à 3%)",
   "meta":[
-    { "name":"twitter:title", "content":""}
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si nous étions italiens ?" },
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
+    { "name":"twitter:description", "content":"A quoi ressemblerait l’Assemblée Nationale si l’on changeait le mode de scrutin aux élections législatives ? Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."},
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/A4.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/3"},
+    { "property":"og:title", "content":"Assemblée Nationale : et si nous étions italiens ?"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/A4.png"},
+    { "property":"og:description", "content":"Simulation électorale - Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 4,
   "results": [
@@ -135,7 +154,14 @@
   "subtitle": "Scrutin à la proportionnelle par circonscription nationale",
   "legend_title": "Scrutin à la proportionnelle plurinominale intégrale par circonscription nationale (méthode du quotient de Hare, pas de quorum d'éligibilité)",
   "meta":[
-    { "name":"twitter:title", "content":""}
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si nous étions allemands ?" },
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
+    { "name":"twitter:description", "content":"A quoi ressemblerait l’Assemblée Nationale si l’on changeait le mode de scrutin aux élections législatives ? Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."},
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/B6.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/5"},
+    { "property":"og:title", "content":"Assemblée Nationale : et si nous étions allemands ?"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/B6.png"},
+    { "property":"og:description", "content":"Simulation électorale - Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 6,
   "results": [
@@ -166,7 +192,14 @@
   "subtitle": "Scrutin à la proportionnelle par circonscription départementale",
   "legend_title": "Scrutin à la proportionnelle plurinominale par circonscription départementale (méthode de Hondt, quorum fixé à 3% par département)",
   "meta":[
-    { "name":"twitter:title", "content":""}
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si nous étions espagnols ?" },
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
+    { "name":"twitter:description", "content":"A quoi ressemblerait l’Assemblée Nationale si l’on changeait le mode de scrutin aux élections législatives ? Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."},
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/A5.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/4"},
+    { "property":"og:title", "content":"Assemblée Nationale : et si nous étions espagnols ?"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/A5.png"},
+    { "property":"og:description", "content":"Simulation électorale - Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 5,
   "results": [
@@ -197,7 +230,13 @@
   "subtitle": "Scrutin majoritaire avec quorum d'éligibilité",
   "legend_title": "Scrutin uninominal majoritaire à deux tours avec quorum d'éligibilité de 50% du corps electoral",
   "meta":[
-    { "name":"twitter:title", "content":""}
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si on appliquait les règles du référendum local ?"},
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/C8.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/7"},
+    { "property":"og:title", "content":"Assemblée Nationale : et si on appliquait les règles du référendum local ?"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/C8.png"},
+    { "property":"og:description", "content":"Simulation électorale - Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 8,
   "results": [
@@ -228,7 +267,13 @@
   "subtitle": "Si l'abstention était un parti",
   "legend_title": "Scrutin majoritaire uninominal à deux tours dans lequel l'abstention compte comme un parti politique",
   "meta":[
-    { "name":"twitter:title", "content":""}
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si l’abstention était un parti politique ?"},
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/C7.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/6"},
+    { "property":"og:title", "content":"Assemblée Nationale : et si l’abstention était un parti politique ?"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/C7.png"},
+    { "property":"og:description", "content":"Simulation électorale - Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 7,
   "results": [
@@ -259,7 +304,13 @@
   "subtitle": "A la majorité des inscrits",
   "legend_title": "Scrutin uninominal à deux tours à la majorité des inscrits ",
   "meta":[
-    { "name":"twitter:title", "content":""}
+    { "name":"twitter:title", "content":"Et si on élisait les députés à la majorité des inscrits (et non des suffrages exprimés) ?"},
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/C9.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/8"},
+    { "property":"og:title", "content":"Et si on élisait les députés à la majorité des inscrits (et non des suffrages exprimés) ?"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/C9.png"},
+    { "property":"og:description", "content":"Simulation électorale - Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 9,
   "results": [
@@ -290,7 +341,13 @@
   "subtitle": "Tirage au sort",
   "legend_title": "Stochocratie",
   "meta":[
-    { "name":"twitter:title", "content":""}
+    { "name":"twitter:title", "content":"Assemblée Nationale : et si on appliquait le tirage au sort ?"},
+    { "name":"twitter:description", "content":"Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
+    { "name":"twitter:image", "content":"http://www.derangeonslachambre.fr/socials/C9.png"},
+    { "property":"og:url", "content":"http://www.derangeonslachambre.fr/etude/scrutins/8"},
+    { "property":"og:title", "content":"Assemblée Nationale : et si on appliquait le tirage au sort ?"},
+    { "property":"og:image", "content":"http://www.derangeonslachambre.fr/socials/C9.png"},
+    { "property":"og:description", "content":"Simulation électorale - Appliquez des modes de scrutin différents et visualisez leurs effets sur la composition de l’Assemblée Nationale. Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."}
   ],
   "order": 10,
   "results": [
