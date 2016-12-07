@@ -4,3 +4,31 @@
   font-family: var(--font-family-brand);
   text-decoration: none;
 }
+
+.socials {
+  &:before {
+    content: '';
+    max-width: var(--max-content-width);
+    margin: auto;
+    display: inline-block;
+  }
+
+  display: inline-block;
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  ul {
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: var(--z-index-socials);
+    li {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      margin-right: 10px;
+    }
+  }
+
+}

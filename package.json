@@ -35,6 +35,7 @@
     "rc-checkbox": "^1.4.3",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
+    "react-facebook": "^2.2.2",
     "react-helmet": "^3.2.2",
     "react-markdown": "^2.4.2",
     "react-motion": "^0.4.5",
