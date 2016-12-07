@@ -81,6 +81,11 @@
     font-size:1.5em;
     margin-bottom: 10px;
   }
+  @media(--xsmall){
+    font-size:1.1em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 }
 
 .logo {
@@ -93,6 +98,7 @@
   }
 
   @media(--xsmall){
+    height: 140px;
     margin-top: 2em;
   }
 
@@ -105,22 +111,14 @@
     @media(--small){
       max-width: 300px !important;
     }
+    @media(--xsmall){
+      max-width: 200px !important;
+    }
   }
-
-
-
 
   @media(--xsmall){
     .title {
       font-size: 1.5em;
-    }
-    .subtitle {
-      font-size:1.1em;
-      margin-bottom: 10px;
-    }
-    height: 150px;
-    svg {
-      max-width: 250px !important;
     }
   }
 }
