@@ -13,13 +13,39 @@ export default {
       title: 'Intro',
       key: 0,
       meta: extendMeta([
-        { property: 'og:url', content: 'http://www.derangeonslachambre.fr/etude/introduction' }
+        { property: 'og:url', content: 'http://www.derangeonslachambre.fr/etude/introduction' },
+        { name:'og:image', content:'http://www.derangeonslachambre.fr/assemblee-exterieur.jpg'},
+        { name:'twitter:image', content:'http://www.derangeonslachambre.fr/assemblee-exterieur.jpg'},
       ])
     }),
     require('./ballots').default,
-    ConfigureContentRoute({ path: 'conclusion', title: 'Bilan', key: 2}),
-    ConfigureContentRoute({ path: 'à-propos', title: 'À propos', key: 3, mobileIcon:'info'}),
-    ConfigureContentRoute({ path: 'méthodologie',title: 'Méthodologie', key: 4, mobileIcon:'description', isModal:true}),
+    ConfigureContentRoute({
+      path: 'conclusion',
+      title: 'Bilan', key: 2,
+      meta: extendMeta([
+        { property: 'og:url', content: 'http://www.derangeonslachambre.fr/etude/conclusion' },
+        { name:'og:image', content:'http://www.derangeonslachambre.fr/coupole.jpg'},
+        { name:'twitter:image', content:'http://www.derangeonslachambre.fr/coupole.jpg'}
+      ])
+    }),
+    ConfigureContentRoute({
+      path: 'à-propos',
+      title: 'À propos',
+      key: 3,
+      meta: extendMeta([
+        { property: 'og:url', content: 'http://www.derangeonslachambre.fr/etude/conclusion' },
+        { name:'og:image', content:'http://www.derangeonslachambre.fr/coupole.jpg'},
+        { name:'twitter:image', content:'http://www.derangeonslachambre.fr/coupole.jpg'}
+      ]),
+      mobileIcon:'info'
+    }),
+    ConfigureContentRoute({
+      path: 'méthodologie',
+      title: 'Méthodologie',
+      key: 4,
+      mobileIcon:'description',
+      isModal:true
+    }),
   ],
   onChangeIndex(index){
     if(typeof index != typeof 0 || !history){ return; }

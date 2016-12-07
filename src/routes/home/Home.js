@@ -12,15 +12,20 @@ import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import RaisedButton from 'material-ui/RaisedButton';
 import Layout from '../../components/Layout';
+import {extendMeta} from '../../components/Socials/Config';
 import Link from '../../components/Link';
 import {Logo} from '../../components/Pictos';
 import s from './Home.css';
 // import theme from '../../components/theme';
 
 function Home() {
+  const meta = extendMeta([
+    { name:'og:image', content:'http://www.derangeonslachambre.fr/cover.jpg'},
+    { name:'twitter:image', content:'http://www.derangeonslachambre.fr/cover.jpg'}
+  ]);
   return (
     <Layout>
-      <Helmet title="Accueil | Dérangeons la Chambre"/>
+      <Helmet title="Accueil | Dérangeons la Chambre" meta={meta}/>
       <div className={s.root}>
         <div className={s.backgroundHolder}>
           <div className={s.background}></div>
