@@ -31,14 +31,16 @@ Ses recherches sont majoritairement sur les démocraties, plus particulièrement
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;La réalisation graphique est l’oeuvre de Skoli.
 
 ### Crédits
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Photos
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Photos**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Couverture : Philippe Grangeaud pour le [Parti Socialiste](https://www.flickr.com/photos/partisocialiste/8047476496/in/photolist-eHneys-dg8Ez7-dg8qoL-xboqq-dg8cfV-dg8n7k-dg8sAj-dg8jdU-dg8rDV-dg8hLd-nJQAWJ/)
-  Fontes & Icônes
-  Outils & Librairies
-  Ce site web a été créé à l'aide de ces projets open-source : [React](https://facebook.github.io/react/) et [D3js](https://d3js.org/).
+Couverture : Philippe Grangeaud pour le [Parti Socialiste](https://www.flickr.com/photos/partisocialiste/8047476496/in/photolist-eHneys-dg8Ez7-dg8qoL-xboqq-dg8cfV-dg8n7k-dg8sAj-dg8jdU-dg8rDV-dg8hLd-nJQAWJ/)
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Outils & Librairies**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pictogramme : "Swipe Left" par [Scott Lewis](https://thenounproject.com/iconify) du Noun Project
+Ce site web a été créé à l'aide de ces projets open-source : [React](https://facebook.github.io/react/) et [D3js](https://d3js.org/).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pictogramme : "Keyboard" par [Paul te Kortschot](https://thenounproject.com/Kortschot) du Noun Project
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Pictogrammes**
+
+Pictogramme : "Swipe Left" par [Scott Lewis](https://thenounproject.com/iconify) du Noun Project
+
+Pictogramme : "Keyboard" par [Paul te Kortschot](https://thenounproject.com/Kortschot) du Noun Project
