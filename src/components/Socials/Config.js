@@ -16,11 +16,11 @@ const Config = {
       { property:"og:type", content:"website" },
       { property:"og:url",  content:"http://www.derangeonslachambre.fr" },
       { property:"og:title", content:"Dérangeons la chambre !" },
-      { property:"og:description", content:"Analyse de données textuelles et datavisualisations sur le traitement de l'islam dans la presse française (1997-2015), à partir des archives numériques de trois grands quotidiens. Par Skoli et M.Bourekba." },
+      { property:"og:description", content:"Simulation électorale - A quoi ressemblerait l’Assemblée Nationale si l’on changeait le mode de scrutin aux élections législatives ? Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
       { name:"twitter:card", content:"summary_large_image"},
       { name:"twitter:title", content:"Dérangeons la chambre !"},
-      { name:"twitter:description", content:"Analyse de données textuelles et datavisualisations sur le traitement de l'islam dans la presse française (1997-2015). Par Skoli et M.Bourekba."},
-      { name:"twitter:image", content:"http://derangeonslachambre/cover.png"},
+      { name:"twitter:description", content:"A quoi ressemblerait l’Assemblée Nationale si l’on changeait le mode de scrutin aux élections législatives ? Par Skoli et R. Magni-Berton (Sciences Po Grenoble)."},
+      { name:"twitter:image", content:"http://derangeonslachambre/cover-socials.png"},
     ]
   }
 };
