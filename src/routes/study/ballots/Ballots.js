@@ -100,7 +100,6 @@ class Ballots extends React.Component {
   }
 
   onChangeIndex(i){
-
     if(i != this.state.index){
       this.setState({index:i, compareToActualResults: false});
     }
@@ -186,7 +185,7 @@ class Ballots extends React.Component {
           <p>{ ballot.legend_title }</p>
         </div>
         { index > 0 && (
-          <div>
+          <div style={{display:'none'}}>
             <div className={s.sep}/>
             <label>
               <Checkbox checked={compareToActualResults}
