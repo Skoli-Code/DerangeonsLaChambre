@@ -2,7 +2,7 @@
 
 ![Palais Bourbon vu depuis la Seine](/assemblee-exterieur.jpg)
 
- Participation en baisse, défiance grandissante vis-à-vis de la “classe politique”, critiques politiques sur la représentativité de l’Assemblée, la démocratie traverse une crise en France. A défaut d’un remise en question plus large de la démocratie représentative, il convient de s’interroger au moins, sur les mécanismes de délégation du pouvoir aux députés.
+ Participation en baisse, défiance grandissante vis-à-vis de la “classe politique”, critiques politiques sur la représentativité de l’Assemblée, la démocratie traverse une crise en France. A défaut d’une remise en question plus large de la démocratie représentative, il convient de s’interroger au moins, sur les mécanismes de délégation du pouvoir aux députés.
 Les résultats des élections parlementaires ont des conséquences potentiellement importantes sur nos vies. Ils dépendent de trois aspects&nbsp;: les candidats, les électeurs et les règles électorales.
 L’importance des règles électorales pour déterminer les résultat d’une élection est souvent sous estimée. C’est pourtant un paramètre déterminant.
 
