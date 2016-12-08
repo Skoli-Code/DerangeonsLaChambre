@@ -28,7 +28,7 @@ class Content extends React.Component {
       this.props.onRef(this);
     }
   }
-  
+
   componentWillUnmount() {
     if(this.props.onRef){
       this.props.onRef(undefined);
@@ -36,7 +36,7 @@ class Content extends React.Component {
   }
 
   shouldComponentUpdate(nextProps){
-    return this.props.isActive != nextProps.isActive;
+    return false;
   }
 
   hasSwipeableViews(){ return false; }
