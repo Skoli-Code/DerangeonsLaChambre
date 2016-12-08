@@ -40,9 +40,18 @@ class Ballots extends React.Component {
     }
   }
 
-  // shouldComponentUpdate(nextProps){
-  //   return nextProps.activeBallot != this.state.index;
-  // }
+  shouldComponentUpdate(nextProps, nextState){
+    if(nextProps.activeBallot != this.state.index){
+      return true;
+    }
+    if(nextState.index != this.state.index){
+      return true;
+    }
+    if(nextState.compareToActualResults != this.state.compareToActualResults){
+      return true;
+    }
+    return false;
+  }
 
   hasSwipeableViews(){ return true; }
 
@@ -185,7 +194,7 @@ class Ballots extends React.Component {
           <p>{ ballot.legend_title }</p>
         </div>
         { index > 0 && (
-          <div style={{display:'none'}}>
+          <div >
             <div className={s.sep}/>
             <label>
               <Checkbox checked={compareToActualResults}
