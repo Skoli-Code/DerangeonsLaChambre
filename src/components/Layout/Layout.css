@@ -17,8 +17,8 @@
  * ========================================================================== */
 
 html {
-  color: #222;
-  font-weight: 100;
+  color: var(--black);
+  font-weight: 300;
   font-size: 1.2em;
   font-family: var(--font-family-base);
   line-height: 1.375; /* ~22px */
