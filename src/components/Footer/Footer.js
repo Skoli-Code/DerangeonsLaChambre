@@ -16,8 +16,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
 class Footer extends React.Component {
-  shouldComponentUpdate(){
-    return false;
+  shouldComponentUpdate(nextProps, nextState){
+    return this.state.legalsOpened != nextState.legalsOpened;
   }
 
   constructor(){
@@ -26,6 +26,7 @@ class Footer extends React.Component {
   }
   openLegals(e){
     e.preventDefault();
+    console.log('openLegals !');
     this.setState({legalsOpened:true});
   }
 
