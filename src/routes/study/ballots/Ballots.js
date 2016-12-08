@@ -193,16 +193,6 @@ class Ballots extends React.Component {
           <label>Mode de scrutin</label>
           <p>{ ballot.legend_title }</p>
         </div>
-        { index > 0 && (
-          <div >
-            <div className={s.sep}/>
-            <label>
-              <Checkbox checked={compareToActualResults}
-              onChange={ this.onCheckboxToggle.bind(this) }/>
-              Assemblée actuelle
-            </label>
-          </div>
-        )}
       </div>
     );
   }
