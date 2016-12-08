@@ -12,11 +12,6 @@ import Ballots from './Ballots';
 import fetch from '../../../core/fetch';
 import history from '../../../core/history';
 
-let globBallots;
-
-const resolveBallots = async() => {
-};
-
 const routeParams = {
   key: 1,
   title: 'Scrutins'

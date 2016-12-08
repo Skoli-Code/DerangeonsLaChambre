@@ -253,6 +253,7 @@ class Ballots extends React.Component {
           </div>
         </div>
         <SwipeableViews
+          threshold={2}
           index={ index }
           onChangeIndex={ this.onChangeIndex.bind(this) }>
           {ballots.map((ballot, key) => {
