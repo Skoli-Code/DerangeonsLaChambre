@@ -10,7 +10,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“Dérangeons la chambre”, est le fruit d’une collaboration entre Raul Magni-Berton et l’agence Skoli.
 
 #### Raul Magni-Berton
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Raul Magni Berton est professeur de science politique à [Science Po Grenoble](http://www.sciencespo-grenoble.fr/membres/magni-berton-raul/) et chercheur à PACTE (Politiques, actions, territoires) et au [LIEPP](http://www.sciencespo.fr/liepp/fr/users/raulmagni-berton) (Laboratoire interdisciplinaire d'évaluation des politiques publiques à Paris). Il dirige le pôle Sciences Sociales de la  Communauté Université Grenoble Alpes, en charge d’impulser la politique scientifique en  sciences sociales et est responsable de la formation à la recherche à Sciences Po Grenoble.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Raul Magni Berton est professeur de science politique à [Sciences-Po Grenoble](http://www.sciencespo-grenoble.fr/membres/magni-berton-raul/) et chercheur à PACTE (Politiques, actions, territoires) et au [LIEPP](http://www.sciencespo.fr/liepp/fr/users/raulmagni-berton) (Laboratoire interdisciplinaire d'évaluation des politiques publiques à Paris). Il dirige le pôle Sciences Sociales de la  Communauté Université Grenoble Alpes, en charge d’impulser la politique scientifique en  sciences sociales et est responsable de la formation à la recherche à Sciences Po Grenoble.
 Ses recherches sont majoritairement sur les démocraties, plus particulièrement sur l’influence des élections sur la vie politique. Il a travaillé également sur des questions très variées, telles que : l’avortement réduit-il les crimes ? Pourquoi les agriculteurs sont célibataires ? Pourquoi les universitaires sont athées et de gauche ? Ou encore pourquoi le Q.I. des américains baisse ? Il est l’auteur ou le co-auteur de nombreux articles dans des revues scientifiques et de quelques livres. Parmi les plus récents on peut citer *Démocraties Libérales* (Paris, Economica, 2012), *2012: La campagne présidentielle* (Paris. Ed. Pepper, 2014) et *Que pensent les penseurs ?* (Grenoble, PUG, 2015).
 
 #### Skoli
@@ -51,4 +51,4 @@ Pictogramme : "Keyboard" par [Paul te Kortschot](https://thenounproject.com/Kort
 
 Pictogramme : [Elegant Font Pack](http://www.flaticon.com/packs/elegant-font) depuis Faticon
 
-Pictogramme : Logo détourné de l'Assemblée Nationale, il ne s'agit en aucun cas d'une tentative de falsification d'un document officiel. 
+Pictogramme : Logo détourné de l'Assemblée Nationale, il ne s'agit en aucun cas d'une tentative de falsification d'un document officiel.
