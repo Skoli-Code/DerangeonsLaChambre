@@ -14,6 +14,10 @@ class Presentation extends React.Component {
     };
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    return nextState.visible != this.state.visible;
+  }
+
   onClick(){
     this.setState({ visible: false });
   }
@@ -21,7 +25,7 @@ class Presentation extends React.Component {
   render(){
     const { visible } = this.state;
     const className = s.presentation + ' ' + (visible ? '' :  s['presentation--hidden']);
-    
+
     return (<Layout>
       <div className={className} onClick={this.onClick.bind(this)}>
         <div className={s.presentation__content}>
