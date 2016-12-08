@@ -45,10 +45,10 @@
   --screen-xs-min: 480px;  /* Extra small screen / phone */
   --screen-sm-min: 768px;  /* Small screen / tablet */
   --screen-md-min: 992px;  /* Medium screen / desktop */
-  --screen-lg-min: 1200px; /* Large screen / wide desktop */
+  --screen-lg-min: 1150px; /* Large screen / wide desktop */
 
-  @custom-media --desktop (min-width: 1200px);
-  @custom-media --medium (max-width: 1199px);
+  @custom-media --desktop (min-width: 1150px);
+  @custom-media --medium (max-width: 1149px);
   @custom-media --small (max-width: 992px);
   @custom-media --xsmall (max-width: 600px);
 }
