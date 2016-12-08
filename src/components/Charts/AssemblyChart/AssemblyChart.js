@@ -62,6 +62,8 @@ class D3AssemblyChart {
     this.$chart = d3.select(el);
     this.updateSize();
     this.updateData(props.data);
+    const isVisible = el.offsetWidth > 0 || el.offsetHeight > 0;
+    if(!isVisible){ return;}
     this.draw();
   }
 
@@ -158,6 +160,7 @@ export class AssemblyChart extends React.Component {
   }
 
   componentDidMount() {
+    this._mounted = true;
     window.addEventListener('resize', this.handleResize);
     this.assemblyChart = new D3AssemblyChart(this.node(), this.chartState());
     if(this.props.onRef){
@@ -166,6 +169,7 @@ export class AssemblyChart extends React.Component {
   }
 
   componentWillUnmount() {
+    this._mounted = false;
     if(this.props.onRef){
       this.props.onRef(undefined)
     }
@@ -191,10 +195,12 @@ export class AssemblyChart extends React.Component {
 
   /** Helper method to reference this dom node */
   node() {
+    if(!this._mounted){ return; }
     return ReactDOM.findDOMNode(this);
   }
 
   _handleResize(e) {
+    if(!this._mounted){ return; }
     this.__resizeTimeout && clearTimeout(this.__resizeTimeout);
     this.__resizeTimeout = setTimeout(() => {
       this.assemblyChart.update(this.node(), this.chartState());

@@ -26,6 +26,8 @@ class D3BallotTreemapChart {
     this.$chart = d3.select(el);
     this.updateSize();
     this.updateData(props.data);
+    const isVisible = el.offsetWidth > 0 || el.offsetHeight > 0;
+    if(!isVisible){ return;}
     this.draw();
   }
 
@@ -37,7 +39,7 @@ class D3BallotTreemapChart {
   updateSize() {
     // width = parent node width.
     // height = height of the golden ratio rectangle
-    let width = this.$chart.node().getBoundingClientRect().width;
+    let width = this.$chart.node().parentNode.getBoundingClientRect().width;
     if(isNaN(width) || !width){
       width = 800;
     }
@@ -86,7 +88,6 @@ class D3BallotTreemapChart {
     let leavesTitle = (r)=>`${r.data.party.name}\n${r.value} sièges`;
     let leavesStyle = ($leaves)=>{
       objectStyle($leaves, {
-        transition: 'left 350ms ease,top 350ms ease,width 350ms,height 350ms',
         left:       (d)=>px(d.x0),
         top:        (d)=>px(d.y0),
         width:      (d)=>px(d.x1-d.x0),
@@ -150,9 +151,18 @@ export class BallotTreemapChart extends React.Component {
   }
 
   componentDidMount() {
+    this._mounted = true;
     window.addEventListener('resize', this.handleResize);
     this.ballotTreemapChart = new D3BallotTreemapChart(this.node(), this.chartState());
   }
+
+  componentWillUnmount() {
+    this._mounted = false;
+    if(this.props.onRef){
+      this.props.onRef(undefined)
+    }
+  }
+
 
   chartState() {
     return {data: this.props.data };
@@ -170,10 +180,12 @@ export class BallotTreemapChart extends React.Component {
 
   /** Helper method to reference this dom node */
   node() {
+    if(!this._mounted){ return; }
     return ReactDOM.findDOMNode(this);
   }
 
   _handleResize(e) {
+    if(!this._mounted){ return; }
     this.__resizeTimeout && clearTimeout(this.__resizeTimeout);
     this.__resizeTimeout = setTimeout(() => {
       this.ballotTreemapChart.update(this.node(), this.chartState());

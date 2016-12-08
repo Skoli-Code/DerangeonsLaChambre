@@ -116,8 +116,10 @@ class D3BallotChart {
 
   update(el, props) {
     this.$chart = d3.select(el);
-    this.$holder = d3.select(el.parentNode)
+    this.$holder = d3.select(el.parentNode);
     this.updateData(props.data);
+    const isVisible = el.offsetWidth > 0 || el.offsetHeight > 0;
+    if(!isVisible){ return;}
     this.updateSize();
     this.draw();
   }
@@ -238,6 +240,14 @@ export class BallotChart extends React.Component {
     this.ballotChart = new D3BallotChart(this.node(), this.chartState());
   }
 
+  componentWillUnmount() {
+    this._mounted = false;
+    if(this.props.onRef){
+      this.props.onRef(undefined)
+    }
+  }
+
+
   chartState() {
     return {data: this.props.data, onPartyHover: this.props.onPartyHover};
   }
@@ -254,10 +264,12 @@ export class BallotChart extends React.Component {
 
   /** Helper method to reference this dom node */
   node() {
+    if(this._mounted){ return false; }
     return ReactDOM.findDOMNode(this);
   }
 
   _handleResize(e) {
+    if(!this._mounted){ return; }
     this.__resizeTimeout && clearTimeout(this.__resizeTimeout);
     this.__resizeTimeout = setTimeout(() => {
       this.ballotChart.update(this.node(), this.chartState());
