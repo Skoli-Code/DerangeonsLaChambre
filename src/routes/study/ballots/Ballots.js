@@ -100,8 +100,9 @@ class Ballots extends React.Component {
   }
 
   onChangeIndex(i){
+
     if(i != this.state.index){
-      this.setState({index:i});
+      this.setState({index:i, compareToActualResults: false});
     }
     if(this.props.onBallotChange){
       this.props.onBallotChange(i);
@@ -127,7 +128,7 @@ class Ballots extends React.Component {
   onCheckboxToggle(e){
     const { index } = this.state;
     const checked = !e.target.checked;
-    this.setState({index: index, compareToActualResults:checked});
+    this.setState({compareToActualResults:checked});
   }
 
   pagination(ballots){
