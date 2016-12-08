@@ -26,7 +26,6 @@ class Footer extends React.Component {
   }
   openLegals(e){
     e.preventDefault();
-    console.log('openLegals !');
     this.setState({legalsOpened:true});
   }
 
