@@ -16,7 +16,7 @@ export const analytics = {
 
   // https://analytics.google.com/
   google: {
-    trackingId: process.env.GOOGLE_TRACKING_ID, // UA-XXXXX-X
+    trackingId: process.env.GOOGLE_TRACKING_ID || "UA-82419929-2", // UA-XXXXX-X
   },
 
 };
