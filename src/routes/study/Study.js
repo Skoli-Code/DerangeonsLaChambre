@@ -66,12 +66,13 @@ class Study extends React.Component {
   }
 
   getModals(){
-    return this.modals.map((modal)=>{
+    return this.modals.map((modal,key)=>{
       const modalContent = React.createElement(
         modal.component, modal.componentProps, null
       );
       return (
         <Dialog
+          key={key}
           title={modal.title}
           style={{height: '80vh'}}
           open={this.state.modals[modal.key]||false}

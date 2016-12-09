@@ -24,9 +24,10 @@
   --blue: rgb(33, 150, 243);
 
   --primary-color: var(--blue);
-  --gray: #d3d3d3;
 
   --light-gray: #FAFAFA; /* gray500 */
+  --gray: #d3d3d3;
+  --medium-gray: #A7A7A7;
   --dark-gray: #212121; /* gray900 */
   --black: #444;
 
