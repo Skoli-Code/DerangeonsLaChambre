@@ -41,7 +41,7 @@ function Home() {
 
           <Link to="/etude/introduction">
             <RaisedButton label="Dérangez la chambre"
-              primary={true} style={{background:'none'}} overlayStyle={{ lineHeight: '30px'}}/>
+              style={{background:'none'}} overlayStyle={{ lineHeight: '30px'}}/>
           </Link>
         </div>
 
