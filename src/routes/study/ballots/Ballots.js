@@ -169,7 +169,8 @@ class Ballots extends React.Component {
     return i == index || i == (index - 1) || i == (index + 1);
   }
 
-  legend(ballot){
+  legend(ballot, klass){
+    const _klass = s.legend + ' ' + (klass ? klass : '');
     const {index, compareToActualResults} = this.state;
     const {ballots, parties} = this.props;
 
@@ -183,7 +184,7 @@ class Ballots extends React.Component {
     const absoluteMajority = firstResult.seats > Math.ceil(totalSeats/2);
 
     return (
-      <div className={s.legend}>
+      <div className={_klass}>
         <div>
           <label>Majorité { absoluteMajority ? '(absolue)' : ''}</label>
           <span>{ firstResult.party.name }</span>
@@ -269,14 +270,12 @@ class Ballots extends React.Component {
               };
               return (
               <div key={key} className={s.container + ' ' + s.content}>
+                <h1 className={s['visible-touch']}>{ ballot.title }</h1>
+                <h3 className={s.subtitle + ' ' + s['visible-touch']}>{ ballot.subtitle }</h3>
+                <BallotTreemapChart className={ s['visible-touch'] } data={ _.cloneDeep(chartData) }/>
+                <AssemblyChart      className={ s['visible-touch'] } data={ _.cloneDeep(chartData) }/>
+                { this.legend(ballot, s['visible-touch']) }
                 <div className={s['content--left']}>
-                  <div className={s['visible-touch']}>
-                    <h1>{ ballot.title }</h1>
-                    <h3 className={s.subtitle }>{ ballot.subtitle }</h3>
-                    <BallotTreemapChart data={ _.cloneDeep(chartData) }/>
-                    <AssemblyChart data={ _.cloneDeep(chartData) }/>
-                    { this.legend(ballot) }
-                  </div>
                   <Markdown source={ ballot.content }/>
                 </div>
               </div>

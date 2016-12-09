@@ -185,6 +185,7 @@ class Study extends React.Component {
       return (
         <div className={s.innerTab} key={key}>
           { React.createElement(tab.component, props, null) }
+          <Footer/>
         </div>
       );
     });
@@ -220,11 +221,11 @@ class Study extends React.Component {
           </AppBar>
           <Socials hasNestedSwipeableView={ this.hasNestedSwipeableView() }/>
           <BindKeyboardSwipeableViews className={s.content}
+            style={{ overflowY:'hidden', maxHeight: '100vh'}}
             onChangeIndex={ this.onChangeIndex.bind(this) }
             index={ index }>
             { this.getTabsContent() }
           </BindKeyboardSwipeableViews>
-          <Footer/>
         </div>
       </MuiThemeProvider>
     );

@@ -43,6 +43,8 @@ class D3BallotTreemapChart {
     if(isNaN(width) || !width){
       width = 800;
     }
+    width = width - 40;
+    
     const height = width*0.618033989;
     this.treemap = this.treemap.size([width, height]);
     objectStyle(this.$chart, { width: px(width), height: px(height) });
@@ -173,8 +175,9 @@ export class BallotTreemapChart extends React.Component {
   }
 
   render() {
+    const klass = s.chart + ' ' + (this.props.className ? this.props.className : '');
     return (
-      <div className={s.chart}></div>
+      <div className={klass}></div>
     );
   }
 

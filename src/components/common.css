@@ -19,7 +19,7 @@
 .visible-touch {
   display: none;
   @media (--small){
-    display: inherit;
+    display: block;
   }
 }
 
@@ -48,6 +48,10 @@
     flex-grow: 3;
   }
   @media (--small){
+    display: block;
+    flex-flow: unset;
+    align-content: normal;
+    justify-content: normal;
     &--left, &--right {
       max-width: 100%;
     }

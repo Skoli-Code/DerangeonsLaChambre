@@ -188,8 +188,9 @@ export class AssemblyChart extends React.Component {
   }
 
   render() {
+    const klass = s.chart + ' ' + (this.props.className ? this.props.className : '');
     return (
-      <div className={s.chart}></div>
+      <div className={klass}></div>
     );
   }
 

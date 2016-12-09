@@ -4,6 +4,10 @@
 :root {
 
 }
+/*.root {
+  overflow-y: hidden;
+  overflow-x: visible;
+}*/
 
 .appBar {
   position: fixed !important;
@@ -30,9 +34,6 @@
 }
 
 .tab {
-  &Text {
-
-  }
   &WithIcon {
     .tabText {
       @media(--small){
@@ -48,15 +49,22 @@
   }
 }
 .content {
-  overflow: hidden;
-  padding-top: 62px;
+  padding-top: 0;
   > div:first-child {
     width: 100%;
   }
-  @media (--small){
-    padding-top: 125px;
-  }
 }
+
 .innerTab {
-  overflow: hidden;
+  max-height: 100vh;
+  overflow-y: auto;
+  &:before {
+    content: '';
+    display: block;
+    height: 62px;
+    @media (--small){
+      height: 125px;
+    }
+  }
+
 }
