@@ -8,6 +8,7 @@ import Portal from 'react-portal';
 import Markdown from 'react-markdown';
 
 // internal
+import Socials from '../../../components/Socials';
 import {extendMeta} from '../../../components/Socials/Config';
 
 import {BallotPropTypes, PartyPropTypes} from '../../../components/Charts';
@@ -270,6 +271,7 @@ class Ballots extends React.Component {
               };
               return (
               <div key={key} className={s.container + ' ' + s.content}>
+                <Socials mobile={true}/>
                 <h1 className={s['visible-touch']}>{ ballot.title }</h1>
                 <h3 className={s.subtitle + ' ' + s['visible-touch']}>{ ballot.subtitle }</h3>
                 <BallotTreemapChart className={ s['visible-touch'] } data={ _.cloneDeep(chartData) }/>

@@ -10,6 +10,7 @@
 import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import Socials from '../../../components/Socials';
 import Layout from '../../../components/Layout';
 // import Markdown from '../../../components/Markdown';
 import Markdown from 'react-markdown';
@@ -48,6 +49,7 @@ class Content extends React.Component {
       <Layout>
         <div className={s.root}>
           <div className={s.container + ' ' + modalClass }>
+            <Socials mobile={true}/>
             <Markdown source={ this.props.content }/>
           </div>
         </div>

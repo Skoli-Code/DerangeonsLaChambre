@@ -210,6 +210,7 @@ class Study extends React.Component {
         <div className={s.root}>
           { this.getModals() }
           <Presentation/>
+          <Socials mobile={false}/>
           <Helmet title={ activeTab.title + ' | Dérangeons la chambre'} meta={extendMeta(activeTab.meta)}/>
           <AppBar className={s.appBar} showMenuIconButton={false}
               title={<Brand/>}  titleStyle={BrandStyle}
@@ -219,7 +220,6 @@ class Study extends React.Component {
                 { this.tabs() }
               </Tabs>
           </AppBar>
-          <Socials hasNestedSwipeableView={ this.hasNestedSwipeableView() }/>
           <BindKeyboardSwipeableViews className={s.content}
             style={{ overflowY:'hidden', maxHeight: '100vh'}}
             onChangeIndex={ this.onChangeIndex.bind(this) }

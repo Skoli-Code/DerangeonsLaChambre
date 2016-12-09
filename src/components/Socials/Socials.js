@@ -15,7 +15,7 @@ class Socials extends React.Component {
   }
 
   shouldComponentUpdate(nextProps){
-    return this.props.hasNestedSwipeableView != nextProps.hasNestedSwipeableView;
+    return false;
   }
 
   fbAppId(){
@@ -63,8 +63,9 @@ class Socials extends React.Component {
   }
 
   render(){
+    const klass = s.socials + ' ' + (this.props.mobile ? s['socials--mobile']:'');
     return (
-        <div className={s.socials + ' ' + (this.props.hasNestedSwipeableView ? s['socials--nested']: '')}>
+        <div className={klass}>
           <ul>
             <li>
               <FacebookProvider appID={this.fbAppId()}>
