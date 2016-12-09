@@ -41,6 +41,9 @@ class Ballots extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState){
+    if(nextProps.isActive != this.props.isActive){
+      return true;
+    }
     if(nextProps.activeBallot != this.state.index){
       return true;
     }
