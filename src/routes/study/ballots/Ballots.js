@@ -68,7 +68,7 @@ class Ballots extends React.Component {
   }
 
   setIndex(i){
-    this.setState({index:i});
+    this.setState({index:i, compareToActualResults: false});
     if(this.props.onBallotChange){
       this.props.onBallotChange(i);
     }
@@ -86,7 +86,8 @@ class Ballots extends React.Component {
     const { index } = this.state;
     const i = index + 1;
     this.setState({
-      index: i
+      index: i,
+      compareToActualResults: false
     });
     if(this.props.onBallotChange){
       this.props.onBallotChange(i);
@@ -97,7 +98,8 @@ class Ballots extends React.Component {
     const { index } = this.state;
     const i =  index - 1;
     this.setState({
-      index: i
+      index: i,
+      compareToActualResults: false
     });
     if(this.props.onBallotChange){
       this.props.onBallotChange(i);
