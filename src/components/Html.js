@@ -17,7 +17,7 @@ function Html({ head, style, script, chunk, children }) {
     title = head.title.toComponent();
   }
   return (
-    <html className="no-js" lang="en">
+    <html className="no-js" lang="fr">
       <head>
         <meta charSet="utf-8" />
         { meta }
