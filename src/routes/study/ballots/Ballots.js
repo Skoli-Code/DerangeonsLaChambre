@@ -2,12 +2,12 @@ import SwipeableViews from 'react-swipeable-views';
 import React, {PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import Checkbox from 'rc-checkbox';
 import FontIcon from 'material-ui/FontIcon';
 import Portal from 'react-portal';
 import Markdown from 'react-markdown';
 
 // internal
+import Checkbox from '../../../components/Checkbox';
 import Socials from '../../../components/Socials';
 import {extendMeta} from '../../../components/Socials/Config';
 
@@ -139,7 +139,7 @@ class Ballots extends React.Component {
 
   onCheckboxToggle(e){
     const { index } = this.state;
-    const checked = !e.target.checked;
+    const checked = !this.state.compareToActualResults;
     this.setState({compareToActualResults:checked});
   }
 
@@ -198,6 +198,16 @@ class Ballots extends React.Component {
           <label>Mode de scrutin</label>
           <p>{ ballot.legend_title }</p>
         </div>
+      { index > 0 && (
+        <div >
+          <div className={s.sep}/>
+          <label>
+            <Checkbox checked={compareToActualResults}
+            onChange={ this.onCheckboxToggle.bind(this) }/>
+            Assemblée actuelle
+          </label>
+        </div>
+      )}
       </div>
     );
   }
