@@ -48,10 +48,10 @@
 .link,
 .link:active,
 .link:visited {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.6) !important;
   text-decoration: none;
 }
 
 .link:hover {
-  color: rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 1) !important;
 }
