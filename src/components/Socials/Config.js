@@ -12,6 +12,7 @@ const Config = {
   },
   helmet: {
     meta: [
+      { name:"description", content:"Simulation électorale - A quoi ressemblerait l’Assemblée Nationale si l’on changeait le mode de scrutin aux élections législatives ? Par Skoli et R. Magni-Berton (Sciences Po Grenoble)." },
       { property:"fb:app_id", content:"226290154474919" },
       { property:"og:type", content:"website" },
       { property:"og:url",  content:"http://www.derangeonslachambre.fr" },
