@@ -54,6 +54,8 @@ class Footer extends React.Component {
           <span className={s.spacer}>·</span>
           <Link className={s.link} to="/">Accueil</Link>
           <span className={s.spacer}>·</span>
+          <Link className={s.link} rel="nofollow" target="_blank" to="/export.zip">Données</Link>
+          <span className={s.spacer}>·</span>
           <Link onClick={this.openLegals.bind(this)} className={s.link} to="/">Mentions Légales</Link>
         </div>
       </div>

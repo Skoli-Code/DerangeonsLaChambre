@@ -19,7 +19,7 @@ function isModifiedEvent(event) {
 }
 
 class Link extends Component {
-
+  static displayName = 'Link';
   static propTypes = {
     label:PropTypes.string,
     to: PropTypes.string,
@@ -29,7 +29,7 @@ class Link extends Component {
 
   handleClick = (event) => {
     // check if this is an external link or not.
-    if(this.props.to.startsWith('http')){ return true; }
+    if(this.props.to.startsWith('http') || this.props.rel=="nofollow"){ return true; }
 
     if (this.props.onClick) {
       this.props.onClick(event);
@@ -48,7 +48,7 @@ class Link extends Component {
   };
 
   render() {
-    const { label, to, children, ...props } = this.props;
+    const { label, to, children, literal, nodeKey, ...props } = this.props;
     return <a href={to} {...props} onClick={this.handleClick}>{label}{children}</a>;
   }
 
